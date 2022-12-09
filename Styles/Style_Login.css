@@ -1,0 +1,38 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+
+body {
+    overflow: hidden;
+    width: 100%;
+    background-size: 100%;
+    background-image: url(../img/FondosVentana/FondoTech2.jpg);
+}
+
+.stl-label-campos {
+    color: #fff;
+    text-shadow: 1px 2px 17px black;
+    font-size: 20px;
+}
+
+.stl-campo-texto {
+    color: white;
+    background-color: #31505a;
+}
+
+.stl-img-logo {
+    width: 200px;
+}
+
+.stl-titulo-imagen {
+    font-size: 40px;
+    color: #48acdb;
+    text-shadow: 1px 2px 17px black;
+}
+
+.stl-link-recuperar-clave {
+    font-size: 11px;
+    margin-left: 83px;
+}
+
+.stl-botones {
+    width: 160px;
+}
