@@ -51,7 +51,6 @@ C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\bin\roslyn\vbc.rsp
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\bin\roslyn\VBCSCompiler.exe
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\bin\Antlr3.Runtime.dll
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\bin\AspNet.ScriptManager.jQuery.dll
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\bin\Dominio.dll
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\bin\Microsoft.AspNet.FriendlyUrls.dll

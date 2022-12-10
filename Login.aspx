@@ -9,13 +9,26 @@
 
     <link rel="Shortcut Icon" type="image/x-icon" href="favicon.ico" />
 
+    <%--Sweet Alert--%>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link href="Styles/Style_Login.css?v=2.0" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
 
 </head>
 <body>
@@ -44,15 +57,20 @@
                 <br /><br />
 
                 <h3 class="stl-label-campos">Contraseña</h3>
-                <asp:TextBox id="TxtClave" placeholder="Contraseña" class="stl-campo-texto text-white" runat="server" />
+                <asp:TextBox id="TxtClave" placeholder="Contraseña" class="stl-campo-texto text-white" runat="server" TextMode="Password" />
 
                 <br />
+
+                <input id="CbMostrarClave" type="checkbox" class="stl-checkbox-mostrar-clave" onclick="mostrarContrasena()" />
+                <span class="text-white stl-link-recuperar-clave"> Mostrar Contraseña</span>
+
+                <br /><br />
 
                 <u>
                     <asp:LinkButton ID="LinkLabelRecuperarClave" Text="Olvidé mi contraseña" class="text-white stl-link-recuperar-clave" runat="server" onclick="LinkLabelRecuperarClave_Click" />
                 </u>
 
-                <br /><br /><br />
+                <br /><br />
 
                 <asp:Button ID="BtnIngresar" Text="Ingresar" class="btn btn-success btn-lg stl-botones" runat="server" onclick="BtnIngresar_Click" />
 
@@ -108,7 +126,12 @@
                 
                 <br />
                 
-                <asp:TextBox id="TxtCambiarClave" class="stl-campo-texto text-white" runat="server" />
+                <asp:TextBox id="TxtCambiarClave" class="stl-campo-texto text-white" runat="server" TextMode="Password" />
+
+                <br />
+
+                <input id="CbMostrarClave2" type="checkbox" class="stl-checkbox-mostrar-clave" onclick="mostrarContrasena2()" />
+                <span class="text-white stl-link-recuperar-clave"> Mostrar Contraseña</span>
 
                 <br /><br /><br />
 
@@ -119,6 +142,67 @@
             </center>
 
         </section>
+
+        <asp:HiddenField ID="hfMessage" runat="server" />
+        <asp:HiddenField ID="hfError" runat="server" />
+
     </form>
 </body>
+
+    <script>
+        function alertaConfirm() {
+            var message = $('[id$=hfMessage]').val()
+
+            if ($('[id$=hfMessage]').val() != '') {
+                Swal.fire({
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                    title: message,
+                    icon: 'success',
+                })
+            }
+            $('[id$=hfMessage]').val('')
+        }
+
+        function errorConfirm() {
+            var message = $('[id$=hfError]').val()
+
+            if ($('[id$=hfError]').val() != '') {
+                Swal.fire({
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                    title: message,
+                    icon: 'error',
+                })
+            }
+            $('[id$=hfError]').val('')
+        }
+
+        $(function () {
+            errorConfirm();
+            alertaConfirm();
+        });
+
+        function mostrarContrasena() {
+            var tipo = document.getElementById("TxtClave");
+            if (tipo.type == "password") {
+                tipo.type = "text";
+            } else {
+                tipo.type = "password";
+            }
+        }
+
+        function mostrarContrasena2() {
+            var tipo = document.getElementById("TxtCambiarClave");
+            if (tipo.type == "password") {
+                tipo.type = "text";
+            } else {
+                tipo.type = "password";
+            }
+        }
+
+    </script>
+
 </html>

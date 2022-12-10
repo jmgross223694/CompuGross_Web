@@ -30,9 +30,12 @@ body {
 
 .stl-link-recuperar-clave {
     font-size: 11px;
-    margin-left: 83px;
 }
 
 .stl-botones {
     width: 160px;
+}
+
+.stl-checkbox-mostrar-clave {
+    margin-left: -72px;
 }
