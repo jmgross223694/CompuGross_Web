@@ -7,13 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> CompuGross - Menú Principal</title>
+    <title>CompuGross - <%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <%--Style--%>
-    <link href="Styles/Styles.css?v=2.0" rel="stylesheet" />
+    <link href="Styles/Style_Master.css?v=2.0" rel="stylesheet" />
 
     <%--Sweet Alert--%>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -24,6 +24,7 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <script defer src="JavaScript/Script_MenuPrincipal.js" ></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -50,31 +51,99 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">CompuGross</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Inicio</a></li>
-                        <li><a runat="server" href="~/About">Acerca de</a></li>
-                        <li><a runat="server" href="~/Contact">Contacto</a></li>
-                    </ul>
-                </div>
+        <center>
+            <div class="navbar-header">
+                <a href="https://www.instagram.com/compugrossok/" style="text-decoration: none;">
+                    <asp:Image ImageUrl="~/img/LogosCG/LogoCG.png" class="stl-img-logo" runat="server" />
+                    <h1 class="stl-titulo-imagen">CompuGross</h1>
+                </a>
             </div>
-        </div>
-        <div class="container body-content">
+        </center>
+
+        <%-- Comienzo Menu principal --%>
+
+        <header class="stl-menu-header body-content">
+
+            <span class="stl-menu-button">
+                <svg class="stl-menu-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </span>
+            <h2 class="stl-menu-h2">
+                <b>Menú principal</b>
+            </h2>
+
+            <nav class="stl-menu-nav">
+                <ul class="stl-menu-ul">
+                    <li class="stl-menu-li">
+                        <a href="Clientes.aspx" class="stl-menu-a">
+                            <img src="img/MenuPrincipal/iconoClientes.png" alt="#" class="stl-menu-iconos" />
+                            <b>Clientes</b>
+                        </a>
+                    </li>
+                    <li class="stl-menu-li">
+                        <a href="#" class="stl-menu-a">
+                            <img src="img/MenuPrincipal/iconoServicios.png" alt="#" class="stl-menu-iconos" />
+                            <b>Servicios</b>
+                        </a>
+                    </li>
+                    <li class="stl-menu-li">
+                        <a href="#" class="stl-menu-a">
+                            <img src="img/MenuPrincipal/iconoPresupuesto.png" alt="#" class="stl-menu-iconos" />
+                            <b>Presupuesto</b>
+                        </a>
+                    </li>
+                    <li class="stl-menu-li">
+                        <a href="#" class="stl-menu-a">
+                            <img src="img/MenuPrincipal/iconoPrecios.png" alt="#" class="stl-menu-iconos" />
+                            <b>Precios</b>
+                        </a>
+                    </li>
+                    <li class="stl-menu-li">
+                        <a href="#" class="stl-menu-a">
+                            <img src="img/MenuPrincipal/iconoReportes.png" alt="#" class="stl-menu-iconos" />
+                            <b>Reportes</b>
+                        </a>
+                    </li>
+                    <li class="stl-menu-li">
+                        <a href="#" class="stl-menu-a">
+                            <img src="img/MenuPrincipal/iconoBackup.png" alt="#" class="stl-menu-iconos" />
+                            <b>Backup</b>
+                        </a>
+                    </li>
+                    <li class="stl-menu-li">
+                        <a href="#" class="stl-menu-a">
+                            <img src="img/MenuPrincipal/iconoUsuarios.png" alt="#" class="stl-menu-iconos" />
+                            <b>Usuarios</b>
+                        </a>
+                    </li>
+                    <li class="stl-menu-li">
+                        <a href="#" class="stl-menu-a">
+                            <img src="img/MenuPrincipal/iconoProveedores.png" alt="#" class="stl-menu-iconos" />
+                            <b>Proveedores</b>
+                        </a>
+                    </li>
+                    <li class="stl-menu-li">
+                        <a href="Login.aspx" class="stl-menu-a">
+                            <img src="img/MenuPrincipal/iconoCerrarSesion.png" alt="#" class="stl-menu-iconos" />
+                            <b>Cerrar Sesión</b>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <%-- Fin Menu Principal --%>
+
+        <hr class="container body-content" style="color: white !important;"/>
+
+        <div class="container body-content stl-footer">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; 2013-<%: DateTime.Now.Year %> - CompuGross (Todos los derechos reservados)</p>
+                <p><b>&copy; 2013-<%: DateTime.Now.Year %> - CompuGross (Todos los derechos reservados)</b></p>
             </footer>
         </div>
 

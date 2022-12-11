@@ -15,7 +15,9 @@ namespace CompuGross_Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            TxtUsuario.Text = "38346656";
+            TxtClave.Text = "Admin123";
+            BtnIngresar.Focus();
         }
 
         protected void LinkLabelRecuperarClave_Click(object sender, EventArgs e)
@@ -297,7 +299,7 @@ namespace CompuGross_Web
                 }
                 else
                 {
-                    Response.Redirect("Index.aspx");
+                    Response.Redirect("Clientes.aspx");
                 }
             }
             else
