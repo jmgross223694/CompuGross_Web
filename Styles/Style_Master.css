@@ -1,0 +1,110 @@
+﻿body {
+    width: 100%;
+    background-size: 100%;
+    background-image: url(../img/FondosVentana/FondoTech2.jpg);
+}
+
+.stl-footer{
+    color: white !important;
+}
+
+.stl-img-logo {
+    width: 200px;
+}
+
+.stl-titulo-imagen {
+    font-size: 40px;
+    color: #48acdb !important;
+    text-shadow: 1px 2px 17px black;
+}
+
+.stl-menu-header {
+    width: 100%;
+    /*background-color: #282828;*/
+    padding: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: white !important;
+    margin: 0px auto;
+    max-width: 1320px;
+}
+
+    .stl-menu-header .stl-menu-h2 {
+        margin: 0px auto;
+        width: 93%;
+    }
+
+    .stl-menu-header .stl-menu-a {
+        color: white !important;
+        text-decoration: none !important;
+        /*font-size: 3vh;*/
+        font-size: 20px;
+    }
+
+    .stl-menu-header .stl-menu-button {
+        cursor: pointer;
+    }
+
+    .stl-menu-header .stl-menu-svg {
+        width: 3em;
+        height: 3em;
+        fill: white;
+    }
+
+    .stl-menu-header .stl-menu-nav {
+        height: 0;
+        overflow: hidden;
+        width: 100%;
+        /*display: none;*/
+        transition: all 1s ease;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: start;
+    }
+
+    .stl-menu-header .stl-menu-h1.activo {
+        display: none;
+    }
+
+    .stl-menu-header .stl-menu-nav.activo {
+        height: 37rem;
+        /*display: block;*/
+    }
+
+    .stl-menu-header .stl-menu-ul {
+        display: flex;
+        flex-flow: row nowrap;
+        flex-direction: column;
+        justify-content: flex-end;
+        /*list-style-type: square;*/
+        list-style-type: none;
+        margin: 1rem;
+    }
+
+    .stl-menu-header .stl-menu-li {
+        margin: 1rem 1rem;
+        /*border: 1px solid;*/
+    }
+
+.stl-menu-iconos {
+    vertical-align: text-bottom !important;
+}
+
+@media screen and (max-width: 350px) {
+    .stl-img-logo {
+        width: 130px;
+    }
+
+    .stl-titulo-imagen {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 716px) {
+    .stl-menu-header .stl-menu-h2 {
+        width: 80%;
+    }
+}

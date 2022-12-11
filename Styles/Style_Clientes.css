@@ -1,0 +1,91 @@
+﻿body {
+}
+
+.stl-div-content{
+}
+.stl-div-botones-principales {
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    justify-content: center;
+}
+.stl-section-botones-principales {
+    height: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+.stl-section-botones-principales.activo {
+    height: 150px;
+}
+
+.stl-boton-principal {
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.stl-section-agregar-cliente {
+    height: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+    .stl-section-agregar-cliente.activo {
+        height: 500px;
+    }
+
+.stl-section-modificar-cliente {
+    height: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+    .stl-section-modificar-cliente.activo {
+        height: 500px;
+    }
+
+.stl-section-eliminar-cliente {
+    height: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+    .stl-section-eliminar-cliente.activo {
+        height: 500px;
+    }
+
+.stl-section-localidades {
+    height: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+    .stl-section-localidades.activo {
+        height: 500px;
+    }
+
+.stl-div-contenedor-campos {
+    
+}
+.stl-div-titulo{
+    text-align: center;
+}
+.stl-div-campos {
+    text-align: center;
+}
+
+.stl-label-campo {
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+}
+.stl-texto-campo {
+    display: inline-block;
+    width: 200px;
+    margin: 8px;
+}
+
+.stl-div-boton {
+    text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+    .stl-div-botones-principales {
+        display: grid;
+    }
+}
