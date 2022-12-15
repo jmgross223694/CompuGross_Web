@@ -51,7 +51,7 @@
                     <div class="stl-div-localidad">
                         <asp:Label ID="LblNuevoClienteLocalidad" Text="Localidad" runat="server" CssClass="stl-label-campo" />
                         <asp:DropDownList ID="DdlNuevoClienteLocalidad" runat="server" AppendDataBoundItems="true" CssClass="stl-texto-campo form-control">
-                            <asp:ListItem Text="Seleccione" />
+                            <asp:ListItem Value="Seleccione" Text="Seleccione" />
                         </asp:DropDownList>
                     </div>
                     <div class="stl-div-telefono">
