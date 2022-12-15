@@ -1,5 +1,6 @@
 ﻿body {
     width: 100%;
+    min-width: 275px;
     background-size: 100%;
     background-image: url(../img/FondosVentana/FondoTech2.jpg);
 }
@@ -9,13 +10,16 @@
 }
 
 .stl-img-logo {
-    width: 200px;
+    width: 100px;
+    position: relative;
+    display: none;
 }
 
 .stl-titulo-imagen {
     font-size: 40px;
     color: #48acdb !important;
     text-shadow: 1px 2px 17px black;
+    display: none;
 }
 
 .stl-menu-header {

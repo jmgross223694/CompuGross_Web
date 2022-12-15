@@ -37,15 +37,16 @@
                 <div class="stl-div-campos">
                     <div class="stl-div-cuit-dni">
                         <asp:Label ID="LblNuevoClienteCuitDni" Text="CUIT/DNI" runat="server" CssClass="stl-label-campo" />
-                        <asp:TextBox ID="TxtNuevoClienteCuitDni" placeholder="CUIT/DNI" runat="server" CssClass="stl-texto-campo form-control" />
+                        <asp:TextBox ID="TxtNuevoClienteCuitDni" placeholder="CUIT/DNI" onkeypress="javascript:return soloNumeros(event)" runat="server" CssClass="stl-texto-campo form-control" MaxLength="11" />
                     </div>
                     <div class="stl-div-apenom">
                         <asp:Label ID="LblNuevoClienteApenom" Text="Apellido y Nombre" runat="server" CssClass="stl-label-campo" />
-                        <asp:TextBox ID="TxtNuevoClienteApenom" placeholder="Apellido y Nombre" runat="server" CssClass="stl-texto-campo form-control" />
+                        <asp:TextBox ID="TxtNuevoClienteApenom" placeholder="Apellido y Nombre" onkeypress="javascript:return soloLetras(event)" runat="server" CssClass="stl-texto-campo form-control" MaxLength="50" />
+                        <b style="color: red;">*</b>
                     </div>
                     <div class="stl-div-direccion">
                         <asp:Label ID="LblNuevoClienteDireccion" Text="Dirección" runat="server" CssClass="stl-label-campo" />
-                        <asp:TextBox ID="TxtNuevoClienteDireccion" placeholder="Dirección" runat="server" CssClass="stl-texto-campo form-control" />
+                        <asp:TextBox ID="TxtNuevoClienteDireccion" placeholder="Dirección" runat="server" onkeypress="javascript:return soloEspacioLetrasNumeros(event)" CssClass="stl-texto-campo form-control" MaxLength="50" />
                     </div>
                     <div class="stl-div-localidad">
                         <asp:Label ID="LblNuevoClienteLocalidad" Text="Localidad" runat="server" CssClass="stl-label-campo" />
@@ -55,17 +56,18 @@
                     </div>
                     <div class="stl-div-telefono">
                         <asp:Label ID="LblNuevoClienteTelefono" Text="Teléfono" runat="server" CssClass="stl-label-campo" />
-                        <asp:TextBox ID="TxtNuevoClienteTelefono" placeholder="Teléfono" runat="server" CssClass="stl-texto-campo form-control" TextMode="Number" />
+                        <asp:TextBox ID="TxtNuevoClienteTelefono" placeholder="Teléfono" runat="server" onkeypress="javascript:return soloNumeros(event)" CssClass="stl-texto-campo form-control" TextMode="Number"  MaxLength="15" />
+                        <b style="color: red;">*</b>
                     </div>
                     <div class="stl-div-mail">
                         <asp:Label ID="LblNuevoClienteMail" Text="Mail" runat="server" CssClass="stl-label-campo" />
-                        <asp:TextBox ID="TxtNuevoClienteMail" placeholder="Mail" runat="server" CssClass="stl-texto-campo form-control" TextMode="Email" />
+                        <asp:TextBox ID="TxtNuevoClienteMail" placeholder="Mail" runat="server" CssClass="stl-texto-campo form-control" TextMode="Email" MaxLength="50" />
                     </div>
                 </div>
                 <br /><br />
                 <div class="stl-div-boton">
-                    <asp:Button ID="BtnNuevoClienteConfirmar" Text="Confirmar Cliente" class="btn btn-dark" runat="server" />
-                    <span id="NuevoClienteCancelar" class="btn btn-dark stl-btn-cancelar-agregar" runat="server">
+                    <asp:Button ID="BtnNuevoClienteConfirmar" Text="Confirmar Cliente" class="btn btn-dark stl-btn" runat="server" OnClick="BtnNuevoClienteConfirmar_Click" />
+                    <span id="NuevoClienteCancelar" class="btn btn-dark stl-btn-cancelar-agregar stl-btn" runat="server">
                         Cancelar
                     </span>
                 </div>
@@ -116,9 +118,25 @@
 
     </div>
 
+    <asp:HiddenField ID="hfMessage" runat="server" />
     <asp:HiddenField ID="hfError" runat="server" />
 
     <script>
+
+        function alertaConfirm() {
+            var message = $('[id$=hfMessage]').val()
+
+            if ($('[id$=hfMessage]').val() != '') {
+                Swal.fire({
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                    title: message,
+                    icon: 'success',
+                })
+            }
+            $('[id$=hfMessage]').val('')
+        }
 
         function errorConfirm() {
             var message = $('[id$=hfError]').val()
@@ -136,7 +154,90 @@
 
         $(function () {
             errorConfirm();
+            alertaConfirm();
         });
+
+        function soloNumeros(e) {
+            var txtTelefono = $("#MainContent_TxtNuevoClienteTelefono").val().length;
+            var key;
+            if (window.event) // IE
+            {
+                key = e.keyCode;
+            }
+            else if (e.which) // Netscape/Firefox/Opera
+            {
+                key = e.which;
+            }
+            if (key < 48 || key > 57) {
+                return false;
+            }
+            if (txtTelefono === 0) {
+                if (key === 48) {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        function soloLetras(e) {
+            var txtApenom = $("#MainContent_TxtNuevoClienteApenom").val().length;
+            var key;
+            if (window.event) // IE
+            {
+                key = e.keyCode;
+            }
+            else if (e.which) // Netscape/Firefox/Opera
+            {
+                key = e.which;
+            }
+            if (txtApenom === 0) {
+                if (key < 65 || key > 90) {
+                    return false;
+                }
+            }
+            if (key != 32) {
+                if (key < 65 || key > 122) {
+                    return false;
+                }
+                if (key > 90 && key < 97) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function soloEspacioLetrasNumeros(e) {
+            var txtDireccion = $("#MainContent_TxtNuevoClienteDireccion").val().length;
+            var key;
+            if (window.event) // IE
+            {
+                key = e.keyCode;
+            }
+            else if (e.which) // Netscape/Firefox/Opera
+            {
+                key = e.which;
+            }
+            if (txtDireccion === 0) {
+                if (key < 65 || key > 90) {
+                    return false;
+                }
+            }
+            if (key != 32) {
+                if (key < 48 || key > 122) {
+                    return false;
+                }
+                if (key > 57 && key < 65) {
+                    return false;
+                }
+                if (key > 90 && key < 97) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
     </script>
 
