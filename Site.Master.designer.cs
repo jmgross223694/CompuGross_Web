@@ -24,21 +24,21 @@ namespace CompuGross_Web
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
 
         /// <summary>
-        /// Control hfMessage.
+        /// Control hfMessageMaster.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfMessage;
+        protected global::System.Web.UI.WebControls.HiddenField hfMessageMaster;
 
         /// <summary>
-        /// Control hfError.
+        /// Control hfErrorMaster.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfError;
+        protected global::System.Web.UI.WebControls.HiddenField hfErrorMaster;
     }
 }

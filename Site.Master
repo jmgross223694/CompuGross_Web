@@ -147,17 +147,17 @@
             </footer>
         </div>
 
-        <asp:HiddenField ID="hfMessage" runat="server" />
-        <asp:HiddenField ID="hfError" runat="server" />
+        <asp:HiddenField ID="hfMessageMaster" runat="server" />
+        <asp:HiddenField ID="hfErrorMaster" runat="server" />
 
     </form>
 </body>
 
     <script>
         function alertaConfirm() {
-            var message = $('[id$=hfMessage]').val()
+            var message = $('[id$=hfMessageMaster]').val()
 
-            if ($('[id$=hfMessage]').val() != '') {
+            if ($('[id$=hfMessageMaster]').val() != '') {
                 Swal.fire({
                     allowOutsideClick: false,
                     allowEscapeKey: false,
@@ -166,13 +166,13 @@
                     icon: 'success',
                 })
             }
-            $('[id$=hfMessage]').val('')
+            $('[id$=hfMessageMaster]').val('')
         }
 
         function errorConfirm() {
-            var message = $('[id$=hfError]').val()
+            var message = $('[id$=hfErrorMaster]').val()
 
-            if ($('[id$=hfError]').val() != '') {
+            if ($('[id$=hfErrorMaster]').val() != '') {
                 Swal.fire({
                     allowOutsideClick: false,
                     allowEscapeKey: false,
@@ -181,7 +181,7 @@
                     icon: 'error',
                 })
             }
-            $('[id$=hfError]').val('')
+            $('[id$=hfErrorMaster]').val('')
         }
 
         $(function () {

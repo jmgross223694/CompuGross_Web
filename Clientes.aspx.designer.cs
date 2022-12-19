@@ -24,40 +24,31 @@ namespace CompuGross_Web
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_botones_principales;
 
         /// <summary>
-        /// Control AgregarCliente.
+        /// Control BtnBotonPrincipalNuevoCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AgregarCliente;
+        protected global::System.Web.UI.WebControls.Button BtnBotonPrincipalNuevoCliente;
 
         /// <summary>
-        /// Control ModificarCliente.
+        /// Control BtnBotonPrincipalModificarCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModificarCliente;
+        protected global::System.Web.UI.WebControls.Button BtnBotonPrincipalModificarCliente;
 
         /// <summary>
-        /// Control EliminarCliente.
+        /// Control BtnBotonPrincipalLocalidades.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EliminarCliente;
-
-        /// <summary>
-        /// Control Localidades.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Localidades;
+        protected global::System.Web.UI.WebControls.Button BtnBotonPrincipalLocalidades;
 
         /// <summary>
         /// Control section_agregar_cliente.
@@ -186,13 +177,13 @@ namespace CompuGross_Web
         protected global::System.Web.UI.WebControls.Button BtnNuevoClienteConfirmar;
 
         /// <summary>
-        /// Control NuevoClienteCancelar.
+        /// Control BtnNuevoClienteCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NuevoClienteCancelar;
+        protected global::System.Web.UI.WebControls.Button BtnNuevoClienteCancelar;
 
         /// <summary>
         /// Control section_modificar_cliente.
@@ -204,31 +195,256 @@ namespace CompuGross_Web
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_modificar_cliente;
 
         /// <summary>
-        /// Control ModificarClienteCancelar.
+        /// Control LblModificarClienteTitulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModificarClienteCancelar;
+        protected global::System.Web.UI.WebControls.Label LblModificarClienteTitulo;
 
         /// <summary>
-        /// Control section_eliminar_cliente.
+        /// Control section_listado_modificar_cliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_eliminar_cliente;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_listado_modificar_cliente;
 
         /// <summary>
-        /// Control EliminarClienteCancelar.
+        /// Control TxtModificarClienteBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EliminarClienteCancelar;
+        protected global::System.Web.UI.WebControls.TextBox TxtModificarClienteBusqueda;
+
+        /// <summary>
+        /// Control BtnModificarClienteBusqueda.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnModificarClienteBusqueda;
+
+        /// <summary>
+        /// Control BtnModificarClienteCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnModificarClienteCancelar;
+
+        /// <summary>
+        /// Control RepeaterListadoClientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterListadoClientes;
+
+        /// <summary>
+        /// Control section_campos_modificar_cliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_campos_modificar_cliente;
+
+        /// <summary>
+        /// Control hfIdCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfIdCliente;
+
+        /// <summary>
+        /// Control LblModificarClienteCuitDni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblModificarClienteCuitDni;
+
+        /// <summary>
+        /// Control TxtModificarClienteCuitDni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtModificarClienteCuitDni;
+
+        /// <summary>
+        /// Control LblModificarClienteApenom.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblModificarClienteApenom;
+
+        /// <summary>
+        /// Control TxtModificarClienteApenom.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtModificarClienteApenom;
+
+        /// <summary>
+        /// Control LblModificarClienteDireccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblModificarClienteDireccion;
+
+        /// <summary>
+        /// Control TxtModificarClienteDireccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtModificarClienteDireccion;
+
+        /// <summary>
+        /// Control LblModificarClienteLocalidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblModificarClienteLocalidad;
+
+        /// <summary>
+        /// Control DdlModificarClienteLocalidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlModificarClienteLocalidad;
+
+        /// <summary>
+        /// Control LblModificarClienteTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblModificarClienteTelefono;
+
+        /// <summary>
+        /// Control TxtModificarClienteTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtModificarClienteTelefono;
+
+        /// <summary>
+        /// Control LblModificarClienteMail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblModificarClienteMail;
+
+        /// <summary>
+        /// Control TxtModificarClienteMail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtModificarClienteMail;
+
+        /// <summary>
+        /// Control LblModificarClienteEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblModificarClienteEstado;
+
+        /// <summary>
+        /// Control DdlModificarClienteEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlModificarClienteEstado;
+
+        /// <summary>
+        /// Control BtnModificarClienteConfirmar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnModificarClienteConfirmar;
+
+        /// <summary>
+        /// Control BtnModificarClienteCancelarEdicion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnModificarClienteCancelarEdicion;
+
+        /// <summary>
+        /// Control section_confirmar_eliminar_cliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_confirmar_eliminar_cliente;
+
+        /// <summary>
+        /// Control LblConfirmarEliminarCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblConfirmarEliminarCliente;
+
+        /// <summary>
+        /// Control BtnConfirmarEliminarCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnConfirmarEliminarCliente;
+
+        /// <summary>
+        /// Control BtnCancelarEliminarCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCancelarEliminarCliente;
 
         /// <summary>
         /// Control section_localidades.
@@ -240,13 +456,13 @@ namespace CompuGross_Web
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_localidades;
 
         /// <summary>
-        /// Control LocalidadesCancelar.
+        /// Control BtnLocalidadesCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LocalidadesCancelar;
+        protected global::System.Web.UI.WebControls.Button BtnLocalidadesCancelar;
 
         /// <summary>
         /// Control hfMessage.

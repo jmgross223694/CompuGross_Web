@@ -9,58 +9,28 @@
     padding: 1rem;
     justify-content: center;
 }
-.stl-section-botones-principales {
-    height: 0;
-    overflow: hidden;
-    /*transition: all .5s ease;*/
-}
-.stl-section-botones-principales.activo {
-    height: 100%;
-}
 
+.stl-section-botones-principales {
+    display: block;
+}
 .stl-boton-principal {
     padding: 1rem;
     margin: 1rem;
 }
-
 .stl-section-agregar-cliente {
-    height: 0;
-    overflow: hidden;
-    /*transition: all .5s ease;*/
+    display: none;
 }
-    .stl-section-agregar-cliente.activo {
-        height: 100%;
-    }
-
 .stl-section-modificar-cliente {
-    height: 0;
-    overflow: hidden;
-    /*transition: all .5s ease;*/
+    display: none;
 }
-    .stl-section-modificar-cliente.activo {
-        height: 100%;
-    }
-
-.stl-section-eliminar-cliente {
-    height: 0;
-    overflow: hidden;
-    /*transition: all .5s ease;*/
+.stl-section-confirmar-eliminar-cliente {
+    display: none;
 }
-    .stl-section-eliminar-cliente.activo {
-        height: 100%;
-    }
-
 .stl-section-localidades {
-    height: 0;
-    overflow: hidden;
-    /*transition: all .5s ease;*/
+    display: none;
 }
-    .stl-section-localidades.activo {
-        height: 100%;
-    }
 
 .stl-div-contenedor-campos {
-    
 }
 .stl-div-titulo {
     display: flex;
@@ -84,6 +54,10 @@
     margin: 8px;
 }
 
+.stl-div-lbl-confirmar-eliminar-cliente {
+    justify-content: center;
+    display: flex;
+}
 .stl-div-boton {
     justify-content: center;
     display: flex;
@@ -108,4 +82,59 @@
     .stl-div-boton{
         display: grid !important;
     }
+}
+
+.stl-ddl-localidad {
+    cursor: pointer !important;
+}
+.stl-modificar-cliente-estado {
+    cursor: pointer !important;
+}
+.stl-modificar-cliente-div-busqueda {
+    display: block;
+    text-align: center;
+}
+.stl-modificar-cliente-txt-buscar {
+    vertical-align: middle !important;
+}
+.stl-modificar-cliente-lbl-titulo-listado {
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large !important;
+    font-family: var(--bs-body-font-family);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+}
+.stl-div-campos-modificar-cliente {
+}
+.stl-div-titulos-listado-clientes {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.stl-div-contenedor-listado-clientes {
+    width: 100%;
+    border-bottom: 2px solid;
+}
+.stl-div-btn-modificar-eliminar-cliente {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.stl-btn-modificar-cliente {
+    width: 80px;
+}
+.stl-btn-eliminar-cliente {
+    width: 80px;
+}
+.card {
+    background-color: #212529;
+    flex-direction: row !important;
+}
+.card-body {
+    width: 20%;
+    text-align: center;
+    /*border: 1px solid;*/
 }
