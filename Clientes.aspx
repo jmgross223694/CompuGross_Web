@@ -13,9 +13,9 @@
             </center>
 
             <div class="stl-div-botones-principales">
-                <asp:Button ID="BtnBotonPrincipalNuevoCliente" Text="Nuevo Cliente" runat="server" CssClass="btn btn-dark stl-boton-principal agregar-cliente" OnClick="BtnBotonPrincipalNuevoCliente_Click" />
-                <asp:Button ID="BtnBotonPrincipalModificarCliente" Text="Modificar Cliente" runat="server" CssClass="btn btn-dark stl-boton-principal modificar-cliente" onclick="BtnBotonPrincipalModificarCliente_Click" />
-                <asp:Button ID="BtnBotonPrincipalLocalidades" Text="ABM Localidades" runat="server" CssClass="btn btn-dark stl-boton-principal abm-localidades" OnClick="BtnBotonPrincipalLocalidades_Click" />
+                <asp:Button ID="BtnBotonPrincipalNuevoCliente" Text="Agregar Nuevo" runat="server" CssClass="btn btn-dark stl-boton-principal agregar-cliente" OnClick="BtnBotonPrincipalNuevoCliente_Click" />
+                <asp:Button ID="BtnBotonPrincipalModificarCliente" Text="Listar Todos" runat="server" CssClass="btn btn-dark stl-boton-principal modificar-cliente" onclick="BtnBotonPrincipalModificarCliente_Click" />
+                <asp:Button ID="BtnBotonPrincipalLocalidades" Text="Localidades" runat="server" CssClass="btn btn-dark stl-boton-principal abm-localidades" OnClick="BtnBotonPrincipalLocalidades_Click" />
             </div>
         </section>
 
@@ -83,6 +83,7 @@
                                 <asp:Button ID="BtnModificarClienteCancelar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn-cancelar-modificar" OnClick="BtnModificarClienteCancelar_Click" />
                             </div>
                         </section>
+                    </asp:Panel>
 
                         <br />
 
@@ -109,7 +110,7 @@
                                 </div>
                             </div>
                         </section>
-                    </asp:Panel>
+                    
                     <asp:Repeater ID="RepeaterListadoClientes" runat="server">
                         <ItemTemplate>
                             <div class="stl-div-contenedor-listado-clientes card">
@@ -202,7 +203,7 @@
 
                     <section id="section_confirmar_eliminar_cliente" runat="server" class="stl-section-confirmar-eliminar-cliente">
 
-                        <div class="stl-div-lbl-confirmar-eliminar-cliente">
+                        <div class="stl-div-lbl-confirmar-eliminar">
                             <h3><asp:Label ID="LblConfirmarEliminarCliente" Text="" runat="server" /></h3>
                         </div>
 
@@ -222,14 +223,145 @@
         
         <section id="section_localidades" runat="server" class="stl-section-localidades">
             <div class="stl-div-titulo">
-                <h1>ABM Localidades</h1>
+                <h1>
+                    <asp:Label ID="LblLocalidadesTitulo" Text="Localidades" runat="server" CssClass="stl-localidades-lbl-titulo" />
+                </h1>
             </div>
-            <div class="stl-div-campos">
 
-            </div>
-            <div class="stl-div-boton">
-                <asp:Button ID="BtnLocalidadesCancelar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn-cancelar-localidades" OnClick="BtnLocalidadesCancelar_Click" />
-            </div>
+            <section id="section_localidades_principal" runat="server" class="stl-section-localidades-principal">
+                <div class="stl-div-principal-localidades">
+                    <asp:Button ID="BtnLocalidadesAgregar" Text="Agregar Nueva" runat="server" CssClass="btn btn-dark stl-boton-principal" OnClick="BtnLocalidadesAgregar_Click" />
+                    <asp:Button ID="BtnLocalidadesListar" Text="Listar Todas" runat="server" CssClass="btn btn-dark stl-boton-principal" OnClick="BtnLocalidadesListar_Click" />
+                    <asp:Button ID="BtnLocalidadesCancelar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn-cancelar-localidades stl-boton-principal" onclick="BtnLocalidadesCancelar_Click" />
+                </div>
+            </section>
+
+            <asp:Panel DefaultButton="BtnLocalidadesConfirmarAgregar" runat="server">
+
+                <section id="section_agregar_localidad" runat="server" class="stl-section-agregar-localidad">
+                    <div class="stl-div-contenedor-campos">
+
+                        <br />
+
+                        <div class="stl-div-campos stl-div-campos-localidades">
+                            <div class="stl-div-descripcion">
+                                <asp:Label ID="LblLocalidadesAgregarDescripcion" Text="Descripción" runat="server" CssClass="stl-label-campo" />
+                                <asp:TextBox ID="TxtLocalidadesAgregarDescripcion" Tooltip="Ingresar la Descripción de la Nueva Localidad" PlaceHolder="Descripción..." runat="server" CssClass="stl-texto-campo form-control stl-localidades-txt-agregar" />
+                                <b style="color: red;">*</b>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="stl-div-boton">
+                            <asp:Button ID="BtnLocalidadesConfirmarAgregar" Text="Confirmar y Agregar" runat="server" CssClass="btn btn-dark stl-btn" onclick="BtnLocalidadesConfirmarAgregar_Click" />
+                            <asp:Button ID="BtnLocalidadesCancelarAgregar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn stl-btn-cancelar-localidades" onclick="BtnLocalidadesCancelarAgregar_Click" />
+                        </div>
+                    </div>
+                </section>
+            
+            </asp:Panel>
+
+            <asp:Panel DefaultButton="BtnLocalidadesBuscar" runat="server">
+
+                <section id="section_localidades_busqueda" runat="server" class="stl-section-localidades-busqueda">
+                    <div class="stl-localidades-div-busqueda">
+                        <asp:TextBox ID="TxtLocalidadesBuscar" Tooltip="Se buscan coincidencias con Descripción de Localidades" PlaceHolder="Búsqueda..." runat="server" CssClass="stl-texto-campo form-control stl-localidades-txt-buscar" />
+                        <asp:Button ID="BtnLocalidadesBuscar" Text="Buscar" runat="server" CssClass="btn btn-dark" OnClick="BtnLocalidadesBuscar_Click" />
+                        <asp:Button ID="BtnLocalidadesListarCancelar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn-cancelar-localidades" onclick="BtnLocalidadesListarCancelar_Click" />
+                    </div>
+                </section>
+
+            </asp:Panel>
+
+            <section id="section_localidades_listado" class="stl-section-localidades-listado" runat="server">
+
+                <div class="stl-div-titulos-listado-localidades card">
+                    <div class="stl-div-descripcion-localidad card-body">
+                        <label class="stl-label-campos-listar-localidad"><b><u>Descripción</u></b></label>
+                    </div>
+
+                    <div class="stl-div-btn-modificar-eliminar-localidad">
+                        <label class="stl-label-campos-modificar-localidad stl-modificar-localidad-lbl-titulo-listado"><%--<b><u>Acciones</u></b>--%></label>
+                    </div>
+                </div>
+
+                <div class="stl-localidades-div-listado">
+                    <asp:Repeater ID="RepeaterLocalidades" runat="server">
+                        <ItemTemplate>
+                            <div class="stl-div-contenedor-listado-localidades card">
+                                <div class="stl-div-descripcion-localidad card-body">
+                                    <label class="stl-label-campos-listar-localidad"><%# Eval("Descripcion") %></label>
+                                </div>
+
+                                <div class="stl-div-btn-modificar-eliminar-localidad">
+                                    <a href="Clientes.aspx?IdLocalidad=<%# Eval("ID") %>&AccionLocalidad=CargarCamposModificar" style="text-decoration: none;">
+
+                                        <span class="btn btn-primary btn-sm stl-btn-modificar-localidad">Modificar</span>
+                                    </a>
+
+                                    <a href="Clientes.aspx?IdLocalidad=<%# Eval("ID") %>&AccionLocalidad=ConfirmarEliminar" style="text-decoration: none;">
+                                        
+                                        <span class="btn btn-danger btn-sm stl-btn-eliminar-localidad">Eliminar</span>
+
+                                    </a>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </section>
+
+            <asp:Panel DefaultButton="BtnLocalidadesConfirmarModificar" runat="server">
+
+                <section id="section_modificar_localidad" runat="server" class="stl-section-modificar-localidad">
+                    <div class="stl-div-contenedor-campos">
+                        <div class="stl-div-campos stl-div-campos-localidades">
+                            <asp:HiddenField ID="HfIdLocalidadModificar" Value="0" runat="server" />
+                            <div class="stl-div-descripcion">
+                                <asp:Label ID="LblLocalidadesModificarDescripcion" Text="Descripción" runat="server" CssClass="stl-label-campo" />
+                                <asp:TextBox ID="TxtLocalidadesModificarDescripcion" PlaceHolder="Descripción..." runat="server" CssClass="stl-texto-campo form-control stl-localidades-txt-modificar" />
+                                <b style="color: red;">*</b>
+                            </div>
+                            <div>
+                                <asp:Label ID="LblLocalidadesModificarEstado" Text="Estado" runat="server" CssClass="stl-label-campo" />
+                                <asp:DropDownList ID="DdlLocalidadesModificarEstado" runat="server" AppendDataBoundItems="true" CssClass="stl-texto-campo form-control stl-modificar-localidad-estado">
+                                    <asp:ListItem Value="1" Text="Activo" />
+                                    <asp:ListItem Value="0" Text="Inactivo" />
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="stl-div-boton">
+                            <asp:Button ID="BtnLocalidadesConfirmarModificar" Text="Confirmar cambios" runat="server" CssClass="btn btn-dark stl-btn" onclick="BtnLocalidadesConfirmarModificar_Click" />
+                            <asp:Button ID="BtnLocalidadesCancelarModificar" Text="Cancelar cambios" runat="server" CssClass="btn btn-dark stl-btn stl-btn-cancelar-localidades" onclick="BtnLocalidadesCancelarModificar_Click" />
+                        </div>
+                    </div>
+                </section>
+            
+            </asp:Panel>
+
+            <asp:Panel DefaultButton="BtnLocalidadesCancelarEliminar" runat="server">
+
+                <section id="section_eliminar_localidad" runat="server" class="stl-section-eliminar-localidad">
+
+                        <div class="stl-div-lbl-confirmar-eliminar">
+                            <h3><asp:Label ID="LblLocalidadesConfirmarEliminar" Text="" runat="server" /></h3>
+                        </div>
+
+                        <br />
+                        
+                        <div class="stl-div-boton">
+                            <asp:Button ID="BtnLocalidadesConfirmarEliminar" Text="Confirmar" runat="server" CssClass="btn btn-danger stl-btn" onclick="BtnLocalidadesConfirmarEliminar_Click" />
+                            <asp:Button ID="BtnLocalidadesCancelarEliminar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn stl-btn-cancelar-localidades" OnClick="BtnLocalidadesCancelarEliminar_Click" />
+                        </div>
+
+                    </section>
+            
+            </asp:Panel>
+
         </section>
 
     </div>

@@ -299,7 +299,7 @@ namespace CompuGross_Web
                 }
                 else
                 {
-                    Response.Redirect("Clientes.aspx");
+                    Response.Redirect("Index.aspx");
                 }
             }
             else

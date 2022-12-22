@@ -73,52 +73,54 @@
                 <b>Menú principal</b>
             </h2>
 
+            <asp:Label ID="LblUsuarioLogueado" Text="" runat="server" CssClass="stl-lbl-usuario-logueado" />
+
             <nav class="stl-menu-nav">
                 <ul class="stl-menu-ul">
                     <li class="stl-menu-li">
-                        <a href="Clientes.aspx" class="stl-menu-a">
+                        <a href="Clientes.aspx" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoClientes.png" alt="#" class="stl-menu-iconos" />
                             <b>Clientes</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a">
+                        <a href="#" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoServicios.png" alt="#" class="stl-menu-iconos" />
                             <b>Servicios</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a">
+                        <a href="#" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoPresupuesto.png" alt="#" class="stl-menu-iconos" />
                             <b>Presupuesto</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a">
+                        <a href="#" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoPrecios.png" alt="#" class="stl-menu-iconos" />
                             <b>Precios</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a">
+                        <a href="#" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoReportes.png" alt="#" class="stl-menu-iconos" />
                             <b>Reportes</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a">
+                        <a href="#" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoBackup.png" alt="#" class="stl-menu-iconos" />
                             <b>Backup</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a">
+                        <a href="#" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoUsuarios.png" alt="#" class="stl-menu-iconos" />
                             <b>Usuarios</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a">
+                        <a href="#" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoProveedores.png" alt="#" class="stl-menu-iconos" />
                             <b>Proveedores</b>
                         </a>

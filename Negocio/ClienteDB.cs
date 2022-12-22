@@ -22,6 +22,7 @@ namespace Negocio
         {
             bool resultado = false;
             long ID = 0;
+            int clienteEncontrado = 0;
 
             string consulta = "select ID, count(*) Cantidad from Clientes where Estado = 1 and Nombres = '" + cliente.Apenom + "' group by ID";
 
@@ -32,7 +33,7 @@ namespace Negocio
 
                 if (conDB.Lector.Read())
                 {
-                    int clienteEncontrado = Convert.ToInt32(conDB.Lector["Cantidad"]);
+                    clienteEncontrado = Convert.ToInt32(conDB.Lector["Cantidad"]);
 
                     if (clienteEncontrado == 1)
                     {
@@ -53,12 +54,19 @@ namespace Negocio
                 }
                 else
                 {
-                    resultado = false;
+                    if (clienteEncontrado == 0)
+                    {
+                        resultado = false;
+                    }
+                    else
+                    {
+                        resultado = true;
+                    }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                resultado = true;
             }
             finally
             {

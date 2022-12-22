@@ -20,14 +20,127 @@ namespace CompuGross_Web
             }
             else
             {
-                //Usuario usuarioLogueado = new Usuario();
-                //usuarioLogueado = (Usuario)Session["Usuario_Logueado"];
-                
-                if (Request.QueryString["IdCliente"] != null) //Click en modificar o eliminar algún cliente del listado
+                if (Session["ModificarEliminar"] != null)
                 {
-                    CargarLocalidades();
-                    long ID = Convert.ToInt64(Request.QueryString["IdCliente"]);
-                    BuscarClienteSeleccionado(ID);
+                    if (Convert.ToBoolean(Session["ModificarEliminar"]))
+                    {
+                        if (Request.QueryString["MostrarListadoClientes"] != null)
+                        {
+                            Cliente cliente = new Cliente();
+
+                            if (Session["ClienteModificarEliminar"] != null)
+                            {
+                                cliente = (Cliente)Session["ClienteModificarEliminar"];
+                            }
+
+                            if (Request.QueryString["Modificar"] != null)
+                            {
+                                bool valor = Convert.ToBoolean(Request.QueryString["Modificar"]);
+
+                                if (valor)
+                                {
+                                    CargarListadoClientes();
+                                    AlternarVisibilidadSections("btnModificar");
+                                    hfMessage.Value = "Cliente '" + cliente.Apenom + "' modificado exitosamente"; //NO MUESTRA MENSAJE
+                                }
+                            }
+
+                            if (Request.QueryString["Eliminar"] != null)
+                            {
+                                bool valor = Convert.ToBoolean(Request.QueryString["Eliminar"]);
+
+                                if (valor)
+                                {
+                                    CargarListadoClientes();
+                                    AlternarVisibilidadSections("btnModificar");
+                                    hfMessage.Value = "Cliente '" + cliente.Apenom + "' eliminado exitosamente"; //NO MUESTRA MENSAJE
+                                }
+                            }
+                        }
+
+                        if (Request.QueryString["MostrarListadoLocalidades"] != null)
+                        {
+                            Localidad localidad = new Localidad();
+
+                            if (Session["LocalidadModificarEliminar"] != null)
+                            {
+                                localidad = (Localidad)Session["LocalidadModificarEliminar"];
+                            }
+
+                            if (Request.QueryString["Modificar"] != null)
+                            {
+                                bool valor = Convert.ToBoolean(Request.QueryString["Modificar"]);
+
+                                if (valor)
+                                {
+                                    hfMessage.Value = "Localidad '" + localidad.Descripcion + "' modificada exitosamente";
+                                    CargarLocalidades();
+                                    AlternarVisibilidadSections("MostrarListadoLocalidades");
+                                }
+                            }
+                            
+                            if (Request.QueryString["Eliminar"] != null)
+                            {
+                                bool valor = Convert.ToBoolean(Request.QueryString["Eliminar"]);
+
+                                if (valor)
+                                {
+                                    hfMessage.Value = "Localidad '" + localidad.Descripcion + "' eliminada exitosamente";
+                                    CargarLocalidades();
+                                    AlternarVisibilidadSections("MostrarListadoLocalidades");
+                                }
+                            }
+                        }
+
+                        Session["ModificarEliminar"] = null;
+                    }
+                }
+                else
+                {
+                    if (Request.QueryString["MostrarListadoClientes"] != null)
+                    {
+                        bool valor = Convert.ToBoolean(Request.QueryString["MostrarListadoClientes"]);
+
+                        if (valor)
+                        {
+                            CargarListadoClientes();
+                            AlternarVisibilidadSections("btnModificar");
+                        }
+                    }
+
+                    if (Request.QueryString["MostrarListadoLocalidades"] != null)
+                    {
+                        bool valor = Convert.ToBoolean(Request.QueryString["MostrarListadoLocalidades"]);
+
+                        if (valor)
+                        {
+                            CargarLocalidades();
+                            AlternarVisibilidadSections("MostrarListadoLocalidades");
+                        }
+                    }
+
+                    if (Request.QueryString["MostrarSeccionPrincipalLocalidades"] != null)
+                    {
+                        bool valor = Convert.ToBoolean(Request.QueryString["MostrarSeccionPrincipalLocalidades"]);
+
+                        if (valor)
+                        {
+                            AlternarVisibilidadSections("btnLocalidades");
+                        }
+                    }
+
+                    if (Request.QueryString["IdLocalidad"] != null) //Click en modificar o eliminar alguna localidad del listado
+                    {
+                        long ID = Convert.ToInt64(Request.QueryString["IdLocalidad"]);
+                        BuscarLocalidadSeleccionada(ID);
+                    }
+
+                    if (Request.QueryString["IdCliente"] != null) //Click en modificar o eliminar algún cliente del listado
+                    {
+                        CargarLocalidades();
+                        long ID = Convert.ToInt64(Request.QueryString["IdCliente"]);
+                        BuscarClienteSeleccionado(ID);
+                    }
                 }
             }
         }
@@ -39,9 +152,11 @@ namespace CompuGross_Web
             List<Localidad> listaLocalidades = new List<Localidad>();
             listaLocalidades = locDB.ListarTodas();
 
+            Session["ListaLocalidades"] = listaLocalidades;
+
             CargarListaLocalidadesNuevoCliente(listaLocalidades);
             CargarListaLocalidadesModificarCliente(listaLocalidades);
-            //CargarListaLocalidades_ABM_Localidades(listaLocalidades);
+            CargarListaLocalidades_ABM_Localidades(listaLocalidades);
         }
 
         private void CargarListaLocalidadesNuevoCliente(List<Localidad> lista)
@@ -60,6 +175,116 @@ namespace CompuGross_Web
             DdlModificarClienteLocalidad.DataTextField = "Descripcion";
             DdlModificarClienteLocalidad.DataValueField = "ID";
             DdlModificarClienteLocalidad.DataBind();
+        }
+
+        private void CargarListaLocalidades_ABM_Localidades(List<Localidad> lista)
+        {
+            Localidad localidadRemover = new Localidad();
+
+            foreach(Localidad localidad in lista)
+            {
+                if (localidad.Descripcion == "-")
+                {
+                    localidadRemover = localidad;
+                }
+            }
+
+            lista.Remove(localidadRemover);
+
+            RepeaterLocalidades.DataSource = lista;
+            RepeaterLocalidades.DataBind();
+        }
+
+        private void BuscarLocalidadSeleccionada(long ID)
+        {
+            Localidad localidadSeleccionada = new Localidad();
+            List<Localidad> listaLocalidades = new List<Localidad>();
+            bool localidadEncontrada = false;
+
+            if (Session["ListaLocalidades"] != null)
+            {
+                listaLocalidades = (List<Localidad>)Session["ListaLocalidades"];
+
+                foreach (Localidad localidad in listaLocalidades)
+                {
+                    if (localidad.ID == ID && !localidadEncontrada)
+                    {
+                        localidadSeleccionada.ID = localidad.ID;
+                        localidadSeleccionada.Descripcion = localidad.Descripcion;
+                        localidadSeleccionada.Estado = localidad.Estado;
+
+                        localidadEncontrada = true;
+                    }
+                }
+            }
+
+            VerificarAccionLocalidad(localidadSeleccionada);
+        }
+
+        private void VerificarAccionLocalidad(Localidad localidadSeleccionada)
+        {
+            if (Request.QueryString["AccionLocalidad"] != null)
+            {
+                string accionLocalidad = Request.QueryString["AccionLocalidad"].ToString();
+
+                if (accionLocalidad == "CargarCamposModificar")
+                {
+                    CargarCamposModificarLocalidad(localidadSeleccionada);
+                }
+
+                if (accionLocalidad == "ConfirmarEliminar")
+                {
+                    CargarCamposEliminarLocalidad(localidadSeleccionada);
+                }
+            }
+        }
+        
+        private void CargarCamposModificarLocalidad(Localidad localidad)
+        {
+            AlternarVisibilidadSections("ModificarLocalidad");
+
+            if (HfIdLocalidadModificar.Value == "0")
+            {
+                HfIdLocalidadModificar.Value = localidad.ID.ToString();
+                TxtLocalidadesModificarDescripcion.Text = localidad.Descripcion;
+                DdlLocalidadesModificarEstado.SelectedValue = "1";
+                if (!localidad.Estado)
+                {
+                    DdlModificarClienteEstado.SelectedValue = "0";
+                }
+
+                Session["LocalidadModificar"] = localidad;
+            }
+        }
+
+        private void CargarCamposEliminarLocalidad(Localidad localidad)
+        {
+            AlternarVisibilidadSections("EliminarLocalidad");
+
+            if (HfIdLocalidadModificar.Value == "0")
+            {
+                HfIdLocalidadModificar.Value = localidad.ID.ToString();
+                TxtLocalidadesModificarDescripcion.Text = localidad.Descripcion;
+                DdlLocalidadesModificarEstado.SelectedValue = "1";
+                if (!localidad.Estado)
+                {
+                    DdlModificarClienteEstado.SelectedValue = "0";
+                }
+
+                Session["LocalidadEliminar"] = localidad;
+            }
+
+            LblLocalidadesConfirmarEliminar.Text = "¿ Seguro que desea eliminar la Localidad '" + localidad.Descripcion + "' ?";
+
+            InhabilitarCamposEliminarLocalidad();
+        }
+
+        private void InhabilitarCamposEliminarLocalidad()
+        {
+            TxtLocalidadesModificarDescripcion.Enabled = false;
+            DdlLocalidadesModificarEstado.Enabled = false;
+            BtnLocalidadesConfirmarModificar.Style.Add("display", "none");
+            BtnLocalidadesCancelarModificar.Style.Add("display", "none");
         }
 
         private void BuscarClienteSeleccionado(long ID)
@@ -139,10 +364,10 @@ namespace CompuGross_Web
 
             LblModificarClienteTitulo.Text = "Eliminar Cliente";
 
-            InhabilitarCamposEliminar();
+            InhabilitarCamposEliminarCliente();
         }
 
-        private void InhabilitarCamposEliminar()
+        private void InhabilitarCamposEliminarCliente()
         {
             TxtModificarClienteCuitDni.Enabled = false;
             TxtModificarClienteApenom.Enabled = false;
@@ -204,7 +429,7 @@ namespace CompuGross_Web
             cliente.CuitDni = TxtNuevoClienteCuitDni.Text;
             cliente.Apenom = TxtNuevoClienteApenom.Text;
             cliente.Direccion = TxtNuevoClienteDireccion.Text;
-            cliente.Localidad = DdlNuevoClienteLocalidad.SelectedValue.ToString();
+            cliente.Localidad = DdlNuevoClienteLocalidad.SelectedItem.ToString();
             cliente.Telefono = TxtNuevoClienteTelefono.Text;
             cliente.Mail = TxtNuevoClienteMail.Text;
 
@@ -222,6 +447,7 @@ namespace CompuGross_Web
                     {
                         ResetearCamposNuevoCliente();
                         hfMessage.Value = "Cliente '" + cliente.Apenom + "' agregado exitosamente";
+                        CargarListadoClientes();
                     }
                     else
                     {
@@ -418,6 +644,10 @@ namespace CompuGross_Web
                         CargarListadoClientes();
                         AlternarVisibilidadSections("cancelarModificar");
                         hfMessage.Value = "Cliente '" + cliente.Apenom + "' modificado exitosamente";
+
+                        Session["ModificarEliminar"] = true;
+                        Session["ClienteModificarEliminar"] = cliente;
+                        Response.Redirect("Clientes.aspx?MostrarListadoClientes=true&Modificar=true");
                     }
                     else
                     {
@@ -428,90 +658,6 @@ namespace CompuGross_Web
                 {
                     hfError.Value = "Ya existe otro cliente con el Apellido y Nombre ingresado";
                 }
-            }
-        }
-
-        private void AlternarVisibilidadSections(string botonOprimido)
-        {
-            if (botonOprimido == "btnAgregar")
-            {
-                section_botones_principales.Style.Add("display", "none");
-                section_agregar_cliente.Style.Add("display", "block");
-                section_modificar_cliente.Style.Add("display", "none");
-                section_localidades.Style.Add("display", "none");
-            }
-
-            if (botonOprimido == "btnModificar")
-            {
-                section_botones_principales.Style.Add("display", "none");
-                section_agregar_cliente.Style.Add("display", "none");
-                section_modificar_cliente.Style.Add("display", "block");
-                section_listado_modificar_cliente.Style.Add("display", "block");
-                section_campos_modificar_cliente.Style.Add("display", "none");
-                section_localidades.Style.Add("display", "none");
-            }
-
-            if (botonOprimido == "btnLocalidades")
-            {
-                section_botones_principales.Style.Add("display", "none");
-                section_agregar_cliente.Style.Add("display", "none");
-                section_modificar_cliente.Style.Add("display", "none");
-                section_localidades.Style.Add("display", "block");
-            }
-
-            if (botonOprimido == "cancelar")
-            {
-                section_botones_principales.Style.Add("display", "block");
-                section_agregar_cliente.Style.Add("display", "none");
-                section_modificar_cliente.Style.Add("display", "none");
-                section_localidades.Style.Add("display", "none");
-                Response.Redirect("Clientes.aspx");
-            }
-
-            if (botonOprimido == "cancelarModificar")
-            {
-                section_botones_principales.Style.Add("display", "none");
-                section_agregar_cliente.Style.Add("display", "none");
-                section_modificar_cliente.Style.Add("display", "block");
-                section_listado_modificar_cliente.Style.Add("display", "block");
-                section_campos_modificar_cliente.Style.Add("display", "none");
-                section_confirmar_eliminar_cliente.Style.Add("display", "none");
-                section_localidades.Style.Add("display", "none");
-                LblModificarClienteTitulo.Text = "Modificar Cliente";
-            }
-
-            if (botonOprimido == "cancelarEliminar")
-            {
-                section_botones_principales.Style.Add("display", "none");
-                section_agregar_cliente.Style.Add("display", "none");
-                section_modificar_cliente.Style.Add("display", "block");
-                section_listado_modificar_cliente.Style.Add("display", "block");
-                section_campos_modificar_cliente.Style.Add("display", "none");
-                section_confirmar_eliminar_cliente.Style.Add("display", "none");
-                section_localidades.Style.Add("display", "none");
-                LblModificarClienteTitulo.Text = "Modificar Cliente";
-            }
-
-            if (botonOprimido == "ModificarCliente")
-            {
-                section_botones_principales.Style.Add("display", "none");
-                section_agregar_cliente.Style.Add("display", "none");
-                section_modificar_cliente.Style.Add("display", "block");
-                section_listado_modificar_cliente.Style.Add("display", "none");
-                section_campos_modificar_cliente.Style.Add("display", "block");
-                section_confirmar_eliminar_cliente.Style.Add("display", "none");
-                section_localidades.Style.Add("display", "none");
-            }
-
-            if (botonOprimido == "EliminarCliente")
-            {
-                section_botones_principales.Style.Add("display", "none");
-                section_agregar_cliente.Style.Add("display", "none");
-                section_modificar_cliente.Style.Add("display", "block");
-                section_listado_modificar_cliente.Style.Add("display", "none");
-                section_campos_modificar_cliente.Style.Add("display", "block");
-                section_confirmar_eliminar_cliente.Style.Add("display", "block");
-                section_localidades.Style.Add("display", "none");
             }
         }
 
@@ -552,11 +698,6 @@ namespace CompuGross_Web
             CargarListadoClientes();
         }
 
-        protected void BtnLocalidadesCancelar_Click(object sender, EventArgs e)
-        {
-            AlternarVisibilidadSections("cancelar");
-        }
-
         protected void BtnConfirmarEliminarCliente_Click(object sender, EventArgs e)
         {
             ClienteDB cDB = new ClienteDB();
@@ -572,6 +713,10 @@ namespace CompuGross_Web
                     CargarListadoClientes();
                     AlternarVisibilidadSections("cancelarEliminar");
                     hfMessage.Value = "Cliente '" + cliente.Apenom + "' eliminado exitosamente";
+
+                    Session["ModificarEliminar"] = true;
+                    Session["ClienteModificarEliminar"] = cliente;
+                    Response.Redirect("Clientes.aspx?MostrarListadoClientes=true&Eliminar=true");
                 }
             }
             else
@@ -585,6 +730,439 @@ namespace CompuGross_Web
             AlternarVisibilidadSections("cancelarEliminar");
             CargarLocalidades();
             CargarListadoClientes();
+        }
+
+        protected void BtnLocalidadesAgregar_Click(object sender, EventArgs e)
+        {
+            AlternarVisibilidadSections("AgregarLocalidad");
+        }
+
+        protected void BtnLocalidadesListar_Click(object sender, EventArgs e)
+        {
+            AlternarVisibilidadSections("ListarLocalidades");
+            CargarLocalidades();
+            LblLocalidadesTitulo.Text = "Modificar Localidades";
+        }
+
+        protected void BtnLocalidadesCancelar_Click(object sender, EventArgs e)
+        {
+            AlternarVisibilidadSections("cancelar");
+        }
+
+        protected void BtnLocalidadesCancelarAgregar_Click(object sender, EventArgs e)
+        {
+            AlternarVisibilidadSections("CancelarAgregarLocalidad");
+            TxtLocalidadesAgregarDescripcion.Text = "";
+        }
+
+        protected void BtnLocalidadesListarCancelar_Click(object sender, EventArgs e)
+        {
+            AlternarVisibilidadSections("CancelarListarLocalidades");
+            TxtLocalidadesBuscar.Text = "";
+        }
+
+        private void AlternarVisibilidadSections(string botonOprimido)
+        {
+            if (botonOprimido == "AgregarLocalidad")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "block");
+                section_localidades_principal.Style.Add("display", "none");
+                section_localidades_busqueda.Style.Add("display", "none");
+                section_localidades_listado.Style.Add("display", "none");
+                section_agregar_localidad.Style.Add("display", "block");
+                LblLocalidadesTitulo.Text = "Nueva Localidad";
+            }
+
+            if (botonOprimido == "btnLocalidadesConfirmarAgregar")
+            {
+                section_localidades_principal.Style.Add("display", "block");
+                section_localidades_busqueda.Style.Add("display", "none");
+                section_localidades_listado.Style.Add("display", "none");
+                section_agregar_localidad.Style.Add("display", "none");
+                section_modificar_localidad.Style.Add("display", "none");
+                BtnLocalidadesConfirmarModificar.Style.Add("display", "none");
+                BtnLocalidadesCancelarModificar.Style.Add("display", "none");
+                section_eliminar_localidad.Style.Add("display", "none");
+                LblLocalidadesTitulo.Text = "Localidades";
+            }
+
+            if (botonOprimido == "CancelarAgregarLocalidad")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "block");
+                section_botones_principales.Style.Add("display", "none");
+                section_localidades_principal.Style.Add("display", "block");
+                section_localidades_busqueda.Style.Add("display", "none");
+                section_localidades_listado.Style.Add("display", "none");
+                section_agregar_localidad.Style.Add("display", "none");
+            }
+
+            if (botonOprimido == "ModificarLocalidad")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "block");
+                section_localidades_principal.Style.Add("display", "none");
+                section_localidades_busqueda.Style.Add("display", "none");
+                section_localidades_listado.Style.Add("display", "none");
+                section_agregar_localidad.Style.Add("display", "none");
+                section_modificar_localidad.Style.Add("display", "block");
+                BtnLocalidadesConfirmarModificar.Style.Add("display", "block");
+                BtnLocalidadesCancelarModificar.Style.Add("display", "block");
+                section_eliminar_localidad.Style.Add("display", "none");
+                LblLocalidadesTitulo.Text = "Modificar Localidad";
+            }
+
+            if (botonOprimido == "CancelarModificarEliminar")
+            {
+                Response.Redirect("Clientes.aspx?MostrarListadoLocalidades=true");
+            }
+
+            if (botonOprimido == "MostrarListadoLocalidades")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "block");
+                section_botones_principales.Style.Add("display", "none");
+                section_localidades_principal.Style.Add("display", "none");
+                section_localidades_busqueda.Style.Add("display", "block");
+                section_localidades_listado.Style.Add("display", "block");
+                section_agregar_localidad.Style.Add("display", "none");
+                section_modificar_localidad.Style.Add("display", "none");
+                BtnLocalidadesConfirmarModificar.Style.Add("display", "none");
+                BtnLocalidadesCancelarModificar.Style.Add("display", "none");
+                section_eliminar_localidad.Style.Add("display", "none");
+                LblLocalidadesTitulo.Text = "Localidades";
+            }
+
+            if (botonOprimido == "EliminarLocalidad")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "block");
+                section_localidades_principal.Style.Add("display", "none");
+                section_localidades_busqueda.Style.Add("display", "none");
+                section_localidades_listado.Style.Add("display", "none");
+                section_agregar_localidad.Style.Add("display", "none");
+                section_modificar_localidad.Style.Add("display", "block");
+                section_eliminar_localidad.Style.Add("display", "block");
+                LblLocalidadesTitulo.Text = "Modificar Localidad";
+            }
+
+            if (botonOprimido == "ListarLocalidades")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "block");
+                section_botones_principales.Style.Add("display", "none");
+                section_localidades_principal.Style.Add("display", "none");
+                section_localidades_busqueda.Style.Add("display", "block");
+                section_localidades_listado.Style.Add("display", "block");
+                section_agregar_localidad.Style.Add("display", "none");
+            }
+
+            if (botonOprimido == "CancelarListarLocalidades")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "block");
+                section_botones_principales.Style.Add("display", "none");
+                section_localidades_principal.Style.Add("display", "block");
+                section_localidades_busqueda.Style.Add("display", "none");
+                section_localidades_listado.Style.Add("display", "none");
+                section_agregar_localidad.Style.Add("display", "none");
+                section_modificar_localidad.Style.Add("display", "none");
+                section_eliminar_localidad.Style.Add("display", "none");
+                LblLocalidadesTitulo.Text = "Localidades";
+                Response.Redirect("Clientes.aspx?MostrarSeccionPrincipalLocalidades=true");
+            }
+
+            if (botonOprimido == "btnAgregar")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "block");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "block");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "none");
+            }
+
+            if (botonOprimido == "btnModificar")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "block");
+                section_localidades.Style.Add("display", "none");
+                section_listado_modificar_cliente.Style.Add("display", "block");
+                section_campos_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "none");
+            }
+
+            if (botonOprimido == "btnLocalidades")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "block");
+            }
+
+            if (botonOprimido == "cancelar")
+            {
+                section_botones_principales.Style.Add("display", "block");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "none");
+                Response.Redirect("Clientes.aspx");
+            }
+
+            if (botonOprimido == "cancelarModificar")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "block");
+                section_listado_modificar_cliente.Style.Add("display", "block");
+                section_campos_modificar_cliente.Style.Add("display", "none");
+                section_confirmar_eliminar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "none");
+                LblModificarClienteTitulo.Text = "Modificar Cliente";
+                Response.Redirect("Clientes.aspx?MostrarListadoClientes=true");
+            }
+
+            if (botonOprimido == "cancelarEliminar")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "block");
+                section_listado_modificar_cliente.Style.Add("display", "block");
+                section_campos_modificar_cliente.Style.Add("display", "none");
+                section_confirmar_eliminar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "none");
+                LblModificarClienteTitulo.Text = "Modificar Cliente";
+                Response.Redirect("Clientes.aspx?MostrarListadoClientes=true");
+            }
+
+            if (botonOprimido == "ModificarCliente")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "block");
+                section_listado_modificar_cliente.Style.Add("display", "none");
+                section_campos_modificar_cliente.Style.Add("display", "block");
+                section_confirmar_eliminar_cliente.Style.Add("display", "none");
+                section_localidades.Style.Add("display", "none");
+            }
+
+            if (botonOprimido == "EliminarCliente")
+            {
+                section_botones_principales.Style.Add("display", "none");
+                section_agregar_cliente.Style.Add("display", "none");
+                section_modificar_cliente.Style.Add("display", "block");
+                section_listado_modificar_cliente.Style.Add("display", "none");
+                section_campos_modificar_cliente.Style.Add("display", "block");
+                section_confirmar_eliminar_cliente.Style.Add("display", "block");
+                section_localidades.Style.Add("display", "none");
+            }
+        }
+
+        private void CargarListadoLocalidadesFiltrado(string filtro)
+        {
+            LocalidadDB lDB = new LocalidadDB();
+
+            List<Localidad> listaLocalidadesFiltrada = new List<Localidad>();
+
+            listaLocalidadesFiltrada = lDB.ListarFiltrado(filtro);
+
+            Session["ListadoLocalidades"] = listaLocalidadesFiltrada;
+
+            RepeaterLocalidades.DataSource = listaLocalidadesFiltrada;
+            RepeaterLocalidades.DataBind();
+        }
+
+        protected void BtnLocalidadesBuscar_Click(object sender, EventArgs e)
+        {
+            string filtro = TxtLocalidadesBuscar.Text;
+
+            if (filtro != "")
+            {
+                CargarListadoLocalidadesFiltrado(filtro);
+            }
+            else
+            {
+                CargarLocalidades();
+            }
+        }
+
+        protected void BtnLocalidadesCancelarModificar_Click(object sender, EventArgs e)
+        {
+            AlternarVisibilidadSections("CancelarModificarEliminar");
+            CargarLocalidades();
+        }
+
+        private void ResetearCamposLocalidades()
+        {
+            TxtLocalidadesBuscar.Text = "";
+            TxtLocalidadesAgregarDescripcion.Text = "";
+            TxtLocalidadesModificarDescripcion.Text = "";
+            HfIdLocalidadModificar.Value = "0";
+            DdlLocalidadesModificarEstado.SelectedValue = "1";
+        }
+
+        protected void BtnLocalidadesConfirmarAgregar_Click(object sender, EventArgs e)
+        {
+            Localidad localidad = new Localidad();
+                
+            localidad.Descripcion = TxtLocalidadesAgregarDescripcion.Text;
+
+            if (localidad.Descripcion != "")
+            {
+                if (!ValidarExistenciaLocalidad(localidad))
+                {
+                    try
+                    {
+                        LocalidadDB lDB = new LocalidadDB();
+                        if (lDB.Agregar(localidad))
+                        {
+                            ResetearCamposLocalidades();
+
+                            hfMessage.Value = "La Localidad '" + localidad.Descripcion + "' ha sido agregada exitosamente";
+
+                            CargarLocalidades();
+                            AlternarVisibilidadSections("btnLocalidades");
+                            AlternarVisibilidadSections("btnLocalidadesConfirmarAgregar");
+                        }
+                        else
+                        {
+                            hfError.Value = "No ha sido posible agregar la Localidad '" + localidad.Descripcion + "'";
+                        }
+                    }
+                    catch
+                    {
+                        hfError.Value = "No ha sido posible agregar la Localidad '" + localidad.Descripcion + "'";
+                    }
+                }
+                else
+                {
+                    hfError.Value = "La Localidad '" + localidad.Descripcion + "' ya existe en el sistema";
+                }
+            }
+            else
+            {
+                hfError.Value = "Debe ingresar una descripción para la nueva Localidad";
+            }
+        }
+
+        protected void BtnLocalidadesConfirmarModificar_Click(object sender, EventArgs e)
+        {
+            Localidad localidad = new Localidad();
+
+            localidad.ID = Convert.ToInt64(HfIdLocalidadModificar.Value);
+            localidad.Descripcion = TxtLocalidadesModificarDescripcion.Text;
+            localidad.Estado = true;
+            if (DdlLocalidadesModificarEstado.SelectedValue == "0")
+            {
+                localidad.Estado = false;
+            }
+
+            if (localidad.Descripcion != "")
+            {
+                if (!ValidarExistenciaLocalidad(localidad))
+                {
+                    try
+                    {
+                        LocalidadDB lDB = new LocalidadDB();
+                        if (lDB.Modificar(localidad))
+                        {
+                            ResetearCamposLocalidades();
+
+                            hfMessage.Value = "La Localidad '" + localidad.Descripcion + "' se ha modificado exitosamente";
+
+                            CargarLocalidades();
+                            AlternarVisibilidadSections("MostrarListadoLocalidades");
+
+                            Session["ModificarEliminar"] = true;
+                            Session["LocalidadModificarEliminar"] = localidad;
+                            Response.Redirect("Clientes.aspx?MostrarListadoLocalidades=true&Modificar=true");
+                        }
+                        else
+                        {
+                            hfError.Value = "Se ha producido un error al intentar guardar los cambios";
+                        }
+                    }
+                    catch
+                    {
+                        hfError.Value = "Se ha producido un error al intentar guardar los cambios";
+                    }
+                }
+                else
+                {
+                    hfError.Value = "La Localidad '" + localidad.Descripcion + "' ya existe en el sistema";
+                }
+            }
+            else
+            {
+                hfError.Value = "La descripción de la Localidad no puede quedar vacía";
+            }
+        }
+
+        private bool ValidarExistenciaLocalidad(Localidad localidad)
+        {
+            bool resultado = true;
+
+            LocalidadDB lDB = new LocalidadDB();
+
+            resultado = lDB.ValidarExistencia(localidad);
+
+            return resultado;
+        }
+
+        protected void BtnLocalidadesConfirmarEliminar_Click(object sender, EventArgs e)
+        {
+            Localidad localidad = new Localidad();
+
+            localidad.ID = Convert.ToInt64(HfIdLocalidadModificar.Value);
+
+            try
+            {
+                LocalidadDB lDB = new LocalidadDB();
+                if (lDB.Eliminar(localidad))
+                {
+                    ResetearCamposLocalidades();
+
+                    hfMessage.Value = "La Localidad '" + localidad.Descripcion + "' se ha eliminado exitosamente";
+
+                    CargarLocalidades();
+                    AlternarVisibilidadSections("MostrarListadoLocalidades");
+
+                    Session["ModificarEliminar"] = true;
+                    Session["LocalidadModificarEliminar"] = localidad;
+                    Response.Redirect("Clientes.aspx?MostrarListadoLocalidades=true&Eliminar=true");
+                }
+                else
+                {
+                    hfError.Value = "No ha sido posible eliminar la Localidad '" + localidad.Descripcion + "'";
+                }
+            }
+            catch
+            {
+                hfError.Value = "No ha sido posible eliminar la Localidad '" + localidad.Descripcion + "'";
+            }
+        }
+
+        protected void BtnLocalidadesCancelarEliminar_Click(object sender, EventArgs e)
+        {
+            AlternarVisibilidadSections("CancelarModificarEliminar");
+            CargarLocalidades();
         }
     }
 }
