@@ -11,11 +11,44 @@ namespace Negocio
     {
         ConexionDB conDB = new ConexionDB();
 
-        public Cliente BuscarCliente(Cliente clienteBuscado) 
+        public Cliente BuscarCliente(long ID) 
         {
-            Cliente clienteEncontrado = new Cliente();
+            Localidad localidad = new Localidad();
+            Cliente cliente = new Cliente();
 
-            return clienteEncontrado;
+            string consulta = "select * from ExportClientes where Estado = 1 and ID = " + ID;
+
+            try
+            {
+                conDB.SetearConsulta(consulta);
+                conDB.EjecutarConsulta();
+
+                if (conDB.Lector.Read())
+                {
+                    cliente.CuitDni = conDB.Lector["DNI"].ToString();
+                    cliente.Apenom = conDB.Lector["Cliente"].ToString();
+                    cliente.Direccion = conDB.Lector["Direccion"].ToString();
+                    localidad.ID = Convert.ToInt64(conDB.Lector["IdLocalidad"]);
+                    localidad.Descripcion = conDB.Lector["Localidad"].ToString();
+                    localidad.Estado = true;
+                    cliente.localidad = localidad;
+                    cliente.Telefono = conDB.Lector["Telefono"].ToString();
+                    cliente.Mail = conDB.Lector["Mail"].ToString();
+                    DateTime FechaAltaAux = Convert.ToDateTime(conDB.Lector["FechaAlta"]);
+                    cliente.FechaAlta = FechaAltaAux.Day + "/" + FechaAltaAux.Month + "/" + FechaAltaAux.Year;
+                    cliente.Estado = Convert.ToBoolean(conDB.Lector["Estado"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conDB.CerrarConexion();
+            }
+
+            return cliente;
         }
 
         public bool VerificarExistenciaCliente(Cliente cliente)
@@ -83,7 +116,7 @@ namespace Negocio
             string insert = "exec SP_NUEVO_CLIENTE '" + cliente.CuitDni + "', '" 
                                                       + cliente.Apenom + "', '" 
                                                       + cliente.Direccion + "', '" 
-                                                      + cliente.Localidad + "', '" 
+                                                      + cliente.localidad.Descripcion + "', '" 
                                                       + cliente.Telefono + "', '" 
                                                       + cliente.Mail + "'";
 
@@ -119,7 +152,7 @@ namespace Negocio
                                                          + cliente.CuitDni + "', '"
                                                          + cliente.Apenom + "', '"
                                                          + cliente.Direccion + "', '"
-                                                         + cliente.Localidad + "', '"
+                                                         + cliente.localidad.Descripcion + "', '"
                                                          + cliente.Telefono + "', '"
                                                          + cliente.Mail + "', "
                                                          + Estado;
@@ -181,18 +214,20 @@ namespace Negocio
 
                 while(conDB.Lector.Read())
                 {
+                    Localidad localidad = new Localidad();
                     Cliente cliente = new Cliente();
 
                     cliente.ID = Convert.ToInt64(conDB.Lector["ID"]);
                     cliente.CuitDni = conDB.Lector["DNI"].ToString();
                     cliente.Apenom = conDB.Lector["Cliente"].ToString();
                     cliente.Direccion = conDB.Lector["Direccion"].ToString();
-                    cliente.IdLocalidad = Convert.ToInt64(conDB.Lector["IdLocalidad"]);
-                    cliente.Localidad = conDB.Lector["Localidad"].ToString();
+                    localidad.ID = Convert.ToInt64(conDB.Lector["IdLocalidad"]);
+                    localidad.Descripcion = conDB.Lector["Localidad"].ToString();
+                    cliente.localidad = localidad;
                     cliente.Telefono = conDB.Lector["Telefono"].ToString();
                     cliente.Mail = conDB.Lector["Mail"].ToString();
                     DateTime FechaAltaAux = Convert.ToDateTime(conDB.Lector["FechaAlta"]);
-                    cliente.FechaAlta = FechaAltaAux.Day + "-" + FechaAltaAux.Month + "-" + FechaAltaAux.Year;
+                    cliente.FechaAlta = FechaAltaAux.Day + "/" + FechaAltaAux.Month + "/" + FechaAltaAux.Year;
                     cliente.Estado = Convert.ToBoolean(conDB.Lector["Estado"]);
 
                     if (cliente.Estado)
@@ -233,14 +268,19 @@ namespace Negocio
 
                 while (conDB.Lector.Read())
                 {
+                    Localidad localidad = new Localidad();
                     Cliente cliente = new Cliente();
 
                     cliente.ID = Convert.ToInt64(conDB.Lector["ID"]);
                     cliente.CuitDni = conDB.Lector["DNI"].ToString();
                     cliente.Apenom = conDB.Lector["Cliente"].ToString();
                     cliente.Direccion = conDB.Lector["Direccion"].ToString();
-                    cliente.IdLocalidad = Convert.ToInt64(conDB.Lector["IdLocalidad"]);
-                    cliente.Localidad = conDB.Lector["Localidad"].ToString();
+
+                    localidad.ID = Convert.ToInt64(conDB.Lector["IdLocalidad"]);
+                    localidad.Descripcion = conDB.Lector["Localidad"].ToString();
+                    localidad.Estado = true;
+
+                    cliente.localidad = localidad;
                     cliente.Telefono = conDB.Lector["Telefono"].ToString();
                     cliente.Mail = conDB.Lector["Mail"].ToString();
                     DateTime FechaAltaAux = Convert.ToDateTime(conDB.Lector["FechaAlta"]);

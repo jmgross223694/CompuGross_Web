@@ -106,6 +106,7 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    margin: 0px auto;
 }
 .stl-btn-modificar-cliente {
     width: 80px;
@@ -121,6 +122,7 @@
     width: 20%;
     text-align: center;
     max-height: 62px;
+    max-width: 309px;
     /*border: 1px solid;*/
 }
 
@@ -188,6 +190,7 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    margin: 0px auto;
 }
 .stl-btn-modificar-localidad {
     width: 80px;

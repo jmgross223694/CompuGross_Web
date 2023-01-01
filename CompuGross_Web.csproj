@@ -126,6 +126,7 @@
     <Content Include="JavaScript\Script_Clientes.js" />
     <Content Include="JavaScript\Script_MenuPrincipal.js" />
     <Content Include="Clientes.aspx" />
+    <Content Include="JavaScript\Script_Servicios.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -262,10 +263,12 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Servicios.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Styles\Style_Clientes.css" />
     <Content Include="Styles\Style_Login.css" />
     <Content Include="Styles\Style_Master.css" />
+    <Content Include="Styles\Style_Servicios.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -299,6 +302,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios.aspx.cs">
+      <DependentUpon>Servicios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicios.aspx.designer.cs">
+      <DependentUpon>Servicios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

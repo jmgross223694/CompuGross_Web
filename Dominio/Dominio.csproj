@@ -43,7 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cliente.cs" />
+    <Compile Include="Equipo.cs" />
     <Compile Include="Localidad.cs" />
+    <Compile Include="Servicio.cs" />
+    <Compile Include="TipoEquipo.cs" />
+    <Compile Include="TipoServicio.cs" />
+    <Compile Include="UnidadOptica.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

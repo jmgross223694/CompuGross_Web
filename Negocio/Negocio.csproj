@@ -47,6 +47,10 @@
     <Compile Include="EmailService.cs" />
     <Compile Include="LocalidadDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicioDB.cs" />
+    <Compile Include="TipoEquipoDB.cs" />
+    <Compile Include="TipoServicioDB.cs" />
+    <Compile Include="UnidadOpticaDB.cs" />
     <Compile Include="UsuarioDB.cs" />
   </ItemGroup>
   <ItemGroup>
