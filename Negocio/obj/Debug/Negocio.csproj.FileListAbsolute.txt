@@ -1,9 +1,9 @@
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\bin\Debug\Negocio.dll
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\bin\Debug\Negocio.pdb
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\obj\Debug\Negocio.dll
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\obj\Debug\Negocio.pdb
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\bin\Debug\Dominio.dll
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\bin\Debug\Dominio.pdb
+C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
 C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\obj\Debug\Negocio.dll
+C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Negocio\obj\Debug\Negocio.pdb
