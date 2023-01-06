@@ -74,12 +74,12 @@
             <br />
 
             <div class="stl-div-campos-modificar-cliente">
-                <section id="section_listado_modificar_cliente" runat="server">
+                <section id="section_listado_modificar_cliente" class="stl-section-listado-modificar-cliente" runat="server">
                     <asp:Panel DefaultButton="BtnModificarClienteBusqueda" runat="server">
                         <section id="section-modificar-cliente-busqueda">
                             <div class="stl-modificar-cliente-div-busqueda">
                                 <asp:TextBox ID="TxtModificarClienteBusqueda" Tooltip="Se busca coincidencias con Nombres, Apellidos, Telefono, CUIT/DNI, Mail, Dirección y/o Localidad" PlaceHolder="Búsqueda..." runat="server" CssClass="stl-texto-campo form-control stl-modificar-cliente-txt-buscar" />
-                                <asp:Button ID="BtnModificarClienteBusqueda" Text="Buscar" runat="server" CssClass="btn btn-dark" OnClick="BtnModificarClienteBusqueda_Click" />
+                                <asp:Button ID="BtnModificarClienteBusqueda" Text="Buscar" runat="server" CssClass="btn btn-dark stl-btn-modificar-cliente-busqueda" OnClick="BtnModificarClienteBusqueda_Click" />
                                 <asp:Button ID="BtnModificarClienteCancelar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn-cancelar-modificar" OnClick="BtnModificarClienteCancelar_Click" />
                             </div>
                         </section>
@@ -156,7 +156,7 @@
                                 <asp:HiddenField ID="hfIdCliente" Value="0" runat="server" />
                                 <div class="stl-div-cuit-dni">
                                     <asp:Label ID="LblModificarClienteCuitDni" Text="CUIT/DNI" runat="server" CssClass="stl-label-campo" />
-                                    <asp:TextBox ID="TxtModificarClienteCuitDni" placeholder="CUIT/DNI" onkeypress="javascript:return soloNumerosModificarCliente(event)" runat="server" CssClass="stl-texto-campo form-control" MaxLength="11" />
+                                    <asp:TextBox ID="TxtModificarClienteCuitDni" placeholder="CUIT/DNI" onkeypress="javascript:return soloNumeros(event)" runat="server" CssClass="stl-texto-campo form-control" MaxLength="11" />
                                 </div>
                                 <div class="stl-div-apenom">
                                     <asp:Label ID="LblModificarClienteApenom" Text="Apellido y Nombre" runat="server" CssClass="stl-label-campo" />

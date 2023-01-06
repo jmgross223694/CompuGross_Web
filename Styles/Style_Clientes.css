@@ -1,4 +1,5 @@
 ﻿body {
+    min-width: 401px;
 }
 
 .stl-div-content{
@@ -222,11 +223,42 @@
     .stl-div-cuitdni-cliente {
         display: none;
     }
+    .stl-section-listado-modificar-cliente {
+        width: 73%;
+        margin: 0px auto;
+    }
+}
+
+@media screen and (max-width: 993px) {
+    .stl-section-listado-modificar-cliente {
+        width: 97%;
+    }
 }
 
 @media screen and (max-width: 767px) {
     .stl-div-telefono-cliente {
         display: none;
+    }
+    .stl-section-listado-modificar-cliente {
+        width: 77%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .stl-section-listado-modificar-cliente {
+        width: 72%;
+    }
+    .stl-modificar-cliente-div-busqueda {
+        display: grid;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .stl-btn-modificar-cliente-busqueda {
+        margin-bottom: 5px;
+    }
+    .stl-modificar-cliente-txt-buscar {
+        margin: 0px auto;
+        margin-bottom: 10px;
     }
 }
 

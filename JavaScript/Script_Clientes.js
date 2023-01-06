@@ -81,6 +81,25 @@ $(function () {
     alertaConfirm();
 });
 
+function soloNumeros(e)
+{
+    var key;
+    if (window.event) // IE
+    {
+        key = e.keyCode;
+    }
+    else if (e.which) // Netscape/Firefox/Opera
+    {
+        key = e.which;
+    }
+    if (key < 48 || key > 57)
+    {
+        return false;
+    }
+
+    return true;
+}
+
 function soloNumerosNuevoCliente(e) {
     var txtTelefono = $("#MainContent_TxtNuevoClienteTelefono").val().length;
     var key;
@@ -146,9 +165,17 @@ function soloLetrasNuevoCliente(e) {
         key = e.which;
     }
     if (txtApenom === 0) {
-        if (key < 65 || key > 90) {
+        if (key === 209)
+        {
+            return true;
+        }
+        else if (key < 65 || key > 90) {
             return false;
         }
+    }
+    if (key === 241 || key === 209)
+    {
+        return true;
     }
     if (key != 32) {
         if (key < 65 || key > 122) {
@@ -174,9 +201,15 @@ function soloEspacioLetrasNumerosNuevoCliente(e) {
         key = e.which;
     }
     if (txtDireccion === 0) {
+        if (key === 209) {
+            return true;
+        }
         if (key < 65 || key > 90) {
             return false;
         }
+    }
+    if (key === 241 || key === 209) {
+        return true;
     }
     if (key != 32) {
         if (key < 48 || key > 122) {
@@ -205,9 +238,15 @@ function soloLetrasModificarCliente(e) {
         key = e.which;
     }
     if (txtApenom === 0) {
-        if (key < 65 || key > 90) {
+        if (key === 209) {
+            return true;
+        }
+        else if (key < 65 || key > 90) {
             return false;
         }
+    }
+    if (key === 241 || key === 209) {
+        return true;
     }
     if (key != 32) {
         if (key < 65 || key > 122) {
