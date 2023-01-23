@@ -701,7 +701,7 @@ namespace CompuGross_Web
             AlternarVisibilidadSections("btnModificar");
             CargarLocalidades();
             CargarListadoClientes();
-            LblModificarClienteTitulo.Text = "Modificar Cliente";
+            LblModificarClienteTitulo.Text = "Listado de Clientes";
         }
 
         protected void BtnBotonPrincipalLocalidades_Click(object sender, EventArgs e)
@@ -934,6 +934,7 @@ namespace CompuGross_Web
                 section_listado_modificar_cliente.Style.Add("display", "block");
                 section_campos_modificar_cliente.Style.Add("display", "none");
                 section_localidades.Style.Add("display", "none");
+                LblModificarClienteTitulo.Text = "Listado de Clientes";
             }
 
             if (botonOprimido == "btnLocalidades")
@@ -962,7 +963,7 @@ namespace CompuGross_Web
                 section_campos_modificar_cliente.Style.Add("display", "none");
                 section_confirmar_eliminar_cliente.Style.Add("display", "none");
                 section_localidades.Style.Add("display", "none");
-                LblModificarClienteTitulo.Text = "Modificar Cliente";
+                LblModificarClienteTitulo.Text = "Listado de Clientes";
                 Response.Redirect("Clientes.aspx?MostrarListadoClientes=true");
             }
 
@@ -975,7 +976,7 @@ namespace CompuGross_Web
                 section_campos_modificar_cliente.Style.Add("display", "none");
                 section_confirmar_eliminar_cliente.Style.Add("display", "none");
                 section_localidades.Style.Add("display", "none");
-                LblModificarClienteTitulo.Text = "Modificar Cliente";
+                LblModificarClienteTitulo.Text = "Listado de Clientes";
                 Response.Redirect("Clientes.aspx?MostrarListadoClientes=true");
             }
 

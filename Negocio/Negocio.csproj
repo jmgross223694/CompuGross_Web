@@ -46,6 +46,7 @@
     <Compile Include="ConexionDB.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="LocalidadDB.cs" />
+    <Compile Include="PrecioDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicioDB.cs" />
     <Compile Include="TipoEquipoDB.cs" />

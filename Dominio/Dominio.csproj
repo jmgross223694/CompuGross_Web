@@ -46,8 +46,10 @@
     <Compile Include="Equipo.cs" />
     <Compile Include="ItemPresupuesto.cs" />
     <Compile Include="Localidad.cs" />
+    <Compile Include="Precio.cs" />
     <Compile Include="Presupuesto.cs" />
     <Compile Include="Servicio.cs" />
+    <Compile Include="TablaDB.cs" />
     <Compile Include="TipoEquipo.cs" />
     <Compile Include="TipoServicio.cs" />
     <Compile Include="UnidadOptica.cs" />

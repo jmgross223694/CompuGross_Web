@@ -179,7 +179,12 @@ function soloLetrasNuevoCliente(e) {
     }
     if (key != 32) {
         if (key < 65 || key > 122) {
-            return false;
+            if (key >= 48 && key <= 57) {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
         if (key > 90 && key < 97) {
             return false;

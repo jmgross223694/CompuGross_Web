@@ -54,7 +54,7 @@
         <center>
             <div class="navbar-header">
                 <a href="https://www.instagram.com/compugrossok/" style="text-decoration: none;">
-                    <asp:Image ImageUrl="~/img/LogosCG/LogoCG.png" class="stl-img-logo" runat="server" />
+                    <asp:Image ImageUrl="img/LogosCG/LogoCG.png" class="stl-img-logo" runat="server" />
                     <h1 class="stl-titulo-imagen">CompuGross</h1>
                 </a>
             </div>
@@ -96,31 +96,31 @@
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a stl-menu-button">
+                        <a href="Precios.aspx" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoPrecios.png" alt="#" class="stl-menu-iconos" />
                             <b>Precios</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a stl-menu-button">
+                        <a href="Reportes.aspx" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoReportes.png" alt="#" class="stl-menu-iconos" />
                             <b>Reportes</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a stl-menu-button">
+                        <a href="Backup.aspx" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoBackup.png" alt="#" class="stl-menu-iconos" />
                             <b>Backup</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a stl-menu-button">
+                        <a href="Usuarios.aspx" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoUsuarios.png" alt="#" class="stl-menu-iconos" />
                             <b>Usuarios</b>
                         </a>
                     </li>
                     <li class="stl-menu-li">
-                        <a href="#" class="stl-menu-a stl-menu-button">
+                        <a href="Proveedores.aspx" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoProveedores.png" alt="#" class="stl-menu-iconos" />
                             <b>Proveedores</b>
                         </a>

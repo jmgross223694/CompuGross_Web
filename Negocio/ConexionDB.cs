@@ -43,6 +43,19 @@ namespace Negocio
             conexion.Close();
         }
 
+        public DataTable CrearDataTable(string consulta)
+        {
+            comando.Connection = conexion;
+            conexion.Open();
+            DataTable dt = new DataTable();
+
+            SqlCommand cmd = new SqlCommand(consulta, conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            return dt;
+        }
+
         public SqlDataReader Lector
         {
             get { return lector; }

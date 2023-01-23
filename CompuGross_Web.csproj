@@ -146,6 +146,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Backup.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -166,11 +167,14 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
+    <Content Include="JavaScript\Script_Backup.js" />
     <Content Include="JavaScript\Script_Clientes.js" />
     <Content Include="JavaScript\Script_MenuPrincipal.js" />
     <Content Include="Clientes.aspx" />
+    <Content Include="JavaScript\Script_Precios.js" />
     <Content Include="JavaScript\Script_Presupuestos.js" />
     <Content Include="JavaScript\Script_Servicios.js" />
+    <Content Include="Precios.aspx" />
     <Content Include="Presupuestos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -310,9 +314,11 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Servicios.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="Styles\Style_Backup.css" />
     <Content Include="Styles\Style_Clientes.css" />
     <Content Include="Styles\Style_Login.css" />
     <Content Include="Styles\Style_Master.css" />
+    <Content Include="Styles\Style_Precios.css" />
     <Content Include="Styles\Style_Presupuestos.css" />
     <Content Include="Styles\Style_Servicios.css" />
     <Content Include="ViewSwitcher.ascx" />
@@ -326,6 +332,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\RouteConfig2.cs" />
+    <Compile Include="Backup.aspx.cs">
+      <DependentUpon>Backup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Backup.aspx.designer.cs">
+      <DependentUpon>Backup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -349,6 +362,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Precios.aspx.cs">
+      <DependentUpon>Precios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Precios.aspx.designer.cs">
+      <DependentUpon>Precios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuestos.aspx.cs">
       <DependentUpon>Presupuestos.aspx</DependentUpon>
