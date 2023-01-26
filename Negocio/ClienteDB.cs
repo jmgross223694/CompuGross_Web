@@ -31,7 +31,7 @@ namespace Negocio
                     localidad.ID = Convert.ToInt64(conDB.Lector["IdLocalidad"]);
                     localidad.Descripcion = conDB.Lector["Localidad"].ToString();
                     localidad.Estado = true;
-                    cliente.localidad = localidad;
+                    cliente.Localidad = localidad;
                     cliente.Telefono = conDB.Lector["Telefono"].ToString();
                     cliente.Mail = conDB.Lector["Mail"].ToString();
                     DateTime FechaAltaAux = Convert.ToDateTime(conDB.Lector["FechaAlta"]);
@@ -49,6 +49,44 @@ namespace Negocio
             }
 
             return cliente;
+        }
+
+        public bool VerificarExistenciaCliente_RestaurarBackup(Cliente cliente)
+        {
+            bool resultado = false;
+            int clienteEncontrado = 0;
+
+            string consulta = "select count(*) Cantidad from Clientes where Nombres = '" + cliente.Apenom + "'";
+
+            try
+            {
+                conDB.SetearConsulta(consulta);
+                conDB.EjecutarConsulta();
+
+                if (conDB.Lector.Read())
+                {
+                    clienteEncontrado = Convert.ToInt32(conDB.Lector["Cantidad"]);
+
+                    if (clienteEncontrado == 1)
+                    {
+                        resultado = true;
+                    }
+                    else
+                    {
+                        resultado = false;
+                    }
+                }
+            }
+            catch
+            {
+                resultado = false;
+            }
+            finally
+            {
+                conDB.CerrarConexion();
+            }
+
+            return resultado;
         }
 
         public bool VerificarExistenciaCliente(Cliente cliente)
@@ -73,7 +111,7 @@ namespace Negocio
                         ID = Convert.ToInt64(conDB.Lector["ID"]);
                         if (cliente.ID == ID)
                         {
-                            return false; //El cliente encontrado es el que está siendo modificado
+                            resultado = false; //El cliente encontrado es el que está siendo modificado
                         }
                         else
                         {
@@ -116,7 +154,7 @@ namespace Negocio
             string insert = "exec SP_NUEVO_CLIENTE '" + cliente.CuitDni + "', '" 
                                                       + cliente.Apenom + "', '" 
                                                       + cliente.Direccion + "', '" 
-                                                      + cliente.localidad.Descripcion + "', '" 
+                                                      + cliente.Localidad.Descripcion + "', '" 
                                                       + cliente.Telefono + "', '" 
                                                       + cliente.Mail + "'";
 
@@ -152,7 +190,7 @@ namespace Negocio
                                                          + cliente.CuitDni + "', '"
                                                          + cliente.Apenom + "', '"
                                                          + cliente.Direccion + "', '"
-                                                         + cliente.localidad.Descripcion + "', '"
+                                                         + cliente.Localidad.Descripcion + "', '"
                                                          + cliente.Telefono + "', '"
                                                          + cliente.Mail + "', "
                                                          + Estado;
@@ -223,7 +261,7 @@ namespace Negocio
                     cliente.Direccion = conDB.Lector["Direccion"].ToString();
                     localidad.ID = Convert.ToInt64(conDB.Lector["IdLocalidad"]);
                     localidad.Descripcion = conDB.Lector["Localidad"].ToString();
-                    cliente.localidad = localidad;
+                    cliente.Localidad = localidad;
                     cliente.Telefono = conDB.Lector["Telefono"].ToString();
                     cliente.Mail = conDB.Lector["Mail"].ToString();
                     DateTime FechaAltaAux = Convert.ToDateTime(conDB.Lector["FechaAlta"]);
@@ -280,7 +318,7 @@ namespace Negocio
                     localidad.Descripcion = conDB.Lector["Localidad"].ToString();
                     localidad.Estado = true;
 
-                    cliente.localidad = localidad;
+                    cliente.Localidad = localidad;
                     cliente.Telefono = conDB.Lector["Telefono"].ToString();
                     cliente.Mail = conDB.Lector["Mail"].ToString();
                     DateTime FechaAltaAux = Convert.ToDateTime(conDB.Lector["FechaAlta"]);

@@ -12,7 +12,7 @@ namespace Dominio
         public string CuitDni { get; set; }
         public string Apenom { get; set; }
         public string Direccion { get; set; }
-        public Localidad localidad { get; set; }
+        public Localidad Localidad { get; set; }
         public string Telefono { get; set; }
         public string Mail { get; set; }
         public string FechaAlta { get; set; }

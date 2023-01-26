@@ -325,7 +325,7 @@ namespace CompuGross_Web
                         clienteSeleccionado.CuitDni = cliente.CuitDni;
                         clienteSeleccionado.Apenom = cliente.Apenom;
                         clienteSeleccionado.Direccion = cliente.Direccion;
-                        clienteSeleccionado.localidad = cliente.localidad;
+                        clienteSeleccionado.Localidad = cliente.Localidad;
                         clienteSeleccionado.Telefono = cliente.Telefono;
                         clienteSeleccionado.Mail = cliente.Mail;
                         clienteSeleccionado.FechaAlta = cliente.FechaAlta;
@@ -367,7 +367,7 @@ namespace CompuGross_Web
                 TxtModificarClienteCuitDni.Text = cliente.CuitDni;
                 TxtModificarClienteApenom.Text = cliente.Apenom;
                 TxtModificarClienteDireccion.Text = cliente.Direccion;
-                DdlModificarClienteLocalidad.SelectedValue = cliente.localidad.ID.ToString();
+                DdlModificarClienteLocalidad.SelectedValue = cliente.Localidad.ID.ToString();
                 TxtModificarClienteTelefono.Text = cliente.Telefono;
                 TxtModificarClienteMail.Text = cliente.Mail;
                 DdlModificarClienteEstado.SelectedValue = "1";
@@ -411,7 +411,7 @@ namespace CompuGross_Web
                 TxtModificarClienteCuitDni.Text = cliente.CuitDni;
                 TxtModificarClienteApenom.Text = cliente.Apenom;
                 TxtModificarClienteDireccion.Text = cliente.Direccion;
-                DdlModificarClienteLocalidad.SelectedValue = cliente.localidad.ID.ToString();
+                DdlModificarClienteLocalidad.SelectedValue = cliente.Localidad.ID.ToString();
                 TxtModificarClienteTelefono.Text = cliente.Telefono;
                 TxtModificarClienteMail.Text = cliente.Mail;
                 DdlModificarClienteEstado.SelectedValue = "1";
@@ -454,7 +454,7 @@ namespace CompuGross_Web
             localidad.Descripcion = DdlNuevoClienteLocalidad.SelectedItem.ToString();
             localidad.Estado = true;
 
-            cliente.localidad = localidad;
+            cliente.Localidad = localidad;
             cliente.Telefono = TxtNuevoClienteTelefono.Text;
             cliente.Mail = TxtNuevoClienteMail.Text;
 
@@ -649,7 +649,7 @@ namespace CompuGross_Web
             localidad.Descripcion = DdlModificarClienteLocalidad.SelectedItem.ToString();
             localidad.Estado = true;
 
-            cliente.localidad = localidad;
+            cliente.Localidad = localidad;
             cliente.Telefono = TxtModificarClienteTelefono.Text;
             cliente.Mail = TxtModificarClienteMail.Text;
             cliente.Estado = true;
