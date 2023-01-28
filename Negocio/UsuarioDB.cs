@@ -48,6 +48,71 @@ namespace Negocio
             return usuario;
         }
 
+        public bool Agregar(Usuario usuario)
+        {
+            bool resultado = false;
+            string insert = "insert into Usuarios(IdTipo, Apellido, Nombre, Username, Mail, Clave)" +
+                            "values((select ID from TiposUsuario where Tipo = '" + usuario.Tipo + "'), '" +
+                            usuario.Apellido + "', '" + usuario.Nombre + "', '" + usuario.Username + "', '" + 
+                            usuario.Mail + "', pwdencrypt('" + usuario.Clave + "'))";
+
+            try
+            {
+                conDB.SetearConsulta(insert);
+                conDB.EjecutarConsulta();
+                resultado = true;
+            }
+            catch
+            {
+                resultado = false;
+            }
+            finally
+            {
+                conDB.CerrarConexion();
+            }
+
+            return resultado;
+        }
+
+        public bool VerificarExistenciaUsuario_RestaurarBackup(Usuario usuario)
+        {
+            bool resultado = false;
+            int usuarioEncontrado = 0;
+
+            string consulta = "select count(*) Cantidad from Usuarios where Username = '" + usuario.Username + 
+                              "' and Apellido = '" + usuario.Apellido + "', and Nombre = '" + usuario.Nombre + "'";
+
+            try
+            {
+                conDB.SetearConsulta(consulta);
+                conDB.EjecutarConsulta();
+
+                if (conDB.Lector.Read())
+                {
+                    usuarioEncontrado = Convert.ToInt32(conDB.Lector["Cantidad"]);
+
+                    if (usuarioEncontrado == 1)
+                    {
+                        resultado = true;
+                    }
+                    else
+                    {
+                        resultado = false;
+                    }
+                }
+            }
+            catch
+            {
+                resultado = false;
+            }
+            finally
+            {
+                conDB.CerrarConexion();
+            }
+
+            return resultado;
+        }
+
         public bool ValidarUsuario(Usuario usuario)
         {
             bool validado = false;

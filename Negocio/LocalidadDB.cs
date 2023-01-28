@@ -223,5 +223,43 @@ namespace Negocio
 
             return resultado;
         }
+
+        public bool VerificarExistenciaLocalidad_RestaurarBackup(Localidad localidad)
+        {
+            bool resultado = false;
+            int localidadEncontrada = 0;
+
+            string consulta = "select count(*) Cantidad from Localidades where Descripcion = '" + localidad.Descripcion + "'";
+
+            try
+            {
+                conDB.SetearConsulta(consulta);
+                conDB.EjecutarConsulta();
+
+                if (conDB.Lector.Read())
+                {
+                    localidadEncontrada = Convert.ToInt32(conDB.Lector["Cantidad"]);
+
+                    if (localidadEncontrada == 1)
+                    {
+                        resultado = true;
+                    }
+                    else
+                    {
+                        resultado = false;
+                    }
+                }
+            }
+            catch
+            {
+                resultado = false;
+            }
+            finally
+            {
+                conDB.CerrarConexion();
+            }
+
+            return resultado;
+        }
     }
 }
