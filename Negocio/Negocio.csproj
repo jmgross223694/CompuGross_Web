@@ -45,6 +45,7 @@
     <Compile Include="ClienteDB.cs" />
     <Compile Include="ConexionDB.cs" />
     <Compile Include="EmailService.cs" />
+    <Compile Include="IngresoPorServicioDB.cs" />
     <Compile Include="LocalidadDB.cs" />
     <Compile Include="PrecioDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

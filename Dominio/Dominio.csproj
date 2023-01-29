@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Cliente.cs" />
     <Compile Include="Equipo.cs" />
+    <Compile Include="Ganancia_Anual_y_Mensual.cs" />
+    <Compile Include="IngresoPorServicio.cs" />
     <Compile Include="ItemPresupuesto.cs" />
     <Compile Include="Localidad.cs" />
     <Compile Include="Precio.cs" />

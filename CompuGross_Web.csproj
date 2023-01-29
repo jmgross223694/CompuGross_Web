@@ -293,9 +293,11 @@
     <Content Include="Clientes.aspx" />
     <Content Include="JavaScript\Script_Precios.js" />
     <Content Include="JavaScript\Script_Presupuestos.js" />
+    <Content Include="JavaScript\Script_Reportes.js" />
     <Content Include="JavaScript\Script_Servicios.js" />
     <Content Include="Precios.aspx" />
     <Content Include="Presupuestos.aspx" />
+    <Content Include="Reportes.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -440,6 +442,7 @@
     <Content Include="Styles\Style_Master.css" />
     <Content Include="Styles\Style_Precios.css" />
     <Content Include="Styles\Style_Presupuestos.css" />
+    <Content Include="Styles\Style_Reportes.css" />
     <Content Include="Styles\Style_Servicios.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -498,6 +501,13 @@
       <DependentUpon>Presupuestos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Servicios.aspx.cs">
       <DependentUpon>Servicios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
