@@ -51,6 +51,7 @@
     <Compile Include="Precio.cs" />
     <Compile Include="Presupuesto.cs" />
     <Compile Include="Servicio.cs" />
+    <Compile Include="ServicioPorCliente.cs" />
     <Compile Include="TablaDB.cs" />
     <Compile Include="TipoEquipo.cs" />
     <Compile Include="TipoServicio.cs" />

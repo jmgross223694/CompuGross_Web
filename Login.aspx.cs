@@ -15,9 +15,7 @@ namespace CompuGross_Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            TxtUsuario.Text = "38346656";
-            TxtClave.Text = "Admin123";
-            BtnIngresar.Focus();
+            TxtUsuario.Focus();
         }
 
         protected void LinkLabelRecuperarClave_Click(object sender, EventArgs e)
