@@ -1,0 +1,282 @@
+﻿body {
+    min-width: 401px;
+}
+
+.stl-div-titulo {
+    display: block;
+    text-align: center;
+}
+.stl-div-boton {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+}
+.stl-div-campos {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+}
+.stl-section-agregar {
+    display: none;
+}
+.stl-section-agregar-campos {
+    display: none;
+}
+.stl-section-agregar-campos2 {
+    display: none;
+}
+.stl-section-elegir-cliente {
+    display: none;
+}
+.stl-label-campo {
+    text-align: center;
+    display: inline-block;
+    /*vertical-align: middle;*/
+    width: 200px;
+}
+.stl-link-button-cliente {
+    color: white !important;
+}
+.stl-checkbox-fecha-devolucion {
+    margin-left: 2%;
+}
+.stl-texto-campo {
+    display: inline-block;
+    width: 200px;
+    margin: 8px;
+}
+.stl-ddl {
+    cursor: pointer !important;
+}
+.stl-elegir-cliente-txt-buscar {
+    vertical-align: middle !important;
+}
+.stl.elegir-cliente-div-busqueda {
+    display: block;
+    text-align: center;
+}
+.stl-btn-seleccionar-cliente {
+    width: 80px;
+}
+.stl-div-contenedor-elegir-cliente {
+
+}
+.stl-div-contenido-campo {
+    
+}
+.stl-elegir-div-busqueda {
+    display: block;
+    text-align: center;
+}
+.stl-div-titulos-listado-clientes {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.card {
+    background-color: #212529;
+    flex-direction: row !important;
+}
+.card-body {
+    width: 20%;
+    text-align: center;
+    max-height: 62px;
+    max-width: 309px;
+    /*border: 1px solid;*/
+}
+.stl-div-btn-modificar-eliminar-cliente {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}
+.stl-div-contenedor-listado-clientes {
+    width: 100%;
+    border-bottom: 2px solid;
+}
+.stl-label-descripcion {
+    vertical-align: top !important;
+    margin-top: 16px;
+}
+.stl-div-lbl-confirmar-eliminar {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+.stl-section-listar {
+    display: none;
+}
+.stl-section-listar-campos {
+    display: none;
+    min-width: 330px;
+}
+.stl-section-listar-modificar {
+    display: none;
+}
+.stl-section-listar-eliminar {
+    display: none;
+}
+.stl-div-titulos-listado-servicios {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.stl-div-btn-modificar-eliminar-servicio {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}
+.stl-modificar-servicio-lbl-titulo-listado {
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large !important;
+    font-family: var(--bs-body-font-family);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+}
+.stl-div-contenedor-listado-servicios {
+    width: 100%;
+    border-bottom: 2px solid;
+}
+.stl-div-num-servicio {
+    width: 2% !important;
+    max-width: 67px;
+}
+.stl-div-cliente-servicio {
+    width: 15% !important;
+}
+.stl-div-fecha-recepcion-servicio {
+    width: 10% !important;
+}
+.stl-div-fecha-devolucion-servicio {
+    width: 10% !important;
+}
+.stl-div-tipo-servicio {
+    width: 14% !important;
+}
+.stl-div-tipo-equipo-servicio {
+    width: 14% !important;
+}
+.stl-div-subtotal-servicio {
+    width: 10% !important;
+}
+.stl-btn-modificar-servicio {
+    width: 80px;
+}
+.stl-btn-eliminar-servicio {
+    width: 80px;
+}
+
+@media screen and (max-width: 1400px) {
+    .stl-div-cuitdni-cliente {
+        display: none;
+    }
+    .stl-section-elegir-cliente {
+        width: 89%;
+        margin: 0px auto;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .stl-div-tipo-servicio {
+        display: none;
+    }
+    .stl-div-tipo-equipo-servicio {
+        display: none;
+    }
+    .stl-div-subtotal-servicio {
+        display: none;
+    }
+    .stl-div-mail-cliente {
+        display: none;
+    }
+    .stl-section-elegir-cliente {
+        width: 74%;
+    }
+}
+@media screen and (max-width: 992px) {
+    .stl-section-elegir-cliente {
+        width: 98%;
+    }
+}
+@media screen and (max-width: 990px) {
+    .stl-section-elegir-cliente {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .stl-div-fecha-recepcion-servicio {
+        display: none;
+    }
+    .stl-div-fecha-devolucion-servicio {
+        display: none;
+    }
+    .stl-lbl-cliente-listar-servicios {
+        margin-top: -10px;
+    }
+    .stl-section-listar-campos {
+        width: 90%;
+        margin: 0px auto;
+    }
+    .stl-div-btn-modificar-eliminar-cliente {
+        width: 17%;
+    }
+}
+@media screen and (max-width: 575px) {
+    .stl-section-listar-campos {
+        width: 84%;
+    }
+    .stl-div-btn-modificar-eliminar-cliente {
+        width: 90px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .stl-btn-agregar-nuevo {
+        margin-bottom: 5px;
+    }
+    .stl-label-campo {
+        display: block;
+    }
+    .stl-checkbox-1-fecha-devolucion {
+        width: 202px;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .stl-div-boton {
+        display: grid !important;
+        justify-content: center;
+    }
+    .stl-btn-confirmar {
+        margin-bottom: 10px;
+    }
+    .stl-elegir-div-busqueda {
+        display: grid;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .stl-btn-listar-buscar {
+        margin-bottom: 5px;
+    }
+    .stl-elegir-cliente-txt-buscar {
+        margin: 0px auto;
+        margin-bottom: 15px;
+    }
+    .stl-texto-campo {
+        text-align: center;
+    }
+}
+@media screen and (max-width: 481px) {
+    .stl-div-telefono-cliente {
+        display: none;
+    }
+}
+@media screen and (max-width: 400px) {
+    .stl-div-apenom-cliente {
+        margin-top: -10px;
+    }
+}

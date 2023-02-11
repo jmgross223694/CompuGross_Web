@@ -1,0 +1,113 @@
+﻿body {
+    min-width: 300px;
+}
+
+.stl-div-titulo {
+    display: flex;
+    justify-content: center;
+}
+.stl-div-contenedor {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.stl-div-hacer-backup {
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+}
+.stl-btn-hacer-backup {
+    margin-top: 20px;
+    height: 93px;
+}
+.stl-div-restaurar-backup {
+    width: 50%;
+    display: grid;
+    text-align: center;
+    margin-top: 10px;
+    justify-content: center;
+    cursor: pointer;
+}
+.stl-div-label-restaurar-backup {
+    
+}
+.stl-div-btn-restaurar-backup {
+    margin-top: 10px;
+}
+.stl-ddl-tablas-db {
+    height: 38px;
+}
+
+.file-input {
+    cursor: pointer !important;
+}
+
+.file-select::before {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 0px 10px 0px;
+    background-color: #212529;
+    color: #fff;
+    display: flex;
+    border-radius: 5px;
+    content: 'Seleccionar Archivo';
+    width: 313px;
+    cursor: pointer !important;
+    margin-top: 10px !important;
+    justify-content: center;
+}
+.file-select input[type="file"] {
+    opacity: 0;
+    width: 313px;
+    height: 44px;
+    display: flex;
+    position: relative;
+    top: -45%;
+    left: 0%;
+    max-width: 500px !important;
+}
+.stl-fu-restaurar-backup {
+    cursor: pointer !important;
+}
+
+@media screen and (max-width: 768px) {
+    .stl-div-contenedor {
+        display: grid;
+    }
+    .stl-div-hacer-backup {
+        width: 100%;
+        justify-content:normal;
+    }
+    .stl-btn-hacer-backup {
+        margin-top: 0px;
+        margin: 0px auto;
+        width: 100%;
+        height: 50%;
+        max-width: 100%;
+    }
+    .stl-div-restaurar-backup {
+        width: 100%;
+        margin-top: 35px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .stl-btn-hacer-backup {
+        width: 50%;
+    }
+    .stl-btn-restaurar-backup {
+        width: 50%;
+    }
+    .stl-ddl-tablas-db {
+        width: 50%;
+        margin-top: 10px;
+    }
+    .file-select::before {
+        width: 50%;
+        margin: 0px auto;
+    }
+    .file-select input[type="file"] {
+        width: 50%;
+        margin: 0px auto;
+    }
+}

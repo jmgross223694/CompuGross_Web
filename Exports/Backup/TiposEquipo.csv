@@ -1,0 +1,13 @@
+﻿ID;Descripcion;Estado
+1;PC de Escritorio;True;
+2;All in One;True;
+3;Notebook;True;
+4;Netbook;True;
+5;Tablet;True;
+6;Impresora;True;
+7;Televisor;True;
+8;Monitor;True;
+9;Celular;True;
+10;Consola;True;
+13;Cámaras de seguridad;True;
+25;Joystick;True;

@@ -1,0 +1,227 @@
+﻿body {
+    min-width: 401px;
+}
+
+.stl-div-titulo {
+    display: flex;
+    justify-content: center;
+}
+.stl-div-contenedor {
+}
+.stl-div-campos {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+}
+.stl-div-campo {
+
+}
+.stl-descripcion-listado {
+
+}
+.stl-label-campo {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    width: 125px;
+}
+.stl-texto-campo {
+    display: inline-block;
+    width: 200px;
+    margin: 8px;
+}
+.stl-label-cliente {
+    color: white;
+}
+.stl-label-cliente:hover {
+    color: white;
+}
+.stl-label-descripcion {
+    vertical-align: top !important;
+    margin-top: 16px;
+}
+.stl-div-botones {
+    display: flex;
+    justify-content: center;
+}
+.btn {
+    margin: 5px;
+}
+.stl-div-titulos-listado {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.stl-div-titulo-listado-btn {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    border: 0px;
+}
+.stl-section-listado {
+    display: none;
+}
+.stl-btn-exportar {
+    display: none;
+}
+.card {
+    background-color: #212529;
+    flex-direction: row !important;
+}
+
+.card-body {
+    text-align: center;
+    max-height: 62px;
+    max-width: 250px;
+    /*border: 1px solid;*/
+}
+.stl-div-contenedor-listado-clientes {
+    border-bottom: 2px solid;
+}
+
+.stl-div-titulo-listado {
+    max-width: 9%;
+}
+.stl-div-contenedor-listado {
+    max-width: 9%;
+}
+.stl-valor-precio-listado {
+    overflow: scroll;
+}
+.stl-titulo-listado-descripcion {
+    max-width: 59%;
+}
+.stl-texto-listado-descripcion {
+    max-width: 60%;
+    overflow: scroll;
+    text-align: left !important;
+}
+.stl-valor-subtotal-listado {
+    overflow: scroll;
+}
+.stl-boton-normal {
+    display: flex;
+}
+
+.stl-boton-chico {
+    display: none;
+}
+.stl-div-total-items-listado {
+    border-bottom: 2px solid #fff;
+}
+.stl-div-totales_listado {
+    max-width: fit-content !important;
+    max-height: fit-content !important;
+    display: block;
+    text-align: left;
+}
+
+.stl-lbl-totales-listado {
+    width: 200px;
+    display: block;
+    text-align: center;
+}
+
+@media screen and (max-width: 1400px) {
+    .stl-titulo-listado-descripcion {
+        max-width: 58%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .stl-titulo-listado-descripcion {
+        max-width: 66%;
+    }
+    .stl-texto-listado-descripcion {
+        max-width: 67%;
+    }
+    .stl-div-titulo-listado-codigo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .stl-div-titulo-listado-precio {
+        display: none;
+    }
+    .stl-div-titulo-listado {
+        max-width: 20%;
+    }
+    .stl-div-contenedor-listado {
+        max-width: 20%;
+    }
+    .stl-titulo-listado-descripcion {
+        max-width: 50.5%;
+    }
+    .stl-texto-listado-descripcion {
+        max-width: 51%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .stl-div-titulo-listado {
+        max-width: 20%;
+    }
+    .stl-div-contenedor-listado {
+        max-width: 20%;
+    }
+    .stl-titulo-listado-descripcion {
+        max-width: 52%;
+    }
+    .stl-texto-listado-descripcion {
+        max-width: 52%;
+    }
+    .stl-boton-normal {
+        display: none;
+    }
+    .stl-boton-chico {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .stl-div-totales_listado {
+        display: grid !important;
+        justify-content: center;
+        margin: 0px auto;
+    }
+    .stl-div-total-items-listado {
+        margin-top: 20px !important;
+    }
+    .stl-div-botones {
+        display: grid;
+    }
+    .stl-label-campo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .stl-titulo-listado-descripcion {
+        max-width: 52.5%;
+    }
+    .stl-div-titulo-listado {
+        max-width: 20%;
+    }
+    .stl-div-contenedor-listado {
+        max-width: 20%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .stl-div-titulo-listado {
+        max-width: 20%;
+    }
+    .stl-titulo-listado-descripcion {
+        max-width: 52%;
+    }
+    .stl-texto-listado-descripcion {
+        max-width: 51%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .stl-div-titulo-listado {
+        margin-left: -10px;
+    }
+}

@@ -1,6 +1,0 @@
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Dominio\bin\Debug\Dominio.dll
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Dominio\bin\Debug\Dominio.pdb
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Dominio\obj\Debug\Dominio.dll
-C:\Users\Juanma\Desktop\GitHub\CompuGross_Web\Dominio\obj\Debug\Dominio.pdb

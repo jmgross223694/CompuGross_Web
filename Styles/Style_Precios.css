@@ -1,0 +1,213 @@
+﻿body {
+    min-width: 401px;
+}
+
+.stl-div-precio-dolar {
+    display: flex !important;
+    justify-content: center !important;
+}
+.stl-txt-precio-dolar {
+    margin: 0px 10px 0px -10px;
+    text-align: center;
+}
+.stl-div-contenedor-titulos-listado {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.card {
+    background-color: #212529;
+    flex-direction: row !important;
+}
+.card-body {
+    width: 20%;
+    text-align: center;
+    max-height: 62px;
+    max-width: 309px;
+    /*border: 1px solid;*/
+}
+.stl-lbl-titulo-listado {
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large !important;
+    font-family: var(--bs-body-font-family);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+}
+.stl-div-contenedor-campos-listado {
+    width: 100%;
+    border-bottom: 2px solid;
+}
+.stl-div-campo-listado-btn {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}
+.stl-div-titulo-listado {
+    max-width: 13%;
+}
+.stl-div-campo-listado {
+    max-width: 13%;
+}
+.stl-div-titulo-listado-descripcion {
+    max-width: 71% !important;
+}
+.stl-div-campo-listado-descripcion {
+    max-width: 71% !important;
+    text-align: left !important;
+}
+.stl-btn {
+    width: 75px;
+}
+.stl-section-listado {
+    display: none;
+}
+.stl-section-precio-dolar {
+    display: block;
+}
+.stl-section-agregar {
+    display: none;
+}
+.stl-section-modificar {
+    display: none;
+}
+.stl-section-confirmar-eliminar {
+    display: none;
+}
+.stl-btn-agregar {
+    margin-left: 10px;
+}
+.stl-div-contenedor-agregar {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+}
+.stl-div-contenedor-modificar {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+}
+.stl-label-campo {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    width: 200px;
+}
+.stl-texto-campo {
+    display: inline-block;
+    width: 200px;
+    margin: 8px;
+}
+.stl-div-contenido-btn-agregar {
+    margin-top: 30px;
+    display: block;
+    text-align: center;
+}
+.stl-div-contenido-btn-modificar {
+    margin-top: 30px;
+    display: block;
+    text-align: center;
+}
+.stl-div-confirmar-eliminar {
+    margin-top: 30px;
+    display: block;
+    text-align: center;
+}
+.stl-div-btn-confirmar-eliminar {
+    margin-top: 30px;
+    display: block;
+    text-align: center;
+}
+.stl-btn-aux {
+    display: none;
+    padding: 0px !important;
+}
+
+@media screen and (max-width: 991px) {
+    .stl-codigo {
+        display: none;
+    }
+    .stl-dolares {
+        display: none;
+    }
+    .stl-label-campo-titulo-listado {
+        font-size: 12px;
+    }
+    .stl-label-campos-listado {
+        font-size: 12px;
+    }
+    .stl-btn {
+        display: none;
+    }
+    .stl-btn-aux {
+        display: block;
+        font-size: 12px;
+    }
+    .stl-img-aux {
+        width: 30px;
+        max-width: 30px;
+    }
+    .stl-div-titulo-listado-descripcion {
+        max-width: 75% !important;
+    }
+    .stl-div-campo-listado-descripcion {
+        max-width: 75% !important;
+    }
+    .stl-div-campo-listado {
+        max-width: 20%;
+    }
+    .stl-div-titulo-listado {
+        max-width: 20%;
+    }
+    .stl-div-btn-listado {
+        max-width: 32px;
+    }
+    .stl-div-precio-dolar {
+        display: grid !important;
+    }
+    .stl-txt-precio-dolar {
+        margin: 0pc !important;
+    }
+    .stl-btn-cargar-precios {
+        margin-top: 10px;
+    }
+    .stl-btn-agregar {
+        margin: 0pc !important;
+        margin-top: 10px !important;
+    }
+}
+@media screen and (max-width: 465px) {
+    .stl-label-campo {
+        display: flex !important;
+        justify-content: center;
+        width: 100%;
+    }
+    .stl-texto-campo-obligatorio {
+        margin-left: 24px !important;
+    }
+    .stl-div-contenido-campo-agregar {
+        text-align: center;
+    }
+    .stl-div-contenido-btn-agregar {
+        display: grid;
+        margin: 0px auto;
+        margin-top: 30px;
+    }
+    .stl-btn-cancelar-agregar {
+        margin-top: 10px;
+    }
+    .stl-div-contenido-campo-modificar {
+        text-align: center;
+    }
+    .stl-div-contenido-btn-modificar {
+        display: grid;
+        margin: 0px auto;
+        margin-top: 30px;
+    }
+    .stl-btn-cancelar-modificar {
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,411 @@
+﻿body {
+    min-width: 300px;
+}
+
+.card {
+    background-color: #212529;
+    flex-direction: row !important;
+    --bs-card-border-color: transparent !important;
+}
+.card-body {
+    text-align: center;
+    /*border: 1px solid;*/
+}
+.stl-btn-buscar {
+    display: none;
+}
+.stl-div-titulo {
+    display: flex;
+    justify-content: center;
+}
+.stl-div-btn-principales {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+.stl-btn-servicios-por-cliente {
+    margin-left: 10px;
+}
+.stl-div-titulo-ganancias-por-tipo-de-servicio {
+    display: flex;
+    width: max-content;
+    margin: 0px auto;
+}
+.stl-div-contenedor-ingresos-generales {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.stl-div-contenedor-ganancias-por-tipo-de-servicio {
+    display: inline-block;
+    text-align: center;
+    max-width: max-content;
+    margin: 0px auto;
+}
+.stl-div-contenedor-promedios-generales {
+    display: inline-block;
+    text-align: center;
+    max-width: max-content;
+    margin: 0px auto;
+}
+.stl-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.stl-label-promedio {
+    border-bottom: 2px solid;
+    justify-content: center;
+}
+.stl-lbl-promedio-ganancia {
+    margin-bottom: 72px;
+}
+.stl-div-contenedor-titulos {
+    margin-bottom: 10px;
+}
+.stl-div-contenedor-campos {
+    border-bottom: 2px solid;
+}
+.stl-div-total-ganancia {
+    margin-top: 10px !important;
+    border-bottom: 2px solid;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 20px;
+}
+.stl-div-cantidad {
+    width: 100px;
+}
+.stl-div-tipo-servicio {
+    width: 240px;
+}
+.stl-div-ganancia {
+    width: 130px;
+}
+.stl-lbl-promedio {
+    border-bottom: 2px solid;
+}
+.stl-div-desplegable-años {
+    margin-top: 30px !important;
+    margin-bottom: 20px !important;
+    display: flex;
+    margin: 0px auto;
+    border-top: 1px solid;
+}
+.stl-ddl-años {
+    width: 100%;
+    max-width: max-content;
+    margin-top: -8px;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    font-weight: 600;
+    font-size: 27px;
+}
+option {
+    background-color: #212529 !important;
+    border: none !important;
+    color: white !important;
+}
+option:hover {
+    cursor: pointer !important;
+}
+.stl-section-ingresos-generales {
+    display: none;
+}
+.stl-section-servicios-por-cliente {
+    display: none;
+}
+.stl-section-ganancias-por-año {
+    display: none;
+}
+.stl-div-titulo-ganancias-por-mes {
+    margin-top: 30px;
+}
+.stl-lbl-total-anual {
+    justify-content: center;
+    display: flex;
+    font-weight: 600;
+    font-size: 20px;
+    max-width: 33%;
+    width: 33% !important;
+}
+.stl-lbl-promedio-mensual {
+    justify-content: center;
+    display: flex;
+    font-weight: 600;
+    font-size: 20px;
+    max-width: 33%;
+    width: 33% !important;
+}
+.stl-lbl-cantidad-servicios-anual {
+    justify-content: center;
+    display: flex;
+    font-weight: 600;
+    font-size: 20px;
+    max-width: 33%;
+    width: 33% !important;
+}
+.stl-div-trimestre {
+    flex-direction: column !important;
+    width: 25%;
+    max-width: 25%;
+    display: grid;
+}
+.stl-lbl-total-mes {
+    width: 100% !important;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 16px;
+}
+.stl-div-select-año {
+    padding-top: 20px;
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+}
+.stl-label-titulo-cantidad-abreviado {
+    display: none;
+}
+.stl-txt-num-cliente {
+    text-align: center !important;
+    cursor: text !important;
+    border-bottom: 1px solid;
+    width: 100% !important;
+}
+.stl-txt-cliente {
+    text-align: center !important;
+    cursor: text !important;
+    border-bottom: 1px solid;
+}
+.stl-ddl-tipo-servicio {
+    text-align: center !important;
+    cursor: pointer !important;
+    border-bottom: 1px solid !important;
+    color: #676773;
+    border-color: white !important;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    border-radius: 3px !important;
+}
+.stl-ddl-tipo-servicio:hover {
+    color: #6c756f !important;
+    border-bottom: none !important;
+}
+.stl-div-listado-servicios-por-cliente {
+    max-width: 70% !important;
+    margin: 0px auto;
+}
+.stl-div-num-cliente {
+    max-width: 15% !important;
+}
+.stl-div-cliente {
+    max-width: 62% !important;
+}
+.stl-div-servicios {
+    max-width: 23% !important;
+}
+.stl-txt-num-cliente-2 {
+    display: none;
+}
+.stl-div-btn-exportar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width: 1399px) {
+    .stl-div-listado-servicios-por-cliente {
+        max-width: 70% !important;
+    }
+    .stl-div-num-cliente {
+        max-width: 17% !important;
+    }
+    .stl-div-cliente {
+        max-width: 56% !important;
+    }
+    .stl-div-servicios {
+        max-width: 27% !important;
+    }
+}
+@media screen and (max-width: 1199px) {
+    .stl-div-listado-servicios-por-cliente {
+        max-width: 70% !important;
+    }
+    .stl-div-num-cliente {
+        max-width: 20% !important;
+    }
+    .stl-div-cliente {
+        max-width: 48% !important;
+    }
+    .stl-div-servicios {
+        max-width: 32% !important;
+    }
+}
+@media screen and (max-width: 991px) {
+    .stl-div-btn-principales {
+        display: grid;
+    }
+    .stl-btn-servicios-por-cliente {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 200px;
+    }
+    .stl-div-contenedor-ingresos-generales {
+        display: grid;
+    }
+    .stl-div-contenedor-promedios-generales {
+        margin-top: 50px;
+    }
+    .stl-lbl-promedio-ganancia {
+        margin-bottom: 10px;
+    }
+    .stl-div-totales-anuales {
+        display: grid;
+        justify-content: center;
+    }
+    .stl-lbl-total-anual {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    .stl-lbl-promedio-mensual {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    .stl-lbl-cantidad-servicios-anual {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    .stl-div-select-año {
+        justify-content: center;
+        margin-bottom: 30px !important;
+    }
+    .stl-div-totales-por-mes {
+        display: grid;
+        max-width: max-content;
+        margin: 0px auto;
+    }
+    .stl-div-trimestre {
+        display: inline-block !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0px !important;
+        margin: 0px auto !important;
+    }
+    .stl-div-total-mes {
+        border-bottom: 1px solid;
+    }
+    .stl-lbl-total-mes {
+        display: block;
+        margin: 0px !important;
+        text-align: left !important;
+    }
+    .stl-div-listado-servicios-por-cliente {
+        max-width: 93% !important;
+    }
+}
+@media screen and (max-width: 767px) {
+    .stl-div-listado-servicios-por-cliente {
+        max-width: 100% !important;
+    }
+    .stl-div-num-cliente {
+        display: none;
+    }
+    .stl-div-cliente {
+        max-width: 58% !important;
+    }
+    .stl-div-servicios {
+        max-width: 42% !important;
+    }
+}
+@media screen and (max-width: 575px) {
+    .stl-div-listado-servicios-por-cliente {
+        max-width: 100% !important;
+    }
+    .stl-div-cliente {
+        max-width: 58% !important;
+        font-size: 11px !important;
+    }
+    .stl-div-servicios {
+        max-width: 42% !important;
+        font-size: 11px !important;
+    }
+    .stl-txt-cliente {
+        font-size: 14px !important;
+        font-weight: 600;
+    }
+    .stl-ddl-tipo-servicio {
+        font-size: 14px !important;
+        font-weight: 600;
+    }
+}
+@media screen and (max-width: 500px) {
+    .stl-lbl-promedio-mensual {
+        font-size: 16px !important;
+    }
+    .stl-lbl-total-anual {
+        font-size: 16px !important;
+    }
+    .stl-lbl-cantidad-servicios-anual {
+        font-size: 16px;
+    }
+    h3 {
+        font-size: 22px;
+    }
+    .stl-ddl-años {
+        margin-top: -12px;
+    }
+    .stl-label-promedio {
+        width: 300px;
+        font-size: 12px !important;
+    }
+    .stl-div-total-ganancia {
+        font-size: 13px;
+        max-width: 300px;
+        margin: 0px auto;
+    }
+    .stl-div-contenedor-campos {
+        max-width: 300px !important;
+        margin: 0px auto;
+    }
+    .stl-label-campo {
+        font-size: 10px;
+    }
+    .stl-div-cantidad {
+        width: 80px;
+    }
+    .stl-div-ganancia {
+        width: 150px;
+    }
+    .stl-div-contenedor-titulos {
+        max-width: 300px;
+    }
+    .stl-label-titulo {
+        font-size: 11px;
+    }
+    .stl-label-titulo-cantidad {
+        display: none;
+    }
+    .stl-label-titulo-cantidad-abreviado {
+        display: block;
+        margin-top: 5px;
+    }
+    .stl-titulos-servicios-por-cliente {
+        max-width: 100% !important;
+    }
+    .stl-campos-servicios-por-cliente {
+        max-width: 100% !important;
+    }
+    .stl-lbl-campo-servicios-por-cliente {
+        font-size: 11px !important;
+    }
+}
+@media screen and (max-width: 314px) {
+    h3 {
+        font-size: 19px;
+    }
+    .stl-ddl-años {
+        margin-top: -9px;
+        font-size: 20px;
+    }
+}
