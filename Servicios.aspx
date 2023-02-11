@@ -381,6 +381,7 @@
                         <div class="stl-div-boton">
                             <asp:Button id="BtnConfirmarModificar" Text="Confirmar cambios" runat="server" CssClass="btn btn-dark stl-btn-confirmar" OnClick="BtnConfirmarModificar_Click" />
                             <asp:Button id="BtnCancelarModificar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn-cancelar" OnClick="BtnCancelarModificar_Click" />
+                            <asp:Button ID="BtnInformarCliente" Text="Informar a Cliente" runat="server" CssClass="btn btn-dark stl-btn-informar-cliente" OnClick="BtnInformarCliente_Click" />
                         </div>
                     </section>
                 </section>

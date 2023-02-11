@@ -1,0 +1,6 @@
+C:\Users\Juan Manuel\Desktop\Proyectos\CompuGross_Web\Dominio\bin\Debug\Dominio.dll
+C:\Users\Juan Manuel\Desktop\Proyectos\CompuGross_Web\Dominio\bin\Debug\Dominio.pdb
+C:\Users\Juan Manuel\Desktop\Proyectos\CompuGross_Web\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\Juan Manuel\Desktop\Proyectos\CompuGross_Web\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Juan Manuel\Desktop\Proyectos\CompuGross_Web\Dominio\obj\Debug\Dominio.dll
+C:\Users\Juan Manuel\Desktop\Proyectos\CompuGross_Web\Dominio\obj\Debug\Dominio.pdb

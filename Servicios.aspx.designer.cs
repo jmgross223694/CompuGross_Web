@@ -942,6 +942,15 @@ namespace CompuGross_Web
         protected global::System.Web.UI.WebControls.Button BtnCancelarModificar;
 
         /// <summary>
+        /// Control BtnInformarCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnInformarCliente;
+
+        /// <summary>
         /// Control section_listar_eliminar.
         /// </summary>
         /// <remarks>

@@ -643,7 +643,7 @@ namespace CompuGross_Web
                 else if (tipoEquipo.Descripcion == "Joystick")
                 { MostrarCamposAgregarJoystick(); }
 
-                else if (tipoEquipo.Descripcion == "Cámaras de seguridad")
+                else if (tipoEquipo.Descripcion == "Cámaras")
                 { MostrarCamposAgregarCamaras(); DdlAgregarTiposServicio.SelectedValue = "2"; }
 
                 if (CbAgregarFechaDevolucion1.Checked && !TxtAgregarFechaDevolucion.Visible)
@@ -1011,7 +1011,7 @@ namespace CompuGross_Web
                 {
                     return false;
                 }
-                if (servicio.TipoServicio.Descripcion == "Cámaras de seguridad" && servicio.Equipo.Tipo.Descripcion != "Cámaras de seguridad")
+                if (servicio.TipoServicio.Descripcion == "Cámara" && servicio.Equipo.Tipo.Descripcion != "Cámaras")
                 {
                     return false;
                 }
@@ -1244,7 +1244,7 @@ namespace CompuGross_Web
                 MostrarCamposAgregarComputadora();
             }
 
-            if (tipoServicioSeleccionado == "Cámaras de seguridad")
+            if (tipoServicioSeleccionado == "Cámaras")
             {
                 DdlAgregarTiposEquipo.SelectedValue = "13";
                 OcultarCamposAgregarServicio();
@@ -1501,7 +1501,7 @@ namespace CompuGross_Web
                 MostrarCamposListarModificarComputadora();
             }
 
-            if (tipoServicioSeleccionado == "Cámaras de seguridad")
+            if (tipoServicioSeleccionado == "Cámaras")
             {
                 DdlListarModificarTiposEquipo.SelectedValue = "13";
                 OcultarCamposListarModificarServicio();
@@ -1542,7 +1542,7 @@ namespace CompuGross_Web
             else if (tipoEquipo.Descripcion == "Joystick")
             { MostrarCamposListarModificarJoystick(); }
 
-            else if (tipoEquipo.Descripcion == "Cámaras de seguridad")
+            else if (tipoEquipo.Descripcion == "Cámaras")
             { MostrarCamposListarModificarCamaras(); DdlListarModificarTiposServicio.SelectedValue = "2"; }
         }
 
@@ -1565,6 +1565,91 @@ namespace CompuGross_Web
         protected void BtnListarCancelar_Click(object sender, EventArgs e)
         {
             AlternarVisibilidadSections("cancelarListar");
+        }
+
+        protected void BtnInformarCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Servicio servicioSeleccionado = new Servicio();
+                servicioSeleccionado = (Servicio)Session["ServicioSeleccionado"];
+                ClienteDB clienteDB = new ClienteDB();
+                servicioSeleccionado.Cliente = clienteDB.BuscarCliente(servicioSeleccionado.Cliente.ID);
+
+                if (servicioSeleccionado.Cliente.Mail != null)
+                {
+                    if (servicioSeleccionado.Cliente.Mail.Contains("@"))
+                    {
+                        if (EnviarMailInformarCliente(servicioSeleccionado))
+                        {
+                            hfMessage.Value = "Se ha enviado el Mail, con la información del Servicio N°" + servicioSeleccionado.ID + ", al Cliente " + servicioSeleccionado.Cliente.Apenom;
+                        }
+                        else
+                        {
+                            hfError.Value = "Se ha producido un error al intentar enviar el Mail al Cliente";
+                        }
+                    }
+                    else
+                    {
+                        hfError.Value = "El Cliente " + servicioSeleccionado.Cliente.Apenom + " no tiene un Mail registrado";
+                    }
+                }
+                else
+                {
+                    hfError.Value = "Se ha producido un error al intentar enviar el Mail al Cliente";
+                }
+            }
+            catch
+            {
+                hfError.Value = "Se ha producido un error al intentar enviar el Mail al Cliente";
+            }
+        }
+
+        private string CargarAsuntoMailInformarCliente(Servicio servicio)
+        {
+            return "COMPUGROSS - ORDEN DE SERVICIO N°" + servicio.ID;
+        }
+
+        private string CargarCuerpoMailInformarCliente(Servicio servicio)
+        {
+            decimal costoTotalServicio = Convert.ToDecimal(servicio.CostoRepuestos) + Convert.ToDecimal(servicio.CostoTerceros) + Convert.ToDecimal(servicio.Honorarios);
+
+            string cuerpo = "Esperamos se encuentre muy bien Sr/a " + servicio.Cliente.Apenom + ".\n\n" +
+                            "A continuación le acercamos los datos actualizados de su orden de servicio N°" + servicio.ID + " realizada con nosotros:\n\n\n" +
+                            "- Fecha de recepción de equipo: " + servicio.FechaRecepcion + "\n\n" +
+                            "- Fecha de devolución de equipo: " + servicio.FechaDevolucion + "\n\n" +
+                            "- Equipo: " + servicio.Equipo.Tipo.Descripcion + " " + servicio.Equipo.MarcaModelo + "\n\n" +
+                            "- Detalles de servicio: " + servicio.Descripcion + "\n\n" +
+                            "- Costo total del servicio: $" + costoTotalServicio.ToString() +
+                            "\n\n\nSaludos cordiales.\n\nCompuGross";
+
+            if (servicio.TipoServicio.Descripcion != "Servicio técnico")
+            {
+                cuerpo = "Esperamos se encuentre muy bien Sr/a " + servicio.Cliente.Apenom + ".\n\n" +
+                         "A continuación le acercamos los datos actualizados de su orden de servicio N°" + servicio.ID + " realizada con nosotros:\n\n\n" +
+                         "- Fecha de ejecución del servicio: " + servicio.FechaDevolucion + "\n\n" +
+                         "- Equipo: " + servicio.Equipo.Tipo.Descripcion + " " + servicio.Equipo.MarcaModelo + "\n\n" +
+                         "- Detalles de servicio: " + servicio.Descripcion + "\n\n" +
+                         "- Costo total del servicio: $" + costoTotalServicio.ToString() +
+                         "\n\n\nSaludos cordiales.\n\nCompuGross";
+            }
+
+            return cuerpo;
+        }
+
+        private bool EnviarMailInformarCliente(Servicio servicio)
+        {
+            try
+            {
+                EmailService mail = new EmailService();
+                mail.armarCorreo(servicio.Cliente.Mail, CargarAsuntoMailInformarCliente(servicio), CargarCuerpoMailInformarCliente(servicio));
+                mail.enviarEmail();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

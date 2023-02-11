@@ -250,6 +250,7 @@
     .stl-div-boton {
         display: grid !important;
         justify-content: center;
+        margin-left: -11px;
     }
     .stl-btn-confirmar {
         margin-bottom: 10px;
@@ -268,6 +269,9 @@
     }
     .stl-texto-campo {
         text-align: center;
+    }
+    .stl-btn-cancelar {
+        margin-bottom: 10px;
     }
 }
 @media screen and (max-width: 481px) {
