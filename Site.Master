@@ -76,7 +76,7 @@
             <asp:Label ID="LblUsuarioLogueado" Text="" runat="server" CssClass="stl-lbl-usuario-logueado" />
 
             <nav class="stl-menu-nav">
-                <ul class="stl-menu-ul">
+                <ul class="stl-menu-ul" runat="server">
                     <li class="stl-menu-li">
                         <a href="Clientes.aspx" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoClientes.png" alt="#" class="stl-menu-iconos" />
@@ -101,7 +101,7 @@
                             <b>Precios</b>
                         </a>
                     </li>
-                    <li class="stl-menu-li">
+                    <li id="OpcionReportesMenu" class="stl-menu-li" runat="server">
                         <a href="Reportes.aspx" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoReportes.png" alt="#" class="stl-menu-iconos" />
                             <b>Reportes</b>
@@ -119,12 +119,14 @@
                             <b>Usuarios</b>
                         </a>
                     </li>
+                    <%--
                     <li class="stl-menu-li">
                         <a href="Proveedores.aspx" class="stl-menu-a stl-menu-button">
                             <img src="img/MenuPrincipal/iconoProveedores.png" alt="#" class="stl-menu-iconos" />
                             <b>Proveedores</b>
                         </a>
                     </li>
+                    --%>
                     <li class="stl-menu-li">
                         <a href="Login.aspx" class="stl-menu-a">
                             <img src="img/MenuPrincipal/iconoCerrarSesion.png" alt="#" class="stl-menu-iconos" />

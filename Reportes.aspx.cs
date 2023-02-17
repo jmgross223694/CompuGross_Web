@@ -28,10 +28,22 @@ namespace CompuGross_Web
             }
             else
             {
-                if (!IsPostBack)
+                Usuario usuarioLogueado = new Usuario();
+                usuarioLogueado = (Usuario)Session["Usuario_Logueado"];
+                UsuarioDB uDB = new UsuarioDB();
+                usuarioLogueado = uDB.BuscarUsuario(usuarioLogueado);
+                if (usuarioLogueado.TipoUsuario.Descripcion != "admin")
                 {
-                    CargarDesplegableAños();
-                    CargarDesplegableTipoServicio();
+                    Session["ErrorTipoUsuario"] = "ERROR\n\nUsted no tiene permiso para ingresar a este sitio";
+                    Response.Redirect("Error.aspx");
+                }
+                else
+                {
+                    if (!IsPostBack)
+                    {
+                        CargarDesplegableAños();
+                        CargarDesplegableTipoServicio();
+                    }
                 }
             }
         }

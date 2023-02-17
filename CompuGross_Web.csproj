@@ -288,6 +288,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
@@ -297,10 +298,13 @@
     <Content Include="Clientes.aspx" />
     <Content Include="JavaScript\Script_Precios.js" />
     <Content Include="JavaScript\Script_Presupuestos.js" />
+    <Content Include="JavaScript\Script_Proveedores.js" />
     <Content Include="JavaScript\Script_Reportes.js" />
     <Content Include="JavaScript\Script_Servicios.js" />
+    <Content Include="JavaScript\Script_Usuarios.js" />
     <Content Include="Precios.aspx" />
     <Content Include="Presupuestos.aspx" />
+    <Content Include="Proveedores.aspx" />
     <Content Include="Reportes.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -350,6 +354,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="JavaScript\Script_Error.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -446,8 +451,11 @@
     <Content Include="Styles\Style_Master.css" />
     <Content Include="Styles\Style_Precios.css" />
     <Content Include="Styles\Style_Presupuestos.css" />
+    <Content Include="Styles\Style_Proveedores.css" />
     <Content Include="Styles\Style_Reportes.css" />
     <Content Include="Styles\Style_Servicios.css" />
+    <Content Include="Styles\Style_Usuarios.css" />
+    <Content Include="Usuarios.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -465,6 +473,13 @@
     </Compile>
     <Compile Include="Backup.aspx.designer.cs">
       <DependentUpon>Backup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -505,6 +520,13 @@
       <DependentUpon>Presupuestos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedores.aspx.cs">
+      <DependentUpon>Proveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Proveedores.aspx.designer.cs">
+      <DependentUpon>Proveedores.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -532,6 +554,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

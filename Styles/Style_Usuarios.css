@@ -1,0 +1,177 @@
+﻿body {
+    min-width: 350px;
+}
+
+/*.stl-ddl-mail {
+    width: 100px !important;
+    margin: 0px auto !important;
+    font-size: 10px !important;
+}
+.stl-mail {
+    margin-left: 10px !important;
+}*/
+
+.stl-section-agregar {
+    display: none;
+    margin-bottom: 50px !important;
+}
+.stl-section-modificar-eliminar {
+    display: none;
+    margin-bottom: 50px !important;
+}
+.stl-section-confirmar-eliminar {
+    display: none;
+    margin-bottom: 50px !important;
+    margin-top: -75px;
+}
+.stl-section-listar {
+    display: none;
+    margin-bottom: 50px !important;
+}
+
+.card {
+    background-color: #212529;
+    flex-direction: row !important;
+}
+.card-body {
+    width: 36%;
+    text-align: center;
+    max-height: 62px;
+    max-width: 247px;
+}
+
+.stl-div-botones-principales {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+.stl-btn-listar {
+    margin-left: 5px;
+}
+.stl-div-contenedor {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+}
+.stl-label-campo {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    width: 200px;
+}
+.stl-texto-campo {
+    display: inline-block;
+    width: 200px;
+    margin: 8px;
+}
+.stl-div-boton {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.stl-btn-cancelar-agregar {
+    margin-left: 5px;
+}
+.stl-btn-modificar {
+    width: 80px;
+}
+.stl-btn-eliminar {
+    width: 80px;
+}
+.stl-div-titulos-listar {
+    margin-bottom: 20px !important;
+}
+.stl-div-campos-listar {
+    border-bottom: 2px solid !important;
+}
+.stl-div-btn-listar {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}
+.stl-btn-aux {
+    display: none;
+    padding: 0px !important;
+}
+.stl-img-aux {
+    width: 30px;
+    max-width: 30px;
+}
+.stl-btn-cancelar-modificar {
+    margin-left: 5px !important;
+}
+.stl-btn-cancelar-eliminar {
+    margin-left: 5px !important;
+}
+.stl-lbl-confirmar-eliminar {
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1399px) {
+    .card-body {
+        max-width: 211px;
+    }
+}
+@media screen and (max-width: 1199px) {
+    .card-body {
+        max-width: 219px;
+    }
+    .stl-div-mail {
+        display: none;
+    }
+}
+@media screen and (max-width: 991px) {
+    .card-body {
+        max-width: 159px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .card-body {
+        max-width: 119px;
+    }
+    .stl-label-campos-listar {
+        font-size: 11px !important;
+    }
+    .stl-btn-aux {
+        display: block;
+        font-size: 12px;
+    }
+    .stl-btn-modificar {
+        display: none;
+    }
+    .stl-btn-eliminar {
+        display: none;
+    }
+}
+@media screen and (max-width: 575px) {
+    .card-body {
+        max-width: 152px;
+    }
+    .stl-label-campos-listar {
+        font-size: 15px !important;
+    }
+    .stl-div-apellido {
+        display: none;
+    }
+    .stl-div-nombre {
+        display: none;
+    }
+    .card {
+        min-width: 62%;
+        margin: 0px auto;
+        width: 340px;
+    }
+    .stl-div-btn-listar {
+        min-width: 35px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .stl-div-contenedor {
+        text-align: center !important;
+    }
+}

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using Negocio;
 
 namespace CompuGross_Web
 {
@@ -16,9 +17,12 @@ namespace CompuGross_Web
             {
                 Usuario usuarioLogueado = new Usuario();
                 usuarioLogueado = (Usuario)Session["Usuario_Logueado"];
+                UsuarioDB uDB = new UsuarioDB();
+                usuarioLogueado = uDB.BuscarUsuario(usuarioLogueado);
+                Session["Usuario_Logueado"] = usuarioLogueado;
                 LblUsuarioLogueado.Text = "Usuario actual: " + usuarioLogueado.Nombre + " " 
                                           + usuarioLogueado.Apellido 
-                                          + " (" + usuarioLogueado.Tipo + ")";
+                                          + " (" + usuarioLogueado.TipoUsuario.Descripcion + ")";
             }
         }
     }

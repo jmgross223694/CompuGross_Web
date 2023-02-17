@@ -79,9 +79,21 @@ namespace CompuGross_Web
             }
             else
             {
-                if (!IsPostBack)
+                Usuario usuarioLogueado = new Usuario();
+                usuarioLogueado = (Usuario)Session["Usuario_Logueado"];
+                UsuarioDB uDB = new UsuarioDB();
+                usuarioLogueado = uDB.BuscarUsuario(usuarioLogueado);
+                if (usuarioLogueado.TipoUsuario.Descripcion != "admin")
                 {
-                    CargarDdlTablasDB();
+                    Session["ErrorTipoUsuario"] = "ERROR\n\nUsted no tiene permiso para ingresar a este sitio";
+                    Response.Redirect("Error.aspx");
+                }
+                else
+                {
+                    if (!IsPostBack)
+                    {
+                        CargarDdlTablasDB();
+                    }
                 }
             }
         }
@@ -806,7 +818,7 @@ namespace CompuGross_Web
         {
             Usuario u = new Usuario();
 
-            u.Tipo = archivo.GetCellValueAsString(iRow, 1);
+            u.TipoUsuario.Descripcion = archivo.GetCellValueAsString(iRow, 1);
             u.Apellido = archivo.GetCellValueAsString(iRow, 2);
             u.Nombre = archivo.GetCellValueAsString(iRow, 3);
             u.Username = archivo.GetCellValueAsString(iRow, 4);

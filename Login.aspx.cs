@@ -319,7 +319,7 @@ namespace CompuGross_Web
 
             Usuario usuario_aux = uDB.ValidarCredenciales(usuario);
 
-            if (usuario_aux.Tipo != null && usuario_aux.Nombre != null && usuario_aux.Apellido != null)
+            if (usuario_aux.TipoUsuario.Descripcion != null && usuario_aux.Nombre != null && usuario_aux.Apellido != null)
             {
                 Session["Usuario_Logueado"] = usuario_aux;
                 validado = true;                

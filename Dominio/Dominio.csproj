@@ -55,6 +55,7 @@
     <Compile Include="TablaDB.cs" />
     <Compile Include="TipoEquipo.cs" />
     <Compile Include="TipoServicio.cs" />
+    <Compile Include="TipoUsuario.cs" />
     <Compile Include="UnidadOptica.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

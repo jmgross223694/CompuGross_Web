@@ -52,6 +52,7 @@
     <Compile Include="ServicioDB.cs" />
     <Compile Include="TipoEquipoDB.cs" />
     <Compile Include="TipoServicioDB.cs" />
+    <Compile Include="TipoUsuarioDB.cs" />
     <Compile Include="UnidadOpticaDB.cs" />
     <Compile Include="UsuarioDB.cs" />
   </ItemGroup>

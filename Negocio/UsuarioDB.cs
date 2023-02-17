@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
@@ -14,11 +15,11 @@ namespace Negocio
 
         public Usuario ValidarCredenciales(Usuario usuario)
         {
-            string consulta = "select (select TU.Tipo from TiposUsuario TU where ID = IdTipo) Tipo, " +
+            string consulta = "select ID, (select TU.Tipo from TiposUsuario TU where ID = IdTipo) Tipo, " +
                     "Nombre, Apellido, Count(*) as Cantidad " +
                     "from Usuarios where Username = '" + usuario.Username + "' " +
                     "and PWDCOMPARE('" + usuario.Clave + "', Clave)=1 " +
-                    "group by IdTipo, Nombre, Apellido";
+                    "group by ID, IdTipo, Nombre, Apellido";
 
             try
             {
@@ -31,14 +32,93 @@ namespace Negocio
                     
                     if (cantidad == 1)
                     {
-                        usuario.Tipo = conDB.Lector["Tipo"].ToString();
+                        TipoUsuario tipoUsuario = new TipoUsuario();
+
+                        usuario.ID = Convert.ToInt64(conDB.Lector["ID"]);
+                        tipoUsuario.Descripcion = conDB.Lector["Tipo"].ToString();
+                        usuario.TipoUsuario = tipoUsuario;
                         usuario.Nombre = conDB.Lector["Nombre"].ToString();
                         usuario.Apellido = conDB.Lector["Apellido"].ToString();
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                conDB.CerrarConexion();
+            }
+
+            return usuario;
+        }
+
+        public List<Usuario> Listar()
+        {
+            List<Usuario> lista = new List<Usuario>();
+            string consulta = "select * from ExportUsuarios";
+
+            try
+            {
+                conDB.SetearConsulta(consulta);
+                conDB.EjecutarConsulta();
+
+                while (conDB.Lector.Read())
+                {
+                    Usuario usuario = new Usuario();
+                    TipoUsuario tipoUsuario = new TipoUsuario();
+
+                    usuario.ID = Convert.ToInt64(conDB.Lector["ID"]);
+                    usuario.Apellido = conDB.Lector["Apellido"].ToString();
+                    usuario.Nombre = conDB.Lector["Nombre"].ToString();
+                    usuario.Username = conDB.Lector["Username"].ToString();
+                    usuario.Mail = conDB.Lector["Mail"].ToString();
+                    tipoUsuario.ID = Convert.ToInt64(conDB.Lector["IdTipo"]);
+                    tipoUsuario.Descripcion = conDB.Lector["Tipo"].ToString();
+                    usuario.TipoUsuario = tipoUsuario;
+
+                    lista.Add(usuario);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conDB.CerrarConexion();
+            }
+
+            return lista;
+        }
+
+        public Usuario BuscarUsuario(Usuario usuario)
+        {
+            string consulta = "select * from ExportUsuarios where ID = " + usuario.ID;
+
+            try
+            {
+                conDB.SetearConsulta(consulta);
+                conDB.EjecutarConsulta();
+
+                if (conDB.Lector.Read())
+                {
+                    TipoUsuario tipoUsuario = new TipoUsuario();
+
+                    usuario.ID = Convert.ToInt64(conDB.Lector["ID"]);
+                    usuario.Apellido = conDB.Lector["Apellido"].ToString();
+                    usuario.Nombre = conDB.Lector["Nombre"].ToString();
+                    usuario.Username = conDB.Lector["Username"].ToString();
+                    usuario.Mail = conDB.Lector["Mail"].ToString();
+                    tipoUsuario.ID = Convert.ToInt64(conDB.Lector["IdTipo"]);
+                    tipoUsuario.Descripcion = conDB.Lector["Tipo"].ToString();
+                    usuario.TipoUsuario = tipoUsuario;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             finally
             {
@@ -52,13 +132,73 @@ namespace Negocio
         {
             bool resultado = false;
             string insert = "insert into Usuarios(IdTipo, Apellido, Nombre, Username, Mail, Clave)" +
-                            "values((select ID from TiposUsuario where Tipo = '" + usuario.Tipo + "'), '" +
+                            "values((select ID from TiposUsuario where Tipo = '" + usuario.TipoUsuario.Descripcion + "'), '" +
                             usuario.Apellido + "', '" + usuario.Nombre + "', '" + usuario.Username + "', '" + 
                             usuario.Mail + "', pwdencrypt('" + usuario.Clave + "'))";
 
             try
             {
                 conDB.SetearConsulta(insert);
+                conDB.EjecutarConsulta();
+                resultado = true;
+            }
+            catch
+            {
+                resultado = false;
+            }
+            finally
+            {
+                conDB.CerrarConexion();
+            }
+
+            return resultado;
+        }
+
+        public bool Modificar(Usuario usuario)
+        {
+            bool resultado = false;
+            string update = "update Usuarios set IdTipo = " + usuario.TipoUsuario.ID + ", " +
+                                                "Apellido = '" + usuario.Apellido + "', " +
+                                                "Nombre = '" + usuario.Nombre + "', " +
+                                                "Username = '" + usuario.Username + "', " +
+                                                "Mail = '" + usuario.Mail + "'";
+
+            if (usuario.Clave != "")
+            {
+                update = "update Usuarios set IdTipo = " + usuario.TipoUsuario.ID + ", " +
+                                             "Apellido = '" + usuario.Apellido + "', " +
+                                             "Nombre = '" + usuario.Nombre + "', " +
+                                             "Username = '" + usuario.Username + "', " +
+                                             "Mail = '" + usuario.Mail + "', " +
+                                             "Clave = PWDENCRYPT('" + usuario.Clave + "')";
+            }
+
+            try
+            {
+                conDB.SetearConsulta(update);
+                conDB.EjecutarConsulta();
+                resultado = true;
+            }
+            catch
+            {
+                resultado = false;
+            }
+            finally
+            {
+                conDB.CerrarConexion();
+            }
+
+            return resultado;
+        }
+
+        public bool Eliminar(Usuario usuario)
+        {
+            bool resultado = false;
+            string delete = "delete from Usuarios where ID = " + usuario.ID;
+
+            try
+            {
+                conDB.SetearConsulta(delete);
                 conDB.EjecutarConsulta();
                 resultado = true;
             }
