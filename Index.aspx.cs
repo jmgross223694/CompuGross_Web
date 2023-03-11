@@ -15,6 +15,10 @@ namespace CompuGross_Web
             {
                 Response.Redirect("Login.aspx");
             }
+            else
+            {
+                Session["listadoItems"] = null;
+            }
         }
     }
 }

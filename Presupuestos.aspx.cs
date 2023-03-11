@@ -10,12 +10,15 @@ using iTextSharp.text.html.simpleparser;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Data;
 using System.Data.Common;
+using Negocio;
+using DocumentFormat.OpenXml.Vml.Spreadsheet;
 
 namespace CompuGross_Web
 {
     public partial class Presupuestos : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
+        
         {
             if (Session["Usuario_Logueado"] == null)
             {
@@ -24,21 +27,73 @@ namespace CompuGross_Web
             else
             {
                 TxtFecha.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                if (Session["listadoItems"] == null)
+                section_listado_clientes.Style.Add("display", "none");
+                section_totales_listado.Style.Add("display", "none");
+
+                if (Request.QueryString["IdClienteSeleccionadoPresupuesto"] != null && Session["SeleccionarCliente"] != null)
                 {
-                    section_totales_listado.Style.Add("display", "none");
+                    if ((bool)Session["SeleccionarCliente"])
+                    {
+                        Session["SeleccionarCliente"] = false;
+                        Cliente cliente = new Cliente();
+                        cliente.ID = Convert.ToInt64(Request.QueryString["IdClienteSeleccionadoPresupuesto"]);
+                        BuscarClienteSeleccionado(cliente);
+                        PrimeraMayusculaCliente();
+                    }
                 }
-                
+
                 if (Request.QueryString["CodigoItem"] != null)
                 {
+                    section_listado_clientes.Style.Add("display", "none");
                     string codigo = (string)Request.QueryString["CodigoItem"];
                     EliminarItem(codigo);
                 }
+            }
+        }
 
-                if (TxtCliente.Text != "")
+        private void BuscarClienteSeleccionado(Cliente cliente)
+        {
+            ClienteDB clienteDB = new ClienteDB();
+            CargarClienteSeleccionado(clienteDB.BuscarCliente(cliente.ID));
+        }
+
+        private void CargarClienteSeleccionado(Cliente cliente)
+        {
+            TxtCliente.Text = cliente.Apenom;
+
+            if (Session["PresupuestoActual"] != null)
+            {
+                Presupuesto presupuesto = new Presupuesto();
+                presupuesto = (Presupuesto)Session["PresupuestoActual"];
+                TxtFecha.Text = presupuesto.Fecha;
+                if (Session["listadoItems"] != null)
                 {
-                    PrimeraMayusculaCliente();
+                    CargarRepeaterListado();
+                }   
+            }
+
+            if (Session["ItemActual"] != null)
+            {
+                ItemPresupuesto item = new ItemPresupuesto();
+                item = (ItemPresupuesto)Session["ItemActual"];
+                TxtCodigo.Text = item.Codigo;
+                if (item.Cantidad == 0)
+                {
+                    TxtCantidad.Text = "";
                 }
+                else
+                {
+                    TxtCantidad.Text = item.Cantidad.ToString();
+                }
+                if (item.Precio == 0)
+                {
+                    TxtPrecioUnitario.Text = "";
+                }
+                else
+                {
+                    TxtPrecioUnitario.Text = item.Precio.ToString();
+                }
+                TxtDescripcion.Text = item.Descripcion;
             }
         }
 
@@ -156,21 +211,32 @@ namespace CompuGross_Web
                 bool itemAgregado = false;
 
                 ItemPresupuesto itemNuevo = CargarCamposItem();
+                List<ItemPresupuesto> listaNueva = new List<ItemPresupuesto>();
 
                 foreach (ItemPresupuesto item in presupuesto.ListaItems)
                 {
                     if (item.Codigo == itemNuevo.Codigo)
                     {
                         itemAgregado = true;
+                        item.Cantidad = itemNuevo.Cantidad + item.Cantidad;
+                        item.Subtotal = itemNuevo.Subtotal + item.Subtotal;
                     }
+
+                    listaNueva.Add(item);
                 }
 
                 if (!itemAgregado)
                 {
-                    presupuesto.ListaItems.Add(itemNuevo);
+                    listaNueva.Add(itemNuevo);
                 }
+
+                Session["listadoItems"] = listaNueva;
+
                 CargarRepeaterListado();
                 ResetearCampos();
+
+                //Session["PresupuestoActual"] = null;
+                //Session["ItemActual"] = null;
             }
             else
             {
@@ -216,7 +282,10 @@ namespace CompuGross_Web
             BtnExportar.Style.Add("display", "none");
             LblTotalItems.Text = "";
             LblTotalPrecio.Text = "";
+            section_listado.Style.Add("display", "none");
             section_totales_listado.Style.Add("display", "none");
+            Session["PresupuestoActual"] = null;
+            Session["ItemActual"] = null;
         }
 
         private void ExportarPdf(Presupuesto presupuesto)
@@ -515,9 +584,59 @@ namespace CompuGross_Web
             TxtDescripcion.Text = "";
         }
 
+        private void ListarClientes()
+        {
+            ClienteDB clienteDB = new ClienteDB();
+            RepeaterListadoClientes.DataSource = clienteDB.ListarTodos();
+            RepeaterListadoClientes.DataBind();
+        }
+
+        private void GuardarDatosPresupuestoActual()
+        {
+            Presupuesto presupuesto = new Presupuesto();
+            DateTime fechaAux = Convert.ToDateTime(TxtFecha.Text);
+            string day = fechaAux.Day.ToString(), month = fechaAux.Month.ToString();
+            if (fechaAux.Day < 10) { day = "0" + day; }
+            if (fechaAux.Month < 10) { month = "0" + month; }
+            presupuesto.Fecha = fechaAux.Year + "-" + month + "-" + day;
+            if (Session["listadoItems"] != null)
+            {
+                presupuesto.ListaItems = (List<ItemPresupuesto>)Session["listadoItems"];
+            }
+            ItemPresupuesto item = new ItemPresupuesto();
+            item.Codigo = TxtCodigo.Text;
+            if (TxtCantidad.Text != "")
+            {
+                item.Cantidad = Convert.ToInt32(TxtCantidad.Text);
+            }
+            else
+            {
+                item.Cantidad = 0;
+            }
+            if (TxtPrecioUnitario.Text != "")
+            {
+                item.Precio = Convert.ToDecimal(TxtPrecioUnitario.Text);
+            }
+            else
+            {
+                item.Precio = 0;
+            }
+            item.Descripcion = TxtDescripcion.Text;
+
+            Session["PresupuestoActual"] = presupuesto;
+            Session["ItemActual"] = item;
+        }
+
         protected void LblCliente_Click(object sender, EventArgs e)
         {
-
+            GuardarDatosPresupuestoActual();
+            ListarClientes();
+            section_campos.Style.Add("display", "none");
+            section_botones.Style.Add("display", "none");
+            section_totales_listado.Style.Add("display", "none");
+            section_listado.Style.Add("display", "none");
+            section_listado_clientes.Style.Add("display", "block");
+            Session["SeleccionarCliente"] = true;
         }
     }
 }

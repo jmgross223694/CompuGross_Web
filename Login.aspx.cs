@@ -16,6 +16,7 @@ namespace CompuGross_Web
         protected void Page_Load(object sender, EventArgs e)
         {
             TxtUsuario.Focus();
+            Session["listadoItems"] = null;
         }
 
         protected void LinkLabelRecuperarClave_Click(object sender, EventArgs e)

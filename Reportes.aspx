@@ -22,9 +22,9 @@
     <section id="section_ingresos_generales" runat="server" class="stl-section-ingresos-generales">
         <div class="stl-div-contenedor-ingresos-generales">
             <div class="stl-div-contenedor-ganancias-por-tipo-de-servicio">
-                <div class="stl-div-titulo-ganancias-por-tipo-de-servicio">
+                <%--<div class="stl-div-titulo-ganancias-por-tipo-de-servicio">
                     <h3 class="stl-titulo">Totales por Tipo de Servicio</h3>
-                </div>
+                </div>--%>
                 <div class="stl-div-ingresos-por-servicio">
                         <div class="stl-div-contenedor-titulos card">
                             <div class="stl-div-cantidad card-body">
@@ -68,9 +68,9 @@
             <div class="stl-div-contenedor-promedios-generales">
 
                 <div class="stl-div-promedios-generales">
-                    <div class="stl-div-titulo">
+                    <%--<div class="stl-div-titulo">
                         <h3 class="stl-titulo">Promedios Generales</h3>
-                    </div>
+                    </div>--%>
                     <div class="stl-div-campos">
                         <asp:Label ID="LblPromedioGananciaGeneral" Text="" runat="server" CssClass="stl-label-promedio stl-lbl-promedio-ganancia card card-body" />
                         <asp:Label ID="LblPromedioGananciaMensual" Text="" runat="server" CssClass="stl-label-promedio stl-lbl-promedio-ganancia card card-body" />
@@ -85,23 +85,23 @@
         <div class="stl-div-ganancias-por-año">
             <div class="stl-div-desplegable-años">
                 <div class="stl-div-select-año">
-                    <h3>Seleccione un año: </h3>
+                    <h3>Seleccione un Año: </h3>
                     <asp:DropDownList ID="DdlAños" runat="server" size="1" CssClass="stl-ddl-años btn btn-dark" AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="DdlAños_SelectedIndexChanged">
                     </asp:DropDownList>
                 </div>
             </div>
 
             <section id="section_totales_ganancias_por_año" runat="server" class="stl-section-ganancias-por-año">
-                <div class="stl-div-titulo-ganancias-por-año">
+                <%--<div class="stl-div-titulo-ganancias-por-año">
                     <h3 class="stl-titulo">Ganancias por Año y por Mes</h3>
-                </div>
+                </div>--%>
                 <div class="stl-div-totales-anuales card">
                     <asp:Label ID="LblTotalAnual" Text="" runat="server" CssClass="stl-lbl-total-anual card card-body" />
                     <asp:Label ID="LblPromedioMensual" Text="" runat="server" CssClass="stl-lbl-promedio-mensual card card-body" />
                     <asp:Label ID="LblCantidadServiciosAnual" Text="" runat="server" CssClass="stl-lbl-cantidad-servicios-anual card card-body" />
                 </div>
                 <div class="stl-div-titulo-ganancias-por-mes">
-                    <h3 class="stl-titulo">Ganancias por Mes (Cant. Servicios realizados)</h3>
+                    <h3 class="stl-titulo">Ganancia Mensual (Servicios Realizados)</h3>
                 </div>
                 <div class="stl-div-totales-por-mes card">
                     <div class="stl-div-trimestre card card-body">

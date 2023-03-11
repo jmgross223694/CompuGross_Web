@@ -20,6 +20,8 @@ namespace CompuGross_Web
             }
             else
             {
+                Session["listadoItems"] = null;
+
                 if (Session["CancelarModificarEliminar"] != null)
                 {
                     ListarServiciosCompleto();

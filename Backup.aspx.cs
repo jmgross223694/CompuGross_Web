@@ -79,6 +79,8 @@ namespace CompuGross_Web
             }
             else
             {
+                Session["listadoItems"] = null;
+
                 Usuario usuarioLogueado = new Usuario();
                 usuarioLogueado = (Usuario)Session["Usuario_Logueado"];
                 UsuarioDB uDB = new UsuarioDB();
@@ -153,7 +155,7 @@ namespace CompuGross_Web
         private bool CrearArchivosBackup(List<string> listaTablas, ConexionDB conDB)
         {
             bool bandera = false;
-
+            
             foreach (var nombreTabla in listaTablas)
             {
                 try

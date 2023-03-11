@@ -20,6 +20,8 @@ namespace CompuGross_Web
             }
             else
             {
+                Session["listadoItems"] = null;
+
                 if (Request.QueryString["IdPrecio"] != null && Session["ModificarEliminarPrecio"] != null)
                 {
                     try

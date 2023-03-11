@@ -13,6 +13,8 @@ namespace CompuGross_Web
         {
             if (Session["ErrorTipoUsuario"] != null)
             {
+                Session["listadoItems"] = null;
+
                 hfError.Value = (string)Session["ErrorTipoUsuario"];
             }
         }

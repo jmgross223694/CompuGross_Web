@@ -14,7 +14,7 @@
     
     <asp:Panel DefaultButton="BtnAgregar" runat="server">
 
-        <section id="section_campos">
+        <section id="section_campos" runat="server">
             <div class="stl-div-contenedor">
                 <div class="stl-div-campos">
                     <div class="stl-div-campo">
@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="stl-div-campo">
-                        <asp:Label ID="LblCodigo" Text="Codigo" runat="server" CssClass="stl-label-campo" />
+                        <asp:Label ID="LblCodigo" Text="Código" runat="server" CssClass="stl-label-campo" />
                         <asp:TextBox ID="TxtCodigo" runat="server" MaxLength="8" onkeypress="javascript:return validacionCodigo(event)" CssClass="stl-texto-campo form-control" />
                     </div>
 
@@ -38,23 +38,22 @@
                     </div>
 
                     <div class="stl-div-campo">
-                        <asp:Label ID="LblPrecioUnitario" Text="PrecioUnitario" runat="server" CssClass="stl-label-campo" />
+                        <asp:Label ID="LblPrecioUnitario" Text="Precio Unitario" runat="server" CssClass="stl-label-campo" />
                         <asp:TextBox ID="TxtPrecioUnitario" runat="server" MaxLength="9" onkeypress="javascript:return validacionCantidad_y_Precio(event)" CssClass="stl-texto-campo form-control" />
                     </div>
 
                     <div class="stl-div-campo">
-                        <asp:Label ID="LblDescripcion" Text="Descripcion" runat="server" CssClass="stl-label-campo stl-label-descripcion" />
+                        <asp:Label ID="LblDescripcion" Text="Descripción" runat="server" CssClass="stl-label-campo stl-label-descripcion" />
                         <asp:TextBox ID="TxtDescripcion" TextMode="MultiLine" MaxLength="85" runat="server" CssClass="stl-texto-campo form-control" />
                     </div>
                 </div>
             </div>
         </section>
 
-        <br /><br />
-
-        <section id="section_botones">
+        <section id="section_botones" runat="server">
+            <br /><br />
             <div class="stl-div-botones">
-                <asp:Button ID="BtnAgregar" Text="Agregar item" runat="server" CssClass="btn btn-dark" OnClick="BtnAgregar_Click" />
+                <asp:Button ID="BtnAgregar" Text="Agregar Item" runat="server" CssClass="btn btn-dark" OnClick="BtnAgregar_Click" />
                 <asp:Button ID="BtnVaciar" Text="Borrar Presupuesto Actual" runat="server" CssClass="btn btn-dark" OnClick="BtnVaciar_Click" />
                 <asp:Button ID="BtnExportar" Text="Guardar PDF" runat="server" CssClass="btn btn-dark stl-btn-exportar" OnClick="BtnExportar_Click" />
             </div>
@@ -139,6 +138,63 @@
                 </ItemTemplate>
             </asp:Repeater>
         </div>
+    </section>
+
+    <section id="section_listado_clientes" runat="server" class="stl-section-listado-clientes">
+        <div class="stl-div-titulos-listado-clientes card">
+            <div class="stl-div-apenom-cliente card-body">
+                <label class="stl-label-campos-modificar-cliente"><b><u>Apellido y Nombre</u></b></label>
+            </div>
+
+            <div class="stl-div-telefono-cliente card-body">
+                <label class="stl-label-campos-modificar-cliente"><b><u>Teléfono</u></b></label>
+            </div>
+
+            <div class="stl-div-mail-cliente card-body">
+                <label class="stl-label-campos-modificar-cliente"><b><u>Mail</u></b></label>
+            </div>
+
+            <div class="stl-div-cuitdni-cliente card-body">
+                <label class="stl-label-campos-modificar-cliente"><b><u>CUIT / DNI</u></b></label>
+            </div>
+
+            <div class="stl-div-btn-modificar-eliminar-cliente">
+                <label class="stl-label-campos-modificar-cliente stl-modificar-cliente-lbl-titulo-listado"><%--<b><u>Acciones</u></b>--%></label>
+            </div>
+        </div>
+
+        <asp:Repeater ID="RepeaterListadoClientes" runat="server">
+            <ItemTemplate>
+                <div class="stl-div-contenedor-listado-clientes card">
+                    <div class="stl-div-apenom-cliente card-body">
+                        <label class="stl-label-campos-modificar-cliente"><%# Eval("Apenom") %></label>
+                    </div>
+
+                    <div class="stl-div-telefono-cliente card-body">
+                        <label class="stl-label-campos-modificar-cliente"><%# Eval("Telefono") %></label>
+                    </div>
+
+                    <div class="stl-div-mail-cliente card-body">
+                        <label class="stl-label-campos-modificar-cliente"><%# Eval("Mail") %></label>
+                    </div>
+
+                    <div class="stl-div-cuitdni-cliente card-body">
+                        <label class="stl-label-campos-modificar-cliente"><%# Eval("CuitDni") %></label>
+                    </div>
+
+                    <div class="stl-div-btn-seleccionar-cliente">
+                        <a href="Presupuestos.aspx?IdClienteSeleccionadoPresupuesto=<%# Eval("ID") %>" style="text-decoration: none;">
+
+                            <span class="btn btn-primary btn-sm stl-btn-seleccionar-cliente">Seleccionar</span>
+                            <span class="btn btn-primary btn-sm stl-btn-seleccionar-cliente-2">
+                                <asp:Image ImageUrl="~/img/Clientes/seleccion.png" CssClass="stl-icono-btn-seleccionar-cliente" runat="server" />
+                            </span>
+
+                        </a>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
     </section>
 
     <asp:HiddenField ID="hfMessage" runat="server" />

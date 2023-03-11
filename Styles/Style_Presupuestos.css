@@ -59,6 +59,17 @@
     margin: 0px auto;
     border: 0px;
 }
+.stl-div-titulos-listado-clientes {
+    margin-bottom: 20px !important;
+}
+.stl-div-btn-seleccionar-cliente {
+    width: 20%;
+    margin: 0px auto;
+    text-align: center;
+}
+.stl-btn-seleccionar-cliente {
+    margin-top: 12px;
+}
 .stl-section-listado {
     display: none;
 }
@@ -116,16 +127,26 @@
     display: block;
     text-align: left;
 }
-
 .stl-lbl-totales-listado {
     width: 200px;
     display: block;
     text-align: center;
 }
+.stl-btn-seleccionar-cliente-2 {
+    width: 40px;
+    margin-top: 12px;
+    display: none;
+}
+.stl-icono-btn-seleccionar-cliente {
+    width: 100%;
+}
 
 @media screen and (max-width: 1400px) {
     .stl-titulo-listado-descripcion {
         max-width: 58%;
+    }
+    .stl-div-btn-seleccionar-cliente {
+        width: 10%;
     }
 }
 
@@ -138,6 +159,20 @@
     }
     .stl-div-titulo-listado-codigo {
         display: none;
+    }
+    .stl-div-cuitdni-cliente {
+        display: none;
+    }
+    .stl-div-mail-cliente {
+        display: none;
+    }
+    .stl-div-titulos-listado-clientes {
+        max-width: 65%;
+        margin: 0px auto;
+    }
+    .stl-div-contenedor-listado-clientes {
+        max-width: 65%;
+        margin: 0px auto;
     }
 }
 
@@ -156,6 +191,9 @@
     }
     .stl-texto-listado-descripcion {
         max-width: 51%;
+    }
+    .stl-div-telefono-cliente {
+        display: none;
     }
 }
 
@@ -177,6 +215,12 @@
     }
     .stl-boton-chico {
         display: flex;
+    }
+    .stl-btn-seleccionar-cliente-2 {
+        display: block;
+    }
+    .stl-btn-seleccionar-cliente {
+        display: none;
     }
 }
 
@@ -205,6 +249,12 @@
     }
     .stl-div-contenedor-listado {
         max-width: 20%;
+    }
+    .stl-label-campos-modificar-cliente {
+        font-size: 12px;
+    }
+    .stl-div-apenom-cliente {
+        max-width: 160px !important;
     }
 }
 

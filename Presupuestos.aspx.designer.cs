@@ -15,6 +15,15 @@ namespace CompuGross_Web
     {
 
         /// <summary>
+        /// Control section_campos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_campos;
+
+        /// <summary>
         /// Control LblFecha.
         /// </summary>
         /// <remarks>
@@ -123,6 +132,15 @@ namespace CompuGross_Web
         protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
 
         /// <summary>
+        /// Control section_botones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_botones;
+
+        /// <summary>
         /// Control BtnAgregar.
         /// </summary>
         /// <remarks>
@@ -193,6 +211,24 @@ namespace CompuGross_Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterListado;
+
+        /// <summary>
+        /// Control section_listado_clientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_listado_clientes;
+
+        /// <summary>
+        /// Control RepeaterListadoClientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterListadoClientes;
 
         /// <summary>
         /// Control hfMessage.

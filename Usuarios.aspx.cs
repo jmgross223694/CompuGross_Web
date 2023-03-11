@@ -19,6 +19,8 @@ namespace CompuGross_Web
             }
             else
             {
+                Session["listadoItems"] = null;
+
                 Usuario usuarioLogueado = new Usuario();
                 usuarioLogueado = (Usuario)Session["Usuario_Logueado"];
                 UsuarioDB uDB = new UsuarioDB();

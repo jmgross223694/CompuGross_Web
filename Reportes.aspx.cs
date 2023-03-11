@@ -28,6 +28,8 @@ namespace CompuGross_Web
             }
             else
             {
+                Session["listadoItems"] = null;
+
                 Usuario usuarioLogueado = new Usuario();
                 usuarioLogueado = (Usuario)Session["Usuario_Logueado"];
                 UsuarioDB uDB = new UsuarioDB();
@@ -133,6 +135,7 @@ namespace CompuGross_Web
             ListarIngresosPorServicio();
             CargarPromediosGenerales();
             section_ingresos_generales.Style.Add("display", "block");
+            section_servicios_por_cliente.Style.Add("display", "none");
         }
 
         protected void BtnServiciosPorCliente_Click(object sender, EventArgs e)
