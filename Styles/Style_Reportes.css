@@ -18,6 +18,9 @@
     display: flex;
     justify-content: center;
 }
+.stl-ddl-ordenar-listado {
+    width: fit-content !important;
+}
 .stl-div-btn-principales {
     display: flex;
     justify-content: center;

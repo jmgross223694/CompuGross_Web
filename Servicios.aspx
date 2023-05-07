@@ -197,7 +197,7 @@
                     <div class="stl-elegir-div-busqueda">
                         <asp:TextBox ID="TxtListarBuscar" Tooltip="Se busca coincidencias con N° de Servicio, Tipo de Servicio, Tipo de Equipo, Cliente, Fecha Recepción, Fecha Devolución, Marca y Modelo, Costo Total" PlaceHolder="Búsqueda..." runat="server" CssClass="stl-texto-campo form-control stl-elegir-cliente-txt-buscar" />
                         <asp:Button ID="BtnListarBuscar" Text="Buscar" runat="server" CssClass="btn btn-dark stl-btn-listar-buscar" OnClick="BtnListarBuscar_Click" />
-                        <asp:Button ID="BtnListarCancelar" Text="Cancelar" runat="server" CssClass="btn btn-dark" OnClick="BtnListarCancelar_Click" />
+                        <asp:Button ID="BtnListarCancelar" Text="Volver" runat="server" CssClass="btn btn-dark" OnClick="BtnListarCancelar_Click" />
                     </div>
                 </asp:Panel>
 

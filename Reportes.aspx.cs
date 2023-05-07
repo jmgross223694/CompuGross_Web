@@ -15,6 +15,9 @@ using System.IO;
 using DocumentFormat.OpenXml.Math;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System.Drawing;
+using System.Web.UI.WebControls.WebParts;
+using System.EnterpriseServices;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace CompuGross_Web
 {
@@ -41,6 +44,15 @@ namespace CompuGross_Web
                 }
                 else
                 {
+                    if (BtnExportarExcel.Visible)
+                    {
+                        DdlOrdenarServiciosPorCliente.Visible = true;
+                    }
+                    else
+                    {
+                        DdlOrdenarServiciosPorCliente.Visible = false;
+                    }
+                    
                     if (!IsPostBack)
                     {
                         CargarDesplegableAños();
@@ -145,6 +157,7 @@ namespace CompuGross_Web
             DdlTipoServicio.SelectedValue = "Todos";
             section_ingresos_generales.Style.Add("display", "none");
             section_servicios_por_cliente.Style.Add("display", "block");
+            DdlOrdenarServiciosPorCliente.Visible = true;
             ListarServiciosPorCliente("Todos");
         }
 
@@ -267,64 +280,81 @@ namespace CompuGross_Web
 
         private void ExportExcel(List<ServicioPorCliente> lista)
         {
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            excel.Application.Workbooks.Add(true);
-            excel.Cells[1, 1] = "N° Cliente";
-            excel.Cells[1, 2] = "Cliente";
-            excel.Cells[1, 3] = "Servicios realizados (Ganancia total)";
-            int indiceFila = 0;
-
-            foreach (ServicioPorCliente servicioPorCliente in lista)
+            try
             {
-                indiceFila++;
-                excel.Cells[indiceFila + 1, 1] = servicioPorCliente.Cliente.ID;
-                excel.Cells[indiceFila + 1, 2] = servicioPorCliente.Cliente.Apenom;
-                excel.Cells[indiceFila + 1, 3] = servicioPorCliente.TotalServiciosRealizados + " ($ " + servicioPorCliente.GananciaTotal + ")";
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                excel.Application.Workbooks.Add(true);
+                excel.Cells[1, 1] = "N° Cliente";
+                excel.Cells[1, 2] = "Cliente";
+                excel.Cells[1, 3] = "Servicios realizados";
+                excel.Cells[1, 4] = "Ganancia total";
+                int indiceFila = 0;
 
-                excel.Cells[indiceFila + 1, 1].Interior.Color = ColorTranslator.ToOle(System.Drawing.Color.FromArgb(217, 225, 242));
-                excel.Cells[indiceFila + 1, 2].Interior.Color = ColorTranslator.ToOle(System.Drawing.Color.FromArgb(217, 225, 242));
-                excel.Cells[indiceFila + 1, 3].Interior.Color = ColorTranslator.ToOle(System.Drawing.Color.FromArgb(217, 225, 242));
+                foreach (ServicioPorCliente servicioPorCliente in lista)
+                {
+                    indiceFila++;
+                    excel.Cells[indiceFila + 1, 1] = servicioPorCliente.Cliente.ID;
+                    excel.Cells[indiceFila + 1, 2] = servicioPorCliente.Cliente.Apenom;
+                    excel.Cells[indiceFila + 1, 3] = servicioPorCliente.TotalServiciosRealizados;
+                    excel.Cells[indiceFila + 1, 4] = "$ " + servicioPorCliente.GananciaTotal;
 
-                excel.Cells[indiceFila + 1, 1].Font.Name = "Calibri";
-                excel.Cells[indiceFila + 1, 2].Font.Name = "Calibri";
-                excel.Cells[indiceFila + 1, 3].Font.Name = "Calibri";
+                    excel.Cells[indiceFila + 1, 1].Interior.Color = ColorTranslator.ToOle(System.Drawing.Color.FromArgb(217, 225, 242));
+                    excel.Cells[indiceFila + 1, 2].Interior.Color = ColorTranslator.ToOle(System.Drawing.Color.FromArgb(217, 225, 242));
+                    excel.Cells[indiceFila + 1, 3].Interior.Color = ColorTranslator.ToOle(System.Drawing.Color.FromArgb(217, 225, 242));
+                    excel.Cells[indiceFila + 1, 4].Interior.Color = ColorTranslator.ToOle(System.Drawing.Color.FromArgb(217, 225, 242));
 
-                excel.Cells[indiceFila + 1, 1].Font.Size = 11;
-                excel.Cells[indiceFila + 1, 2].Font.Size = 11;
-                excel.Cells[indiceFila + 1, 3].Font.Size = 11;
+                    excel.Cells[indiceFila + 1, 1].Font.Name = "Calibri";
+                    excel.Cells[indiceFila + 1, 2].Font.Name = "Calibri";
+                    excel.Cells[indiceFila + 1, 3].Font.Name = "Calibri";
+                    excel.Cells[indiceFila + 1, 4].Font.Name = "Calibri";
 
-                excel.Cells[indiceFila + 1, 1].Font.Bold = true;
-                excel.Cells[indiceFila + 1, 2].Font.Bold = true;
-                excel.Cells[indiceFila + 1, 3].Font.Bold = true;
+                    excel.Cells[indiceFila + 1, 1].Font.Size = 11;
+                    excel.Cells[indiceFila + 1, 2].Font.Size = 11;
+                    excel.Cells[indiceFila + 1, 3].Font.Size = 11;
+                    excel.Cells[indiceFila + 1, 4].Font.Size = 11;
 
-                excel.Cells[indiceFila + 1, 1].Interior.Pattern = XlPattern.xlPatternSolid;
-                excel.Cells[indiceFila + 1, 2].Interior.Pattern = XlPattern.xlPatternSolid;
-                excel.Cells[indiceFila + 1, 3].Interior.Pattern = XlPattern.xlPatternSolid;
+                    excel.Cells[indiceFila + 1, 1].Font.Bold = true;
+                    excel.Cells[indiceFila + 1, 2].Font.Bold = true;
+                    excel.Cells[indiceFila + 1, 3].Font.Bold = true;
+                    excel.Cells[indiceFila + 1, 4].Font.Bold = true;
 
-                excel.Cells[indiceFila + 1, 1].Borders.Weight = 1;
-                excel.Cells[indiceFila + 1, 2].Borders.Weight = 1;
-                excel.Cells[indiceFila + 1, 3].Borders.Weight = 1;
+                    excel.Cells[indiceFila + 1, 1].Interior.Pattern = XlPattern.xlPatternSolid;
+                    excel.Cells[indiceFila + 1, 2].Interior.Pattern = XlPattern.xlPatternSolid;
+                    excel.Cells[indiceFila + 1, 3].Interior.Pattern = XlPattern.xlPatternSolid;
+                    excel.Cells[indiceFila + 1, 4].Interior.Pattern = XlPattern.xlPatternSolid;
 
-                excel.Cells[indiceFila + 1, 1].Borders.Color = ColorTranslator.ToOle(System.Drawing.Color.Black);
-                excel.Cells[indiceFila + 1, 2].Borders.Color = ColorTranslator.ToOle(System.Drawing.Color.Black);
-                excel.Cells[indiceFila + 1, 3].Borders.Color = ColorTranslator.ToOle(System.Drawing.Color.Black);
+                    excel.Cells[indiceFila + 1, 1].Borders.Weight = 1;
+                    excel.Cells[indiceFila + 1, 2].Borders.Weight = 1;
+                    excel.Cells[indiceFila + 1, 3].Borders.Weight = 1;
+                    excel.Cells[indiceFila + 1, 4].Borders.Weight = 1;
+
+                    excel.Cells[indiceFila + 1, 1].Borders.Color = ColorTranslator.ToOle(System.Drawing.Color.Black);
+                    excel.Cells[indiceFila + 1, 2].Borders.Color = ColorTranslator.ToOle(System.Drawing.Color.Black);
+                    excel.Cells[indiceFila + 1, 3].Borders.Color = ColorTranslator.ToOle(System.Drawing.Color.Black);
+                    excel.Cells[indiceFila + 1, 4].Borders.Color = ColorTranslator.ToOle(System.Drawing.Color.Black);
+                }
+
+                Range titleRng = excel.Application.get_Range("A1:D1");
+                Range contentRng = excel.Application.get_Range("A:D");
+                contentRng.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                titleRng.Font.Name = "Calibri";
+                titleRng.Font.Size = 13;
+                titleRng.Font.Bold = true;
+                titleRng.Interior.Pattern = XlPattern.xlPatternSolid;
+                titleRng.Borders.Weight = 1;
+                titleRng.Borders.Color = ColorTranslator.ToOle(System.Drawing.Color.Black);
+                titleRng.Font.Color = ColorTranslator.ToOle(System.Drawing.Color.White);
+                titleRng.Interior.Color = ColorTranslator.ToOle(System.Drawing.Color.FromArgb(49, 80, 90));
+                excel.Columns[1].AutoFit();
+                excel.Columns[2].AutoFit();
+                excel.Columns[3].AutoFit();
+                excel.Columns[4].AutoFit();
+                excel.Visible = true;
             }
-
-            Range titleRng = excel.Application.get_Range("A1:C1");
-            Range contentRng = excel.Application.get_Range("A:C");
-            contentRng.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            titleRng.Font.Name = "Calibri";
-            titleRng.Font.Size = 13;
-            titleRng.Font.Bold = true;
-            titleRng.Interior.Pattern = XlPattern.xlPatternSolid;
-            titleRng.Borders.Weight = 1;
-            titleRng.Borders.Color = ColorTranslator.ToOle(System.Drawing.Color.Black);
-            titleRng.Font.Color = ColorTranslator.ToOle(System.Drawing.Color.White);
-            titleRng.Interior.Color = ColorTranslator.ToOle(System.Drawing.Color.FromArgb(49, 80, 90));
-            excel.Columns[1].AutoFit();
-            excel.Columns[2].AutoFit();
-            excel.Columns[3].AutoFit();
-            excel.Visible = true;
+            catch
+            {
+                hfError.Value = "No se pudo generar el archivo Excel. Compruebe que el paquete Office está instalado en el equipo.";
+            }
         }
 
         protected void BtnExportarExcel_Click(object sender, EventArgs e)
@@ -365,7 +395,19 @@ namespace CompuGross_Web
                     }
                 }
 
-                listaServiciosPorCliente.Add(servicioPorCliente);
+                if (servicioPorCliente.TotalServiciosRealizados > 0)
+                {
+                    listaServiciosPorCliente.Add(servicioPorCliente);
+                }
+            }
+
+            if (DdlOrdenarServiciosPorCliente.SelectedItem.Text == "Ordenar Listado ↑")
+            {
+                listaServiciosPorCliente = listaServiciosPorCliente.OrderBy(x => x.GananciaTotal).ToList();
+            }
+            if (DdlOrdenarServiciosPorCliente.SelectedItem.Text == "Ordenar Listado ↓")
+            {
+                listaServiciosPorCliente = listaServiciosPorCliente.OrderByDescending(x => x.GananciaTotal).ToList();
             }
 
             Session["ListaServiciosPorCliente"] = listaServiciosPorCliente;
@@ -472,6 +514,15 @@ namespace CompuGross_Web
                 }
             }
 
+            if (DdlOrdenarServiciosPorCliente.SelectedItem.Text == "Ascendente")
+            {
+                listaServiciosPorClienteNueva = listaServiciosPorClienteNueva.OrderBy(x => x.GananciaTotal).ToList();
+            }
+            if (DdlOrdenarServiciosPorCliente.SelectedItem.Text == "Descendente")
+            {
+                listaServiciosPorClienteNueva = listaServiciosPorClienteNueva.OrderByDescending(x => x.GananciaTotal).ToList();
+            }
+
             Session["ListaServiciosPorCliente"] = listaServiciosPorClienteNueva;
 
             RepeaterServiciosPorCliente.DataSource = listaServiciosPorClienteNueva;
@@ -481,6 +532,11 @@ namespace CompuGross_Web
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
             ListarServiciosPorClienteFiltrado();
+        }
+
+        protected void DdlOrdenarServiciosPorCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListarServiciosPorCliente("Todos");
         }
     }
 }

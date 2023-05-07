@@ -80,7 +80,7 @@
                             <div class="stl-modificar-cliente-div-busqueda">
                                 <asp:TextBox ID="TxtModificarClienteBusqueda" Tooltip="Se busca coincidencias con Nombres, Apellidos, Telefono, CUIT/DNI, Mail, Dirección y/o Localidad" PlaceHolder="Búsqueda..." runat="server" CssClass="stl-texto-campo form-control stl-modificar-cliente-txt-buscar" />
                                 <asp:Button ID="BtnModificarClienteBusqueda" Text="Buscar" runat="server" CssClass="btn btn-dark stl-btn-modificar-cliente-busqueda" OnClick="BtnModificarClienteBusqueda_Click" />
-                                <asp:Button ID="BtnModificarClienteCancelar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn-cancelar-modificar" OnClick="BtnModificarClienteCancelar_Click" />
+                                <asp:Button ID="BtnModificarClienteCancelar" Text="Volver" runat="server" CssClass="btn btn-dark stl-btn-cancelar-modificar" OnClick="BtnModificarClienteCancelar_Click" />
                             </div>
                         </section>
                     </asp:Panel>
@@ -232,7 +232,7 @@
                 <div class="stl-div-principal-localidades">
                     <asp:Button ID="BtnLocalidadesAgregar" Text="Agregar Nueva" runat="server" CssClass="btn btn-dark stl-boton-principal" OnClick="BtnLocalidadesAgregar_Click" />
                     <asp:Button ID="BtnLocalidadesListar" Text="Listar Todas" runat="server" CssClass="btn btn-dark stl-boton-principal" OnClick="BtnLocalidadesListar_Click" />
-                    <asp:Button ID="BtnLocalidadesCancelar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn-cancelar-localidades stl-boton-principal" onclick="BtnLocalidadesCancelar_Click" />
+                    <asp:Button ID="BtnLocalidadesCancelar" Text="Volver" runat="server" CssClass="btn btn-dark stl-btn-cancelar-localidades stl-boton-principal" onclick="BtnLocalidadesCancelar_Click" />
                 </div>
             </section>
 
@@ -268,7 +268,7 @@
                     <div class="stl-localidades-div-busqueda">
                         <asp:TextBox ID="TxtLocalidadesBuscar" Tooltip="Se buscan coincidencias con Descripción de Localidades" PlaceHolder="Búsqueda..." runat="server" CssClass="stl-texto-campo form-control stl-localidades-txt-buscar" />
                         <asp:Button ID="BtnLocalidadesBuscar" Text="Buscar" runat="server" CssClass="btn btn-dark" OnClick="BtnLocalidadesBuscar_Click" />
-                        <asp:Button ID="BtnLocalidadesListarCancelar" Text="Cancelar" runat="server" CssClass="btn btn-dark stl-btn-cancelar-localidades" onclick="BtnLocalidadesListarCancelar_Click" />
+                        <asp:Button ID="BtnLocalidadesListarCancelar" Text="Volver" runat="server" CssClass="btn btn-dark stl-btn-cancelar-localidades" onclick="BtnLocalidadesListarCancelar_Click" />
                     </div>
                 </section>
 

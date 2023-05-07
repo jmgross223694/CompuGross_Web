@@ -157,6 +157,10 @@
         <div class="stl-div-contenedor-servicios-por-cliente">
                 <div class="stl-div-btn-exportar">
                     <asp:Button ID="BtnExportarExcel" Text="Exportar a Excel" runat="server" CssClass="stl-btn-exportar btn btn-success" OnClick="BtnExportarExcel_Click" />
+                    <asp:DropDownList ID="DdlOrdenarServiciosPorCliente" ToolTip="Ordenar Listado por $ Ganancia Total" runat="server" AutoPostBack="true" AppendDataBoundItems="true" CssClass="stl-ddl-ordenar-listado stl-btn-servicios-por-cliente form-control btn btn-dark" OnSelectedIndexChanged="DdlOrdenarServiciosPorCliente_SelectedIndexChanged">
+                        <asp:ListItem Text="Ordenar Listado ↑" />
+                        <asp:ListItem Text="Ordenar Listado ↓" Selected="True" />
+                    </asp:DropDownList>
                 </div>
             
             <div class="stl-div-listado-servicios-por-cliente">

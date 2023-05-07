@@ -21,7 +21,7 @@ function errorConfirm() {
             icon: 'warning',
             title: message,
             showConfirmButton: false,
-            timer: 2000
+            timer: 10000
         })
     }
     $('[id$=hfError]').val('')
