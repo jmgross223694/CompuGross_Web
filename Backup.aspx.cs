@@ -258,30 +258,23 @@ namespace CompuGross_Web
             return tablaSeleccionada;
         }
 
-        private string ValidarArchivo(string path, string extension, int tam)
+        private string ValidarArchivo(string path, string extension)
         {
             if (FuRestaurarBackup.HasFile)
             {
                 if (extension == ".xlsx" || extension == ".xls")
                 {
-                    if (tam <= 1048576)
-                    {
-                        FuRestaurarBackup.SaveAs(Server.MapPath(path));
-                        path = Server.MapPath(path);
+                    FuRestaurarBackup.SaveAs(Server.MapPath(path));
+                    path = Server.MapPath(path);
 
-                        if (extension == ".xls")
-                        {
-                            var workbook = new Workbook(path);
-                            path = path.Replace(".xls", ".xlsx");
-                            workbook.Save(path);
-                        }
-
-                        return "1";
-                    }
-                    else
+                    if (extension == ".xls")
                     {
-                        return "-1";
+                        var workbook = new Workbook(path);
+                        path = path.Replace(".xls", ".xlsx");
+                        workbook.Save(path);
                     }
+
+                    return "1";
                 }
                 else
                 {
@@ -860,11 +853,13 @@ namespace CompuGross_Web
 
             if (tablaSeleccionada != "Seleccione...")
             {
+                //DdlTablasDB.SelectedValue = "Seleccione...";
+
                 tablaSeleccionada = ValidarTablaSeleccionadaConDB(tablaSeleccionada);
                 string extension = Path.GetExtension(FuRestaurarBackup.FileName).ToLower();
-                int tam = FuRestaurarBackup.PostedFile.ContentLength;
+                //int tam = FuRestaurarBackup.PostedFile.ContentLength;
                 string path = "~/Imports/Libro1" + extension;
-                string resultadoValidarArchivo = ValidarArchivo(path, extension, tam);
+                string resultadoValidarArchivo = ValidarArchivo(path, extension);
                 path = Server.MapPath(path);
 
                 if (resultadoValidarArchivo == "1")

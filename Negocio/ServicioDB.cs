@@ -435,7 +435,9 @@ namespace Negocio
                                                                                             "FechaDevolucion = '" + servicio.FechaDevolucion + "' and " +
                                                                                             "Cliente = '" + servicio.Cliente.Apenom + "' and " +
                                                                                             "TipoEquipo = '" + servicio.Equipo.Tipo.Descripcion + "' and " +
+                                                                                            "MarcaModelo = '" + servicio.Equipo.MarcaModelo + "' and " +
                                                                                             "TipoServicio = '" + servicio.TipoServicio.Descripcion + "' and " +
+                                                                                            "Descripcion = '" + servicio.Descripcion + "' and " +
                                                                                             "Ganancia = " + ganancia;
 
             try
