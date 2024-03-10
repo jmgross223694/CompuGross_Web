@@ -17,7 +17,7 @@ namespace Negocio
         public ConexionDB()
         {
             //string strConLocal = "data source=.\\SQLEXPRESS; initial catalog=CompuGross; integrated security=sspi";
-            string strConLan = "Server=AMD-FX-8320\\SQLEXPRESS,1433;DataBase=CompuGross;User Id=compugross;Password=compugross";
+            string strConLan = "Server=AMD-FX-8320\\SQLSERVER,1433;DataBase=CompuGross;User Id=compugross;Password=compugross";
 
             conexion = new SqlConnection(strConLan);
             comando = new SqlCommand();

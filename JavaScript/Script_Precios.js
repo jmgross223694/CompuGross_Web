@@ -94,12 +94,12 @@ function validacionPrecioModificar(e) {
         key = e.which;
     }
     if (txtDolares === 0) {
-        if (key === 44 && key === 46) {
+        if (key === 46 || key === 44) {
             return false;
         }
     }
     if (key < 48 || key > 57) {
-        if (key != 44 && key != 46) {
+        if (key != 46 && key != 44) {
             return false;
         }
     }

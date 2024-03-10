@@ -648,6 +648,9 @@ namespace CompuGross_Web
                 else if (tipoEquipo.Descripcion == "Cámaras")
                 { MostrarCamposAgregarCamaras(); DdlAgregarTiposServicio.SelectedValue = "2"; }
 
+                else if (tipoEquipo.Descripcion == "Unidad de Almacenamiento")
+                { MostrarCamposAgregarUnidadDeAlmacenamiento(); }
+
                 if (CbAgregarFechaDevolucion1.Checked && !TxtAgregarFechaDevolucion.Visible)
                 {
                     CbAgregarFechaDevolucion1.Checked = false;
@@ -707,6 +710,19 @@ namespace CompuGross_Web
             TxtAgregarAdicionales.Visible = true;
             TxtAgregarAlimentacion.Visible = true;
             DdlAgregarUnidadOptica.Visible = true;
+        }
+
+        private void MostrarCamposAgregarUnidadDeAlmacenamiento()
+        {
+            LblAgregarMarcaModelo.Visible = true;
+            LblAgregarAlmacenamiento.Visible = true;
+            LblAgregarNumSerie.Visible = true;
+            LblAgregarAdicionales.Visible = true;
+
+            TxtAgregarMarcaModelo.Visible = true;
+            TxtAgregarAlmacenamiento.Visible = true;
+            TxtAgregarNumSerie.Visible = true;
+            TxtAgregarAdicionales.Visible = true;
         }
 
         private void MostrarCamposAgregarComputadora()

@@ -36,6 +36,15 @@ namespace CompuGross_Web
                         hfError.Value = "Error al cargar los datos del Precio seleccionado";
                     }
                 }
+
+                if (Session["DolarActual"] != null)
+                {
+                    if ((string)Session["DolarActual"] != "")
+                    {
+                        TxtPrecioDolar.Text = (string)Session["DolarActual"];
+                        CargarListado();
+                    }
+                }
             }
         }
 
@@ -85,6 +94,7 @@ namespace CompuGross_Web
             {
                 try
                 {
+                    Session["DolarActual"] = TxtPrecioDolar.Text;
                     CargarListado();
                 }
                 catch
@@ -100,7 +110,7 @@ namespace CompuGross_Web
 
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
-            //TxtPrecioDolar.Text = "";
+            Session["DolarActual"] = TxtPrecioDolar.Text;
             LblTitulo.Text = "Nuevo Precio";
             ResetearCamposAgregar();
             section_listado.Style.Add("display", "none");
@@ -113,7 +123,7 @@ namespace CompuGross_Web
 
         private void Modificar_Eliminar_Precio(Precio precio, string accion)
         {
-            //TxtPrecioDolar.Text = "";
+            Session["DolarActual"] = TxtPrecioDolar.Text;
             VisibilidadPanelesModificarEliminar(accion);
             CargarCamposModificarEliminar(precio);
         }
@@ -221,6 +231,7 @@ namespace CompuGross_Web
 
         protected void BtnCancelarAgregar_Click(object sender, EventArgs e)
         {
+            Session["DolarActual"] = TxtPrecioDolar.Text;
             ResetearCamposAgregar();
             VisibilidadSections();
         }
@@ -278,6 +289,7 @@ namespace CompuGross_Web
 
         protected void BtnCancelarEliminar_Click(object sender, EventArgs e)
         {
+            Session["DolarActual"] = TxtPrecioDolar.Text;
             ResetearCamposModificar();
             VisibilidadSections();
             Session["ModificarEliminarPrecio"] = null;
@@ -315,6 +327,7 @@ namespace CompuGross_Web
 
         protected void BtnCancelarModificar_Click(object sender, EventArgs e)
         {
+            Session["DolarActual"] = TxtPrecioDolar.Text;
             ResetearCamposModificar();
             VisibilidadSections();
             Session["ModificarEliminarPrecio"] = null;
@@ -327,7 +340,7 @@ namespace CompuGross_Web
             precio.Codigo = TxtModificarCodigo.Text;
             precio.Descripcion = TxtModificarDescripcion.Text;
             precio.Aclaraciones = TxtModificarAclaraciones.Text;
-            precio.Dolares = Convert.ToDecimal(TxtModificarPrecio.Text.Replace(".", ","));
+            precio.Dolares = Convert.ToDecimal(TxtModificarPrecio.Text.Replace(",", "."));
 
             return precio;
         }
