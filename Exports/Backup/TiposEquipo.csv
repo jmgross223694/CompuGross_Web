@@ -9,5 +9,7 @@
 8;Monitor;True;
 9;Celular;True;
 10;Consola;True;
-13;Cámaras;True;
-25;Joystick;True;
+11;Cámaras;True;
+12;Joystick;True;
+13;Unidad de Almacenamiento;True;
+14;DVR / NVR;True;
